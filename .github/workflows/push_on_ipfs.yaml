@@ -39,12 +39,12 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: front-cms
+          name: front-cms-${{ matrix.key }}
           path: out/
 
       - uses: actions/download-artifact@v3
         with:
-          name: front-cms
+          name: front-cms-${{ matrix.key }}
           path: out/
 
       - name: Push on IPFS

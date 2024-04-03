@@ -4,93 +4,62 @@ import dynamic from "next/dynamic";
 import Container from "./components/Container/Container";
 import H1 from "./components/H1/H1";
 import H2 from "./components/H2/H2";
+import Section from "./components/Section/Section";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-Builder.registerComponent(
-  dynamic(() => import("./components/Counter/Counter")),
-  {
-    name: "Counter",
-    inputs: [
-      {
-        name: "initialCount",
-        type: "number",
-      },
-    ],
-  }
-);
+const TYPO_KIND: string[] = [
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "h7",
+  "header",
+  "logo",
+  "nav",
+  "info",
+  "body",
+  "body1",
+  "body2",
+  "body3",
+  "code",
+  "code1",
+  "table",
+  "form",
+];
 
-Builder.registerComponent(withChildren(TextGradient), {
-  name: "TextGradient",
-  canHaveChildren: true,
-  inputs: [
-    {
-      name: "color",
-      type: "string",
-      defaultValue: "main0",
-      helperText: "Select the gradient color for the text.",
-    },
-    {
-      name: "type",
-      type: "enum",
-      defaultValue: "header",
-      enum: ["h1"],
-    },
-    {
-      name: "as",
-      type: "enum",
-      enum: ["h1"],
-    },
-    {
-      name: "size",
-      type: "number",
-      defaultValue: 48,
-      helperText: "Set the font size.",
-    },
-  ],
-  defaultChildren: [
-    {
-      "@type": "@builder.io/sdk:Element",
-      component: {
-        name: "Text",
-        options: {
-          text: "Add desired text here...",
-        },
-      },
-    },
-  ],
-});
-
-Builder.registerComponent(TextGradient, {
-  name: "TextGradient 2",
-  inputs: [
-    {
-      name: "children",
-      type: "string",
-    },
-    {
-      name: "color",
-      type: "string",
-      defaultValue: "main0",
-      helperText: "Select the gradient color for the text.",
-    },
-    {
-      name: "type",
-      type: "enum",
-      defaultValue: "header",
-      enum: ["h1"],
-    },
-    {
-      name: "as",
-      type: "enum",
-      enum: ["h1"],
-    },
-  ],
-});
+// Builder.registerComponent(
+//   dynamic(() => import("./components/Counter/Counter")),
+//   {
+//     name: "Counter",
+//     inputs: [
+//       {
+//         name: "initialCount",
+//         type: "number",
+//       },
+//     ],
+//   }
+// );
 
 Builder.registerComponent(withChildren(Container), {
   name: "Container",
   canHaveChildren: true,
+  defaultStyles: {},
+});
+
+Builder.registerComponent(withChildren(Section), {
+  name: "Section",
+  inputs: [
+    {
+      name: "effects",
+      type: "string",
+      enum: ["-", "fx-grain-1"],
+    },
+  ],
+  canHaveChildren: true,
+  defaultStyles: {},
 });
 
 Builder.registerComponent(withChildren(Col), {
@@ -154,6 +123,7 @@ Builder.registerComponent(withChildren(Col), {
       type: "number",
     },
   ],
+  defaultStyles: {},
 });
 
 Builder.registerComponent(withChildren(Row), {
@@ -217,6 +187,7 @@ Builder.registerComponent(withChildren(Row), {
       type: "number",
     },
   ],
+  defaultStyles: {},
 });
 
 Builder.registerComponent(withChildren(Button), {
@@ -266,28 +237,108 @@ Builder.registerComponent(withChildren(Button), {
       enum: ["button", "a"],
     },
     {
-      name: "className",
+      name: "target",
       type: "string",
+      defaultValue: "_blank",
     },
   ],
+  defaultStyles: {},
 });
 
-Builder.registerComponent(withChildren(H1), {
+Builder.registerComponent(TextGradient, {
+  name: "TextGradient",
+  inputs: [
+    {
+      name: "children",
+      type: "longText",
+    },
+    {
+      name: "color",
+      type: "string",
+      enum: [
+        "white",
+        "black",
+        "translucid",
+        "base0",
+        "base1",
+        "base2",
+        "main0",
+        "main1",
+        "info",
+        "success",
+        "warning",
+        "error",
+        "disabled",
+        "disabled2",
+        "background",
+        "contentBackground",
+        "foreground",
+        "text",
+      ],
+      defaultValue: "text",
+      helperText: "Select the gradient color for the text.",
+    },
+    {
+      name: "type",
+      type: "string",
+      enum: ["h1"],
+      defaultValue: "h1",
+    },
+    {
+      name: "as",
+      type: "string",
+      enum: ["h1"],
+    },
+    {
+      name: "size",
+      type: "number",
+    },
+  ],
+  defaultStyles: {
+    whiteSpace: "pre-wrap",
+  },
+});
+
+Builder.registerComponent(H1, {
   name: "H1",
   inputs: [
     {
-      name: "color",
-      type: "string",
+      name: "children",
+      type: "longText",
     },
-  ],
-});
-
-Builder.registerComponent(withChildren(H2), {
-  name: "H2",
-  inputs: [
     {
       name: "color",
       type: "string",
     },
+    {
+      name: "type",
+      type: "string",
+      enum: TYPO_KIND,
+    },
   ],
+  defaultStyles: {
+    whiteSpace: "pre-wrap",
+  },
+});
+
+Builder.registerComponent(H2, {
+  name: "H2",
+  inputs: [
+    {
+      name: "children",
+      type: "longText",
+    },
+    {
+      name: "color",
+      type: "string",
+    },
+    {
+      name: "type",
+      type: "string",
+      enum: TYPO_KIND,
+    },
+  ],
+  defaultStyles: {
+    whiteSpace: "pre-wrap",
+  },
 });

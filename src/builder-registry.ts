@@ -1,12 +1,20 @@
 import { Button, Col, Row, TextGradient } from "@aleph-front/core";
 import { builder, Builder, withChildren } from "@builder.io/react";
-import dynamic from "next/dynamic";
-import Container from "./components/Container/Container";
-import H1 from "./components/H1/H1";
-import H2 from "./components/H2/H2";
-import Section from "./components/Section/Section";
+import { Container, H1, H2, Section, Text, Box, Header } from "./components";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
+
+const DEFAULT_PROPS = {
+  inputs: [],
+  defaultStyles: {},
+};
+
+const DEFAULT_TEXT_PROPS = {
+  ...DEFAULT_PROPS,
+  defaultStyles: {
+    whiteSpace: "pre-wrap",
+  },
+};
 
 const TYPO_KIND: string[] = [
   "h1",
@@ -30,27 +38,22 @@ const TYPO_KIND: string[] = [
   "form",
 ];
 
-// Builder.registerComponent(
-//   dynamic(() => import("./components/Counter/Counter")),
-//   {
-//     name: "Counter",
-//     inputs: [
-//       {
-//         name: "initialCount",
-//         type: "number",
-//       },
-//     ],
-//   }
-// );
+Builder.registerComponent(withChildren(Box), {
+  ...DEFAULT_PROPS,
+  name: "Custom Box",
+  canHaveChildren: true,
+});
 
 Builder.registerComponent(withChildren(Container), {
+  ...DEFAULT_PROPS,
   name: "Container",
   canHaveChildren: true,
-  defaultStyles: {},
 });
 
 Builder.registerComponent(withChildren(Section), {
+  ...DEFAULT_PROPS,
   name: "Section",
+  canHaveChildren: true,
   inputs: [
     {
       name: "effects",
@@ -58,11 +61,10 @@ Builder.registerComponent(withChildren(Section), {
       enum: ["-", "fx-grain-1"],
     },
   ],
-  canHaveChildren: true,
-  defaultStyles: {},
 });
 
 Builder.registerComponent(withChildren(Col), {
+  ...DEFAULT_PROPS,
   name: "Column",
   canHaveChildren: true,
   inputs: [
@@ -123,10 +125,10 @@ Builder.registerComponent(withChildren(Col), {
       type: "number",
     },
   ],
-  defaultStyles: {},
 });
 
 Builder.registerComponent(withChildren(Row), {
+  ...DEFAULT_PROPS,
   name: "Row",
   canHaveChildren: true,
   inputs: [
@@ -187,12 +189,17 @@ Builder.registerComponent(withChildren(Row), {
       type: "number",
     },
   ],
-  defaultStyles: {},
 });
 
 Builder.registerComponent(withChildren(Button), {
+  ...DEFAULT_PROPS,
   name: "Button",
+  canHaveChildren: true,
   inputs: [
+    {
+      name: "children",
+      type: "longText",
+    },
     {
       name: "href",
       // type: "reference",
@@ -242,10 +249,10 @@ Builder.registerComponent(withChildren(Button), {
       defaultValue: "_blank",
     },
   ],
-  defaultStyles: {},
 });
 
 Builder.registerComponent(TextGradient, {
+  ...DEFAULT_TEXT_PROPS,
   name: "TextGradient",
   inputs: [
     {
@@ -294,12 +301,30 @@ Builder.registerComponent(TextGradient, {
       type: "number",
     },
   ],
-  defaultStyles: {
-    whiteSpace: "pre-wrap",
-  },
+});
+
+Builder.registerComponent(Text, {
+  ...DEFAULT_TEXT_PROPS,
+  name: "Custom Text",
+  inputs: [
+    {
+      name: "children",
+      type: "longText",
+    },
+    {
+      name: "textType",
+      type: "string",
+    },
+    {
+      name: "tp",
+      type: "string",
+      enum: ["tp-info"],
+    },
+  ],
 });
 
 Builder.registerComponent(H1, {
+  ...DEFAULT_TEXT_PROPS,
   name: "H1",
   inputs: [
     {
@@ -316,12 +341,10 @@ Builder.registerComponent(H1, {
       enum: TYPO_KIND,
     },
   ],
-  defaultStyles: {
-    whiteSpace: "pre-wrap",
-  },
 });
 
 Builder.registerComponent(H2, {
+  ...DEFAULT_TEXT_PROPS,
   name: "H2",
   inputs: [
     {
@@ -338,7 +361,55 @@ Builder.registerComponent(H2, {
       enum: TYPO_KIND,
     },
   ],
-  defaultStyles: {
-    whiteSpace: "pre-wrap",
-  },
+});
+
+Builder.registerComponent(withChildren(Header), {
+  ...DEFAULT_PROPS,
+  name: "Header",
+  canHaveChildren: true,
+  noWrap: true,
+  inputs: [
+    {
+      name: "routes",
+      type: "list",
+      defaultValue: [
+        {
+          name: "Developers",
+          href: "https://docs.aleph.im/",
+          target: "_blank",
+          external: true,
+        },
+        {
+          name: "Solutions",
+          href: "/",
+          exact: true,
+        },
+      ],
+      subFields: [
+        {
+          name: "name",
+          type: "string",
+        },
+        {
+          name: "href",
+          type: "string",
+        },
+        {
+          name: "external",
+          type: "boolean",
+          defaultValue: false,
+        },
+        {
+          name: "target",
+          type: "string",
+          enum: ["", "_blank"],
+        },
+        {
+          name: "exact",
+          type: "boolean",
+          defaultValue: false,
+        },
+      ],
+    },
+  ],
 });

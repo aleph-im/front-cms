@@ -5,3 +5,6 @@ export { default as H2 } from "./H2";
 export { default as Section } from "./Section";
 export { default as Text } from "./Text";
 export { default as Header } from "./Header";
+export { default as Footer } from "./Footer";
+export { default as SignMeUpForm } from "./SignMeUpForm";
+export { default as Breadcrumb } from "./Breadcrumb";

@@ -7,7 +7,7 @@ import { useCallback, useState } from "react";
 import { useRouter } from "next/router";
 import { HeaderProps } from "./types";
 
-export const Header = ({ children, routes }: HeaderProps) => {
+export const Header = ({ children, routes, breakpoint }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleCloseMenu = useCallback((open: boolean) => setIsOpen(open), []);
 
@@ -17,7 +17,7 @@ export const Header = ({ children, routes }: HeaderProps) => {
     <StyledHeader>
       <RouterNavbar
         Link={Link as LinkComponent}
-        breakpoint="md"
+        breakpoint={breakpoint}
         pathname={router.pathname}
         onToggle={handleCloseMenu}
         open={isOpen}

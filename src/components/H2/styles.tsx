@@ -7,6 +7,5 @@ export const StyledH2 = styled(TextGradient).attrs((props) => {
     forwardedAs: "h2",
     type: props.type || "h5",
     color: props.color || "main0",
-    whitespace: props.whitespace || "pre-wrap",
   };
 })``;

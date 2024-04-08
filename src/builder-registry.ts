@@ -1,6 +1,18 @@
-import { Button, Col, Row, TextGradient } from "@aleph-front/core";
+import { BulletList, Button, Col, Row, TextGradient } from "@aleph-front/core";
 import { builder, Builder, withChildren } from "@builder.io/react";
-import { Container, H1, H2, Section, Text, Box, Header } from "./components";
+import {
+  Container,
+  H1,
+  H2,
+  Section,
+  Text,
+  Box,
+  Header,
+  Footer,
+  SignMeUpForm,
+  Breadcrumb,
+} from "./components";
+import Image from "next/image";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -58,7 +70,7 @@ Builder.registerComponent(withChildren(Section), {
     {
       name: "effects",
       type: "string",
-      enum: ["-", "fx-grain-1"],
+      enum: ["", "fx-grain-1", "fx-grain-2"],
     },
   ],
 });
@@ -246,6 +258,7 @@ Builder.registerComponent(withChildren(Button), {
     {
       name: "target",
       type: "string",
+      enum: ["_self", "_blank"],
       defaultValue: "_blank",
     },
   ],
@@ -320,6 +333,11 @@ Builder.registerComponent(Text, {
       type: "string",
       enum: ["tp-info"],
     },
+    {
+      name: "fs",
+      type: "string",
+      enum: ["fs-10", "fs-18", "fs-26", "fs-28"],
+    },
   ],
 });
 
@@ -363,6 +381,44 @@ Builder.registerComponent(H2, {
   ],
 });
 
+Builder.registerComponent(BulletList, {
+  ...DEFAULT_PROPS,
+  name: "Bullet list",
+  inputs: [
+    {
+      name: "size",
+      type: "string",
+      enum: ["regular", "big"],
+    },
+    {
+      name: "items",
+      type: "list",
+      defaultValue: [
+        {
+          kind: "info",
+          title: "Indexing",
+          text: "Open-source, multi-chain indexing blockchain data.",
+        },
+      ],
+      subFields: [
+        {
+          name: "title",
+          type: "string",
+        },
+        {
+          name: "text",
+          type: "longText",
+        },
+        {
+          name: "kind",
+          type: "string",
+          enum: ["info", "success", "warning", "error"],
+        },
+      ],
+    },
+  ],
+});
+
 Builder.registerComponent(withChildren(Header), {
   ...DEFAULT_PROPS,
   name: "Header",
@@ -402,7 +458,7 @@ Builder.registerComponent(withChildren(Header), {
         {
           name: "target",
           type: "string",
-          enum: ["", "_blank"],
+          enum: ["_self", "_blank"],
         },
         {
           name: "exact",
@@ -411,5 +467,244 @@ Builder.registerComponent(withChildren(Header), {
         },
       ],
     },
+    {
+      name: "breakpoint",
+      type: "string",
+      enum: ["xs", "sm", "md", "lg", "xl", "2xl"],
+      defaultValue: "md",
+    },
+  ],
+});
+
+Builder.registerComponent(Footer, {
+  ...DEFAULT_PROPS,
+  name: "Footer",
+  inputs: [
+    {
+      name: "buttons",
+      type: "list",
+      required: true,
+      defaultValue: [
+        {
+          label: "Join the collective",
+          href: "/collective",
+          props: {
+            variant: "primary",
+          },
+        },
+        {
+          label: "Start a project",
+          href: "https://docs.aleph.im/computing/",
+          target: "_blank",
+        },
+      ],
+      subFields: [
+        {
+          name: "label",
+          type: "string",
+        },
+        {
+          name: "href",
+          type: "string",
+        },
+        {
+          name: "target",
+          type: "string",
+          enum: ["_self", "_blank"],
+        },
+        {
+          name: "props",
+          type: "object",
+          defaultValue: {},
+          subFields: [
+            {
+              name: "variant",
+              type: "string",
+
+              enum: ["primary", "secondary", "tertiary", "textOnly"],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "media",
+      type: "list",
+      required: true,
+      defaultValue: [
+        {
+          name: "x",
+          icon: "x",
+          label: "Follow us",
+          href: "https://twitter.com/TwentySixCloud",
+          target: "_blank",
+          small: true,
+        },
+      ],
+      subFields: [
+        {
+          name: "name",
+          type: "string",
+        },
+        {
+          name: "icon",
+          type: "string",
+          enum: ["x", "telegram", "medium"],
+        },
+        {
+          name: "label",
+          type: "string",
+        },
+        {
+          name: "href",
+          type: "string",
+        },
+        {
+          name: "target",
+          type: "string",
+          enum: ["_self", "_blank"],
+        },
+        {
+          name: "small",
+          type: "boolean",
+        },
+      ],
+    },
+    {
+      name: "mainLinks",
+      type: "list",
+      required: true,
+      defaultValue: [
+        {
+          label: "Documentation",
+          href: "https://docs.aleph.im",
+          target: "_blank",
+        },
+      ],
+      subFields: [
+        {
+          name: "label",
+          type: "string",
+        },
+        {
+          name: "href",
+          type: "string",
+        },
+        {
+          name: "target",
+          type: "string",
+          enum: ["_self", "_blank"],
+        },
+      ],
+    },
+    {
+      name: "links",
+      type: "list",
+      required: true,
+      defaultValue: [
+        {
+          title: "Solutions",
+          links: [
+            {
+              label: "Computing",
+              href: "https://console.twentysix.cloud/computing/function/new/",
+              target: "_blank",
+            },
+          ],
+        },
+        {
+          title: "Developers",
+          links: [
+            {
+              label: "Documentation",
+              href: "https://docs.aleph.im",
+              target: "_blank",
+            },
+          ],
+        },
+      ],
+      subFields: [
+        {
+          name: "title",
+          type: "string",
+        },
+        {
+          name: "links",
+          type: "list",
+          subFields: [
+            {
+              name: "label",
+              type: "string",
+            },
+            {
+              name: "href",
+              type: "string",
+            },
+            {
+              name: "target",
+              type: "string",
+              enum: ["_self", "_blank"],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+});
+
+Builder.registerComponent(SignMeUpForm, {
+  ...DEFAULT_PROPS,
+  name: "Sign Me Up Form",
+});
+
+Builder.registerComponent(Image, {
+  ...DEFAULT_PROPS,
+  name: "Custom Image",
+  inputs: [
+    {
+      name: "src",
+      type: "file",
+    },
+    {
+      name: "alt",
+      type: "string",
+      defaultValue: "img",
+    },
+    {
+      name: "fill",
+      type: "boolean",
+      defaultValue: true,
+    },
+    {
+      name: "width",
+      type: "number",
+    },
+    {
+      name: "height",
+      type: "number",
+    },
+  ],
+  defaultStyles: {
+    position: "relative",
+  },
+});
+
+Builder.registerComponent(Breadcrumb, {
+  name: "Breadcrumb",
+  inputs: [
+    {
+      name: "navLinks",
+      type: "list",
+      subFields: [
+        { name: "href", type: "string" },
+        { name: "label", type: "string" },
+      ],
+      defaultValue: [
+        { href: "/", label: "Home" },
+        { href: "/use-cases", label: "Use cases" },
+      ],
+    },
+    { name: "selected", type: "number" },
+    { name: "selectedColor", type: "string" },
   ],
 });

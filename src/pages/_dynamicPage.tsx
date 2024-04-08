@@ -4,38 +4,40 @@ import Head from "next/head";
 import { BuilderContent } from "@builder.io/sdk";
 import { BuilderComponent, builder, useIsPreviewing } from "@builder.io/react";
 import "../builder-registry";
+import { useRouter } from "next/router";
 
 export default function DynamicPage({ page }: { page: BuilderContent | null }) {
-  // const router = useRouter();
+  const router = useRouter();
   const isPreviewing = useIsPreviewing();
 
   const [content, setContent] = useState<BuilderContent | null>(page);
   const [notFound, setNotFound] = useState(!page);
 
   useEffect(() => {
-    async function fetch() {
-      const urlPath = window.location.pathname || "/";
+    async function fetchContent() {
+      const urlPath = router.asPath || "/";
       console.log("PAGE", urlPath);
 
       try {
         console.log("LOAD", urlPath);
 
-        const content = await builder
+        const fetchedContent = await builder
           .get("page", { userAttributes: { urlPath } })
           .toPromise();
 
-        if (content) {
-          setContent(content);
+        if (fetchedContent) {
+          setContent(fetchedContent);
+        } else {
+          setNotFound(true);
         }
-
-        setNotFound(!content);
       } catch (e) {
         console.log("something went wrong while fetching Builder Content: ", e);
+        setNotFound(true);
       }
     }
 
-    fetch();
-  }, []);
+    fetchContent();
+  }, [router.asPath]); // Depend on router.asPath to refetch content on route changes
 
   // If the page content is not available
   // and not in preview mode, show a 404 error page

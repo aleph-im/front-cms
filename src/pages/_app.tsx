@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { ThemeProps, ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import type { AppProps } from "next/app";
 import { builder } from "@builder.io/react";
 import { GlobalStyles, themes } from "@aleph-front/core";

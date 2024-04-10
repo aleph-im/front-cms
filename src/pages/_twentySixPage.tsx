@@ -53,7 +53,11 @@ export default function DynamicPage({ page }: { page: BuilderContent | null }) {
         <title>{content?.data?.title}</title>
       </Head>
       {/* Render the Builder page */}
-      <BuilderComponent model="page" content={content || undefined} apiKey="" />
+      <BuilderComponent
+        model="twentysix-page"
+        content={content || undefined}
+        apiKey=""
+      />
     </>
   );
 }

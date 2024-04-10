@@ -1,7 +1,21 @@
-import { BulletList, Button, Col, Row, TextGradient } from "@aleph-front/core";
-import { builder, Builder, withChildren } from "@builder.io/react";
+import { BulletList, Button, Col, Row } from "@aleph-front/core";
+import {
+  builder,
+  Builder,
+  Columns,
+  CustomCode,
+  Form,
+  FormInput,
+  FormSelect,
+  FormSubmitButton,
+  Image,
+  Label,
+  TextArea,
+  withChildren,
+} from "@builder.io/react";
 import {
   Container,
+  TextGradient,
   H1,
   H2,
   Section,
@@ -12,9 +26,13 @@ import {
   SignMeUpForm,
   Breadcrumb,
 } from "./components";
-import Image from "next/image";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
+
+const HIDDEN_FROM_EDITOR_PROPS = {
+  override: true,
+  hideFromInsertMenu: true,
+};
 
 const DEFAULT_PROPS = {
   inputs: [],
@@ -23,6 +41,30 @@ const DEFAULT_PROPS = {
 
 const DEFAULT_TEXT_PROPS = {
   ...DEFAULT_PROPS,
+  inputs: [
+    ...DEFAULT_PROPS.inputs,
+    {
+      name: "children",
+      friendlyName: "Text content",
+      helperText: "Shift+Enter for line break",
+      type: "longText",
+    },
+    {
+      name: "textType",
+      type: "string",
+      enum: ["", "text-main0", "text-base2"],
+    },
+    {
+      name: "tp",
+      type: "string",
+      enum: ["", "tp-info", "tp-header", "tp-h2", "tp-h4", "tp-h7"],
+    },
+    {
+      name: "fs",
+      type: "string",
+      enum: ["", "fs-10", "fs-18", "fs-26", "fs-28"],
+    },
+  ],
   defaultStyles: {
     whiteSpace: "pre-wrap",
   },
@@ -54,6 +96,211 @@ Builder.registerComponent(withChildren(Box), {
   ...DEFAULT_PROPS,
   name: "Custom Box",
   canHaveChildren: true,
+  inputs: [
+    {
+      name: "backgroundColor",
+      type: "string",
+      enum: ["bg-base0", "bg-base1"],
+    },
+    {
+      name: "margin",
+      type: "string",
+      enum: [
+        "0",
+        "0.25rem",
+        "0.5rem",
+        "0.75rem",
+        "1rem",
+        "1.25rem",
+        "1.5rem",
+        "1.75rem",
+        "2.00rem",
+        "2.25rem",
+        "2.50rem",
+        "2.75rem",
+        "3.00rem",
+      ],
+    },
+    {
+      name: "marginTop",
+      type: "string",
+      advanced: true,
+      enum: [
+        "0",
+        "0.25rem",
+        "0.5rem",
+        "0.75rem",
+        "1rem",
+        "1.25rem",
+        "1.5rem",
+        "1.75rem",
+        "2.00rem",
+        "2.25rem",
+        "2.50rem",
+        "2.75rem",
+        "3.00rem",
+      ],
+    },
+    {
+      name: "marginBottom",
+      type: "string",
+      advanced: true,
+      enum: [
+        "0",
+        "0.25rem",
+        "0.5rem",
+        "0.75rem",
+        "1rem",
+        "1.25rem",
+        "1.5rem",
+        "1.75rem",
+        "2.00rem",
+        "2.25rem",
+        "2.50rem",
+        "2.75rem",
+        "3.00rem",
+      ],
+    },
+    {
+      name: "marginLeft",
+      type: "string",
+      advanced: true,
+      enum: [
+        "0",
+        "0.25rem",
+        "0.5rem",
+        "0.75rem",
+        "1rem",
+        "1.25rem",
+        "1.5rem",
+        "1.75rem",
+        "2.00rem",
+        "2.25rem",
+        "2.50rem",
+        "2.75rem",
+        "3.00rem",
+      ],
+    },
+    {
+      name: "marginRight",
+      type: "string",
+      advanced: true,
+      enum: [
+        "0",
+        "0.25rem",
+        "0.5rem",
+        "0.75rem",
+        "1rem",
+        "1.25rem",
+        "1.5rem",
+        "1.75rem",
+        "2.00rem",
+        "2.25rem",
+        "2.50rem",
+        "2.75rem",
+        "3.00rem",
+      ],
+    },
+    {
+      name: "padding",
+      type: "string",
+      enum: [
+        "0",
+        "0.25rem",
+        "0.5rem",
+        "0.75rem",
+        "1rem",
+        "1.25rem",
+        "1.5rem",
+        "1.75rem",
+        "2.00rem",
+        "2.25rem",
+        "2.50rem",
+        "2.75rem",
+        "3.00rem",
+      ],
+    },
+    {
+      name: "paddingTop",
+      type: "string",
+      advanced: true,
+      enum: [
+        "0",
+        "0.25rem",
+        "0.5rem",
+        "0.75rem",
+        "1rem",
+        "1.25rem",
+        "1.5rem",
+        "1.75rem",
+        "2.00rem",
+        "2.25rem",
+        "2.50rem",
+        "2.75rem",
+        "3.00rem",
+      ],
+    },
+    {
+      name: "paddingBottom",
+      type: "string",
+      advanced: true,
+      enum: [
+        "0",
+        "0.25rem",
+        "0.5rem",
+        "0.75rem",
+        "1rem",
+        "1.25rem",
+        "1.5rem",
+        "1.75rem",
+        "2.00rem",
+        "2.25rem",
+        "2.50rem",
+        "2.75rem",
+        "3.00rem",
+      ],
+    },
+    {
+      name: "paddingLeft",
+      type: "string",
+      advanced: true,
+      enum: [
+        "0",
+        "0.25rem",
+        "0.5rem",
+        "0.75rem",
+        "1rem",
+        "1.25rem",
+        "1.5rem",
+        "1.75rem",
+        "2.00rem",
+        "2.25rem",
+        "2.50rem",
+        "2.75rem",
+        "3.00rem",
+      ],
+    },
+    {
+      name: "paddingRight",
+      type: "string",
+      advanced: true,
+      enum: [
+        "0",
+        "0.25rem",
+        "0.5rem",
+        "0.75rem",
+        "1rem",
+        "1.25rem",
+        "1.5rem",
+        "1.75rem",
+        "2.00rem",
+        "2.25rem",
+        "2.50rem",
+        "2.75rem",
+        "3.00rem",
+      ],
+    },
+  ],
 });
 
 Builder.registerComponent(withChildren(Container), {
@@ -259,7 +506,7 @@ Builder.registerComponent(withChildren(Button), {
       name: "target",
       type: "string",
       enum: ["_self", "_blank"],
-      defaultValue: "_blank",
+      defaultValue: "_self",
     },
   ],
 });
@@ -268,10 +515,7 @@ Builder.registerComponent(TextGradient, {
   ...DEFAULT_TEXT_PROPS,
   name: "TextGradient",
   inputs: [
-    {
-      name: "children",
-      type: "longText",
-    },
+    ...DEFAULT_TEXT_PROPS.inputs,
     {
       name: "color",
       type: "string",
@@ -301,7 +545,7 @@ Builder.registerComponent(TextGradient, {
     {
       name: "type",
       type: "string",
-      enum: ["h1"],
+      enum: ["h1", "h2"],
       defaultValue: "h1",
     },
     {
@@ -319,36 +563,14 @@ Builder.registerComponent(TextGradient, {
 Builder.registerComponent(Text, {
   ...DEFAULT_TEXT_PROPS,
   name: "Custom Text",
-  inputs: [
-    {
-      name: "children",
-      type: "longText",
-    },
-    {
-      name: "textType",
-      type: "string",
-    },
-    {
-      name: "tp",
-      type: "string",
-      enum: ["tp-info"],
-    },
-    {
-      name: "fs",
-      type: "string",
-      enum: ["fs-10", "fs-18", "fs-26", "fs-28"],
-    },
-  ],
+  inputs: [...DEFAULT_TEXT_PROPS.inputs],
 });
 
 Builder.registerComponent(H1, {
   ...DEFAULT_TEXT_PROPS,
   name: "H1",
   inputs: [
-    {
-      name: "children",
-      type: "longText",
-    },
+    ...DEFAULT_TEXT_PROPS.inputs,
     {
       name: "color",
       type: "string",
@@ -365,10 +587,7 @@ Builder.registerComponent(H2, {
   ...DEFAULT_TEXT_PROPS,
   name: "H2",
   inputs: [
-    {
-      name: "children",
-      type: "longText",
-    },
+    ...DEFAULT_TEXT_PROPS.inputs,
     {
       name: "color",
       type: "string",
@@ -459,6 +678,7 @@ Builder.registerComponent(withChildren(Header), {
           name: "target",
           type: "string",
           enum: ["_self", "_blank"],
+          defaultValue: "_self",
         },
         {
           name: "exact",
@@ -511,6 +731,7 @@ Builder.registerComponent(Footer, {
           name: "target",
           type: "string",
           enum: ["_self", "_blank"],
+          defaultValue: "_self",
         },
         {
           name: "props",
@@ -563,6 +784,7 @@ Builder.registerComponent(Footer, {
           name: "target",
           type: "string",
           enum: ["_self", "_blank"],
+          defaultValue: "_self",
         },
         {
           name: "small",
@@ -594,6 +816,7 @@ Builder.registerComponent(Footer, {
           name: "target",
           type: "string",
           enum: ["_self", "_blank"],
+          defaultValue: "_self",
         },
       ],
     },
@@ -644,6 +867,7 @@ Builder.registerComponent(Footer, {
               name: "target",
               type: "string",
               enum: ["_self", "_blank"],
+              defaultValue: "_self",
             },
           ],
         },
@@ -655,38 +879,6 @@ Builder.registerComponent(Footer, {
 Builder.registerComponent(SignMeUpForm, {
   ...DEFAULT_PROPS,
   name: "Sign Me Up Form",
-});
-
-Builder.registerComponent(Image, {
-  ...DEFAULT_PROPS,
-  name: "Custom Image",
-  inputs: [
-    {
-      name: "src",
-      type: "file",
-    },
-    {
-      name: "alt",
-      type: "string",
-      defaultValue: "img",
-    },
-    {
-      name: "fill",
-      type: "boolean",
-      defaultValue: true,
-    },
-    {
-      name: "width",
-      type: "number",
-    },
-    {
-      name: "height",
-      type: "number",
-    },
-  ],
-  defaultStyles: {
-    position: "relative",
-  },
 });
 
 Builder.registerComponent(Breadcrumb, {
@@ -707,4 +899,173 @@ Builder.registerComponent(Breadcrumb, {
     { name: "selected", type: "number" },
     { name: "selectedColor", type: "string" },
   ],
+});
+
+// Overrides default Builder.io image
+// https://github.com/BuilderIO/builder/blob/4d38bc1e3d2366611230bf52d3f04884785ff587/packages/react/src/blocks/Image.tsx
+Builder.registerComponent(Image, {
+  ...DEFAULT_PROPS,
+  name: "Custom Image",
+  override: true,
+  inputs: [
+    ...DEFAULT_PROPS.inputs,
+    {
+      name: "image",
+      type: "file",
+      bubble: true,
+      allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
+      required: true,
+      defaultValue:
+        "https://cdn.builder.io/api/v1/image/assets%2FYJIGb4i01jvw0SRdL5Bt%2F72c80f114dc149019051b6852a9e3b7a",
+    },
+    {
+      name: "backgroundSize",
+      type: "text",
+      defaultValue: "contain",
+      enum: [
+        {
+          label: "contain",
+          value: "contain",
+          helperText: "The image should never get cropped",
+        },
+        {
+          label: "cover",
+          value: "cover",
+          helperText: `The image should fill its box, cropping when needed`,
+        },
+      ],
+    },
+    {
+      name: "backgroundPosition",
+      type: "text",
+      defaultValue: "center",
+      enum: [
+        "center",
+        "top",
+        "left",
+        "right",
+        "bottom",
+        "top left",
+        "top right",
+        "bottom left",
+        "bottom right",
+      ],
+    },
+    {
+      name: "altText",
+      type: "string",
+      helperText: "Text to display when the user has images off",
+    },
+    {
+      name: "height",
+      type: "number",
+      hideFromUI: true,
+    },
+    {
+      name: "width",
+      type: "number",
+      hideFromUI: true,
+    },
+    {
+      name: "sizes",
+      type: "string",
+      hideFromUI: true,
+    },
+    {
+      name: "srcset",
+      type: "string",
+      hideFromUI: true,
+    },
+    {
+      name: "lazy",
+      type: "boolean",
+      defaultValue: true,
+      hideFromUI: true,
+    },
+    {
+      name: "fitContent",
+      type: "boolean",
+      helperText:
+        "When child blocks are provided, fit to them instead of using the image's aspect ratio",
+      defaultValue: true,
+    },
+  ],
+  defaultStyles: {
+    position: "relative",
+  },
+});
+
+Builder.registerComponent(Columns, {
+  ...DEFAULT_PROPS,
+  name: "Columns",
+  override: true,
+  inputs: [
+    {
+      name: "columns",
+      type: "array",
+      broadcast: true,
+      subFields: [
+        {
+          name: "blocks",
+          type: "array",
+          hideFromUI: true,
+          defaultValue: 2,
+        },
+        {
+          name: "width",
+          type: "number",
+          hideFromUI: true,
+          helperText: "Width %, e.g. set to 50 to fill half of the space",
+        },
+        {
+          name: "link",
+          type: "url",
+          helperText:
+            "Optionally set a url that clicking this column will link to",
+        },
+      ],
+      defaultValue: [{ blocks: 2 }, { blocks: 2 }],
+    },
+    {
+      name: "space",
+      type: "number",
+      defaultValue: 14,
+      helperText: "Size of gap between columns",
+      advanced: true,
+    },
+    {
+      name: "stackColumnsAt",
+      type: "string",
+      defaultValue: "tablet",
+      helperText: "Convert horizontal columns to vertical at what device size",
+      enum: ["tablet", "mobile", "never"],
+      advanced: true,
+    },
+    {
+      name: "reverseColumnsWhenStacked",
+      type: "boolean",
+      defaultValue: false,
+      helperText:
+        "When stacking columns for mobile devices, reverse the ordering",
+      advanced: true,
+    },
+  ],
+});
+
+[
+  { component: Form, name: "Form:Form" },
+  { component: FormInput, name: "Form:Input" },
+  { component: FormSubmitButton, name: "Form:SubmitButton" },
+  { component: Label, name: "Form:Label" },
+  { component: FormSelect, name: "Form:Select" },
+  { component: TextArea, name: "Form:TextArea" },
+  { component: CustomCode, name: "Custom Code" },
+  { component: CustomCode, name: "Slot" },
+  { component: CustomCode, name: "Slot" },
+  { component: CustomCode, name: "Slot" },
+].forEach(({ component, name }) => {
+  Builder.registerComponent(component, {
+    ...HIDDEN_FROM_EDITOR_PROPS,
+    name: name,
+  });
 });

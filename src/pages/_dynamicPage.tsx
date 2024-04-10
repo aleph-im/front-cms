@@ -5,8 +5,15 @@ import { BuilderContent } from "@builder.io/sdk";
 import { BuilderComponent, builder, useIsPreviewing } from "@builder.io/react";
 import "../builder-registry";
 import { useRouter } from "next/router";
+import { Header } from "@/components";
+import { Button } from "@aleph-front/core";
 
-export default function DynamicPage({ page }: { page: BuilderContent | null }) {
+type DynamicPageProps = {
+  pageModel: string;
+  page: BuilderContent | null;
+};
+
+export default function DynamicPage({ pageModel, page }: DynamicPageProps) {
   const router = useRouter();
   const isPreviewing = useIsPreviewing();
 
@@ -52,8 +59,18 @@ export default function DynamicPage({ page }: { page: BuilderContent | null }) {
       <Head>
         <title>{content?.data?.title}</title>
       </Head>
+      {content?.data?.header && (
+        <BuilderComponent model="symbol" content={content.data.header.value} />
+      )}
       {/* Render the Builder page */}
-      <BuilderComponent model="page" content={content || undefined} apiKey="" />
+      <BuilderComponent
+        model={pageModel}
+        content={content || undefined}
+        apiKey=""
+      />
+      {content?.data?.footer && (
+        <BuilderComponent model="symbol" content={content.data.footer.value} />
+      )}
     </>
   );
 }

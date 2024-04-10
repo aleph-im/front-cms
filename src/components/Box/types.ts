@@ -1,14 +1,6 @@
-export type BoxProps = {
+import { CssEditableProps } from "@/types/CssEditableProps";
+
+export type BoxProps = CssEditableProps & {
   children: React.ReactNode;
   backgroundColor: string;
-  margin: string;
-  marginTop: string;
-  marginBottom: string;
-  marginRight: string;
-  marginLeft: string;
-  padding: string;
-  paddingTop: string;
-  paddingBottom: string;
-  paddingRight: string;
-  paddingLeft: string;
 };

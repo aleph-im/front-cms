@@ -1,4 +1,5 @@
 export { default as Box } from "./Box";
+export { default as Image } from "./Image";
 export { default as Container } from "./Container";
 export { default as TextGradient } from "./TextGradient";
 export { default as H1 } from "./H1";
@@ -9,3 +10,4 @@ export { default as Header } from "./Header";
 export { default as Footer } from "./Footer";
 export { default as SignMeUpForm } from "./SignMeUpForm";
 export { default as Breadcrumb } from "./Breadcrumb";
+export { default as CardWithSideImage } from "./CardWithSideImage";

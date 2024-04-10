@@ -1,9 +1,5 @@
 import styled, { css } from "styled-components";
-import tw from "twin.macro";
 import { BoxProps } from "./types";
-
-const generateTwClass = (propValue: string) =>
-  propValue ? tw`${propValue}` : "";
 
 export const StyledBox = styled.div<BoxProps>`
   ${({
@@ -19,9 +15,7 @@ export const StyledBox = styled.div<BoxProps>`
     paddingRight,
     paddingLeft,
   }) => {
-    console.log("Box Props Padding: ", padding);
-
-    const calculatedCss = css`
+    return css`
       margin: ${margin};
       margin-top: ${marginTop};
       margin-bottom: ${marginBottom};
@@ -34,9 +28,5 @@ export const StyledBox = styled.div<BoxProps>`
       padding-left: ${paddingLeft};
       position: relative;
     `;
-
-    console.log("Box Calculated CSS: ", calculatedCss);
-
-    return calculatedCss;
   }}
 `;

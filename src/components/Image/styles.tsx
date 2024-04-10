@@ -1,8 +1,7 @@
 import styled, { css } from "styled-components";
-import tw from "twin.macro";
-import { ContainerProps } from "./types";
+import { ImageProps } from "./types";
 
-export const StyledContainer = styled.div<ContainerProps>`
+export const StyledImage = styled.img<ImageProps>`
   ${({
     theme,
     margin,
@@ -17,10 +16,6 @@ export const StyledContainer = styled.div<ContainerProps>`
     paddingLeft,
   }) => {
     return css`
-      ${tw`px-6 md:px-16`}
-      box-sizing: border-box;
-      width: 100%;
-      max-width: 100rem;
       margin: ${margin};
       margin-top: ${marginTop};
       margin-bottom: ${marginBottom};
@@ -31,6 +26,7 @@ export const StyledContainer = styled.div<ContainerProps>`
       padding-bottom: ${paddingBottom};
       padding-right: ${paddingRight};
       padding-left: ${paddingLeft};
+      position: relative;
     `;
   }}
 `;

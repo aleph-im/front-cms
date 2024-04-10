@@ -1,18 +1,18 @@
-import { BulletList, Button, Col, Row } from "@aleph-front/core";
 import {
   builder,
   Builder,
   Columns,
   CustomCode,
+  Embed,
   Form,
   FormInput,
   FormSelect,
   FormSubmitButton,
-  Image,
   Label,
   TextArea,
   withChildren,
 } from "@builder.io/react";
+import { BulletList, Button, Col, Row } from "@aleph-front/core";
 import {
   Container,
   TextGradient,
@@ -21,10 +21,12 @@ import {
   Section,
   Text,
   Box,
+  Image,
   Header,
   Footer,
   SignMeUpForm,
   Breadcrumb,
+  CardWithSideImage,
 } from "./components";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
@@ -70,6 +72,97 @@ const DEFAULT_TEXT_PROPS = {
   },
 };
 
+const remValues = [
+  "auto",
+  "0",
+  "0.25rem",
+  "0.5rem",
+  "0.75rem",
+  "1rem",
+  "1.25rem",
+  "1.5rem",
+  "1.75rem",
+  "2.00rem",
+  "2.25rem",
+  "2.50rem",
+  "2.75rem",
+  "3.00rem",
+  "3.25rem",
+  "3.50rem",
+  "3.75rem",
+  "4.00rem",
+  "4.25rem",
+  "4.50rem",
+  "4.75rem",
+  "5.00rem",
+  "5.25rem",
+  "5.50rem",
+  "5.75rem",
+  "6.00rem",
+];
+
+const CSS_EDITABLE_INPUTS = [
+  {
+    name: "margin",
+    type: "string",
+    defaultValue: "auto",
+    enum: [...remValues],
+  },
+  {
+    name: "marginTop",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+  {
+    name: "marginBottom",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+  {
+    name: "marginLeft",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+  {
+    name: "marginRight",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+  {
+    name: "padding",
+    type: "string",
+    enum: [...remValues],
+  },
+  {
+    name: "paddingTop",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+  {
+    name: "paddingBottom",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+  {
+    name: "paddingLeft",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+  {
+    name: "paddingRight",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+];
+
 const TYPO_KIND: string[] = [
   "h1",
   "h2",
@@ -92,213 +185,36 @@ const TYPO_KIND: string[] = [
   "form",
 ];
 
+[
+  { component: Form, name: "Form:Form" },
+  { component: FormInput, name: "Form:Input" },
+  { component: FormSubmitButton, name: "Form:SubmitButton" },
+  { component: Label, name: "Form:Label" },
+  { component: FormSelect, name: "Form:Select" },
+  { component: TextArea, name: "Form:TextArea" },
+  { component: CustomCode, name: "Custom Code" },
+  { component: CustomCode, name: "Slot" },
+  { component: CustomCode, name: "Video" },
+  { component: Embed, name: "Embed" },
+].forEach(({ component, name }) => {
+  Builder.registerComponent(component, {
+    ...HIDDEN_FROM_EDITOR_PROPS,
+    name: name,
+  });
+});
+
 Builder.registerComponent(withChildren(Box), {
   ...DEFAULT_PROPS,
   name: "Custom Box",
+  override: true,
   canHaveChildren: true,
   inputs: [
+    ...DEFAULT_PROPS.inputs,
+    ...CSS_EDITABLE_INPUTS,
     {
       name: "backgroundColor",
       type: "string",
       enum: ["bg-base0", "bg-base1"],
-    },
-    {
-      name: "margin",
-      type: "string",
-      enum: [
-        "0",
-        "0.25rem",
-        "0.5rem",
-        "0.75rem",
-        "1rem",
-        "1.25rem",
-        "1.5rem",
-        "1.75rem",
-        "2.00rem",
-        "2.25rem",
-        "2.50rem",
-        "2.75rem",
-        "3.00rem",
-      ],
-    },
-    {
-      name: "marginTop",
-      type: "string",
-      advanced: true,
-      enum: [
-        "0",
-        "0.25rem",
-        "0.5rem",
-        "0.75rem",
-        "1rem",
-        "1.25rem",
-        "1.5rem",
-        "1.75rem",
-        "2.00rem",
-        "2.25rem",
-        "2.50rem",
-        "2.75rem",
-        "3.00rem",
-      ],
-    },
-    {
-      name: "marginBottom",
-      type: "string",
-      advanced: true,
-      enum: [
-        "0",
-        "0.25rem",
-        "0.5rem",
-        "0.75rem",
-        "1rem",
-        "1.25rem",
-        "1.5rem",
-        "1.75rem",
-        "2.00rem",
-        "2.25rem",
-        "2.50rem",
-        "2.75rem",
-        "3.00rem",
-      ],
-    },
-    {
-      name: "marginLeft",
-      type: "string",
-      advanced: true,
-      enum: [
-        "0",
-        "0.25rem",
-        "0.5rem",
-        "0.75rem",
-        "1rem",
-        "1.25rem",
-        "1.5rem",
-        "1.75rem",
-        "2.00rem",
-        "2.25rem",
-        "2.50rem",
-        "2.75rem",
-        "3.00rem",
-      ],
-    },
-    {
-      name: "marginRight",
-      type: "string",
-      advanced: true,
-      enum: [
-        "0",
-        "0.25rem",
-        "0.5rem",
-        "0.75rem",
-        "1rem",
-        "1.25rem",
-        "1.5rem",
-        "1.75rem",
-        "2.00rem",
-        "2.25rem",
-        "2.50rem",
-        "2.75rem",
-        "3.00rem",
-      ],
-    },
-    {
-      name: "padding",
-      type: "string",
-      enum: [
-        "0",
-        "0.25rem",
-        "0.5rem",
-        "0.75rem",
-        "1rem",
-        "1.25rem",
-        "1.5rem",
-        "1.75rem",
-        "2.00rem",
-        "2.25rem",
-        "2.50rem",
-        "2.75rem",
-        "3.00rem",
-      ],
-    },
-    {
-      name: "paddingTop",
-      type: "string",
-      advanced: true,
-      enum: [
-        "0",
-        "0.25rem",
-        "0.5rem",
-        "0.75rem",
-        "1rem",
-        "1.25rem",
-        "1.5rem",
-        "1.75rem",
-        "2.00rem",
-        "2.25rem",
-        "2.50rem",
-        "2.75rem",
-        "3.00rem",
-      ],
-    },
-    {
-      name: "paddingBottom",
-      type: "string",
-      advanced: true,
-      enum: [
-        "0",
-        "0.25rem",
-        "0.5rem",
-        "0.75rem",
-        "1rem",
-        "1.25rem",
-        "1.5rem",
-        "1.75rem",
-        "2.00rem",
-        "2.25rem",
-        "2.50rem",
-        "2.75rem",
-        "3.00rem",
-      ],
-    },
-    {
-      name: "paddingLeft",
-      type: "string",
-      advanced: true,
-      enum: [
-        "0",
-        "0.25rem",
-        "0.5rem",
-        "0.75rem",
-        "1rem",
-        "1.25rem",
-        "1.5rem",
-        "1.75rem",
-        "2.00rem",
-        "2.25rem",
-        "2.50rem",
-        "2.75rem",
-        "3.00rem",
-      ],
-    },
-    {
-      name: "paddingRight",
-      type: "string",
-      advanced: true,
-      enum: [
-        "0",
-        "0.25rem",
-        "0.5rem",
-        "0.75rem",
-        "1rem",
-        "1.25rem",
-        "1.5rem",
-        "1.75rem",
-        "2.00rem",
-        "2.25rem",
-        "2.50rem",
-        "2.75rem",
-        "3.00rem",
-      ],
     },
   ],
 });
@@ -307,11 +223,13 @@ Builder.registerComponent(withChildren(Container), {
   ...DEFAULT_PROPS,
   name: "Container",
   canHaveChildren: true,
+  inputs: [...DEFAULT_PROPS.inputs, ...CSS_EDITABLE_INPUTS],
 });
 
 Builder.registerComponent(withChildren(Section), {
   ...DEFAULT_PROPS,
-  name: "Section",
+  name: "Core:Section",
+  override: true,
   canHaveChildren: true,
   inputs: [
     {
@@ -453,6 +371,67 @@ Builder.registerComponent(withChildren(Row), {
 Builder.registerComponent(withChildren(Button), {
   ...DEFAULT_PROPS,
   name: "Button",
+  canHaveChildren: true,
+  inputs: [
+    {
+      name: "children",
+      type: "longText",
+    },
+    {
+      name: "href",
+      // type: "reference",
+      type: "string",
+    },
+    {
+      name: "kind",
+      type: "string",
+    },
+    {
+      name: "variant",
+      type: "string",
+    },
+    {
+      name: "size",
+      type: "string",
+      enum: ["sm", "md", "lg"],
+    },
+    {
+      name: "color",
+      type: "string",
+    },
+    {
+      name: "hover",
+      type: "boolean",
+    },
+    {
+      name: "active",
+      type: "boolean",
+    },
+    {
+      name: "focus",
+      type: "boolean",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+    },
+    {
+      name: "as",
+      type: "string",
+      enum: ["button", "a"],
+    },
+    {
+      name: "target",
+      type: "string",
+      enum: ["_self", "_blank"],
+      defaultValue: "_self",
+    },
+  ],
+});
+
+Builder.registerComponent(withChildren(Button), {
+  ...DEFAULT_PROPS,
+  name: "Core:Button",
   canHaveChildren: true,
   inputs: [
     {
@@ -741,7 +720,6 @@ Builder.registerComponent(Footer, {
             {
               name: "variant",
               type: "string",
-
               enum: ["primary", "secondary", "tertiary", "textOnly"],
             },
           ],
@@ -900,17 +878,17 @@ Builder.registerComponent(Breadcrumb, {
     { name: "selectedColor", type: "string" },
   ],
 });
-
 // Overrides default Builder.io image
 // https://github.com/BuilderIO/builder/blob/4d38bc1e3d2366611230bf52d3f04884785ff587/packages/react/src/blocks/Image.tsx
+
 Builder.registerComponent(Image, {
   ...DEFAULT_PROPS,
-  name: "Custom Image",
+  name: "Image",
   override: true,
+  noWrap: true,
   inputs: [
-    ...DEFAULT_PROPS.inputs,
     {
-      name: "image",
+      name: "src",
       type: "file",
       bubble: true,
       allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
@@ -919,80 +897,13 @@ Builder.registerComponent(Image, {
         "https://cdn.builder.io/api/v1/image/assets%2FYJIGb4i01jvw0SRdL5Bt%2F72c80f114dc149019051b6852a9e3b7a",
     },
     {
-      name: "backgroundSize",
-      type: "text",
-      defaultValue: "contain",
-      enum: [
-        {
-          label: "contain",
-          value: "contain",
-          helperText: "The image should never get cropped",
-        },
-        {
-          label: "cover",
-          value: "cover",
-          helperText: `The image should fill its box, cropping when needed`,
-        },
-      ],
-    },
-    {
-      name: "backgroundPosition",
-      type: "text",
-      defaultValue: "center",
-      enum: [
-        "center",
-        "top",
-        "left",
-        "right",
-        "bottom",
-        "top left",
-        "top right",
-        "bottom left",
-        "bottom right",
-      ],
-    },
-    {
-      name: "altText",
+      name: "alt",
       type: "string",
       helperText: "Text to display when the user has images off",
     },
-    {
-      name: "height",
-      type: "number",
-      hideFromUI: true,
-    },
-    {
-      name: "width",
-      type: "number",
-      hideFromUI: true,
-    },
-    {
-      name: "sizes",
-      type: "string",
-      hideFromUI: true,
-    },
-    {
-      name: "srcset",
-      type: "string",
-      hideFromUI: true,
-    },
-    {
-      name: "lazy",
-      type: "boolean",
-      defaultValue: true,
-      hideFromUI: true,
-    },
-    {
-      name: "fitContent",
-      type: "boolean",
-      helperText:
-        "When child blocks are provided, fit to them instead of using the image's aspect ratio",
-      defaultValue: true,
-    },
+    ...DEFAULT_PROPS.inputs,
+    ...CSS_EDITABLE_INPUTS,
   ],
-  defaultStyles: {
-    position: "relative",
-  },
 });
 
 Builder.registerComponent(Columns, {
@@ -1052,20 +963,39 @@ Builder.registerComponent(Columns, {
   ],
 });
 
-[
-  { component: Form, name: "Form:Form" },
-  { component: FormInput, name: "Form:Input" },
-  { component: FormSubmitButton, name: "Form:SubmitButton" },
-  { component: Label, name: "Form:Label" },
-  { component: FormSelect, name: "Form:Select" },
-  { component: TextArea, name: "Form:TextArea" },
-  { component: CustomCode, name: "Custom Code" },
-  { component: CustomCode, name: "Slot" },
-  { component: CustomCode, name: "Slot" },
-  { component: CustomCode, name: "Slot" },
-].forEach(({ component, name }) => {
-  Builder.registerComponent(component, {
-    ...HIDDEN_FROM_EDITOR_PROPS,
-    name: name,
-  });
+Builder.registerComponent(withChildren(CardWithSideImage), {
+  ...DEFAULT_PROPS,
+  name: "CardWithSideImage",
+  canHaveChildren: true,
+  inputs: [
+    ...DEFAULT_PROPS.inputs,
+    {
+      name: "imageSrc",
+      type: "file",
+      bubble: true,
+      allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
+      required: true,
+      defaultValue:
+        "https://cdn.builder.io/api/v1/image/assets%2FYJIGb4i01jvw0SRdL5Bt%2F72c80f114dc149019051b6852a9e3b7a",
+    },
+    {
+      name: "ImageAlt",
+      type: "string",
+      helperText: "Text to display when the user has images off",
+    },
+    {
+      name: "imagePosition",
+      type: "string",
+      enum: ["left", "right"],
+      defaultValue: "left",
+      helperText: "",
+    },
+    {
+      name: "reverseColumnsWhenStacked",
+      type: "boolean",
+      defaultValue: false,
+      helperText:
+        "When stacking columns for mobile devices, reverse the ordering",
+    },
+  ],
 });

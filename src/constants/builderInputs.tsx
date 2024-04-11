@@ -1,0 +1,93 @@
+import { DEFAULT_PROPS } from "./builderProps";
+
+const remValues = [
+  "auto",
+  "0",
+  "0.25rem",
+  "0.5rem",
+  "0.75rem",
+  "1rem",
+  "1.25rem",
+  "1.5rem",
+  "1.75rem",
+  "2.00rem",
+  "2.25rem",
+  "2.50rem",
+  "2.75rem",
+  "3.00rem",
+  "3.25rem",
+  "3.50rem",
+  "3.75rem",
+  "4.00rem",
+  "4.25rem",
+  "4.50rem",
+  "4.75rem",
+  "5.00rem",
+  "5.25rem",
+  "5.50rem",
+  "5.75rem",
+  "6.00rem",
+];
+
+export const CSS_EDITABLE_INPUTS = [
+  ...DEFAULT_PROPS.inputs,
+  {
+    name: "margin",
+    type: "string",
+    defaultValue: "auto",
+    enum: [...remValues],
+  },
+  {
+    name: "marginTop",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+  {
+    name: "marginBottom",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+  {
+    name: "marginLeft",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+  {
+    name: "marginRight",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+  {
+    name: "padding",
+    type: "string",
+    enum: [...remValues],
+  },
+  {
+    name: "paddingTop",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+  {
+    name: "paddingBottom",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+  {
+    name: "paddingLeft",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+  {
+    name: "paddingRight",
+    type: "string",
+    advanced: true,
+    enum: [...remValues],
+  },
+];

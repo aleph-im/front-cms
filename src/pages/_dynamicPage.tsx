@@ -3,10 +3,8 @@ import DefaultErrorPage from "next/error";
 import Head from "next/head";
 import { BuilderContent } from "@builder.io/sdk";
 import { BuilderComponent, builder, useIsPreviewing } from "@builder.io/react";
-import "../builder-registry";
 import { useRouter } from "next/router";
-import { Header } from "@/components";
-import { Button } from "@aleph-front/core";
+import "../builder-registry";
 
 type DynamicPageProps = {
   pageModel: string;

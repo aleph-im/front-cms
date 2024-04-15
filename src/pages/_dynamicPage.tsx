@@ -64,11 +64,13 @@ export default function DynamicPage({
         <BuilderComponent model="symbol" content={content.data.header.value} />
       )}
       {/* Render the Builder page */}
-      <BuilderComponent
-        model={pageModel}
-        content={content || undefined}
-        apiKey=""
-      />
+      <main>
+        <BuilderComponent
+          model={pageModel}
+          content={content || undefined}
+          apiKey=""
+        />
+      </main>
       {content?.data?.footer && (
         <BuilderComponent model="symbol" content={content.data.footer.value} />
       )}

@@ -1,6 +1,6 @@
 import { Builder } from "@builder.io/react";
 import { DEFAULT_TEXT_PROPS } from "@/constants/builderProps";
-import { TYPO_KIND } from "@/constants/builderEnums";
+import { COLORS, TYPO_KIND } from "@/constants/builderEnums";
 import H2 from ".";
 
 Builder.registerComponent(H2, {
@@ -11,6 +11,7 @@ Builder.registerComponent(H2, {
     {
       name: "color",
       type: "string",
+      enum: COLORS,
     },
     {
       name: "type",

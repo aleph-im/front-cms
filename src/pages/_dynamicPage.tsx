@@ -7,11 +7,14 @@ import { useRouter } from "next/router";
 import "../builder-registry";
 
 type DynamicPageProps = {
-  pageModel: string;
+  pageModel?: string;
   page: BuilderContent | null;
 };
 
-export default function DynamicPage({ pageModel, page }: DynamicPageProps) {
+export default function DynamicPage({
+  pageModel = "page",
+  page,
+}: DynamicPageProps) {
   const router = useRouter();
   const isPreviewing = useIsPreviewing();
 

@@ -1,72 +1,6 @@
 import { REM_VALUES } from "./builderEnums";
 import { DEFAULT_PROPS } from "./builderProps";
 
-const EDITABLE_MARGIN_INPUTS = [
-  {
-    name: "margin",
-    type: "string",
-    defaultValue: "auto",
-    enum: [...REM_VALUES],
-  },
-  {
-    name: "marginTop",
-    type: "string",
-    advanced: true,
-    enum: [...REM_VALUES],
-  },
-  {
-    name: "marginBottom",
-    type: "string",
-    advanced: true,
-    enum: [...REM_VALUES],
-  },
-  {
-    name: "marginLeft",
-    type: "string",
-    advanced: true,
-    enum: [...REM_VALUES],
-  },
-  {
-    name: "marginRight",
-    type: "string",
-    advanced: true,
-    enum: [...REM_VALUES],
-  },
-];
-
-const EDITABLE_PADDING_INPUTS = [
-  {
-    name: "padding",
-    type: "string",
-    defaultValue: "0",
-    enum: [...REM_VALUES],
-  },
-  {
-    name: "paddingTop",
-    type: "string",
-    advanced: true,
-    enum: [...REM_VALUES],
-  },
-  {
-    name: "paddingBottom",
-    type: "string",
-    advanced: true,
-    enum: [...REM_VALUES],
-  },
-  {
-    name: "paddingLeft",
-    type: "string",
-    advanced: true,
-    enum: [...REM_VALUES],
-  },
-  {
-    name: "paddingRight",
-    type: "string",
-    advanced: true,
-    enum: [...REM_VALUES],
-  },
-];
-
 export const CSS_EDITABLE_INPUTS = [
   ...DEFAULT_PROPS.inputs,
   {
@@ -83,12 +17,6 @@ export const CSS_EDITABLE_INPUTS = [
     name: "wrap",
     type: "string",
     enum: ["", "nowrap", "wrap", "wrap-reverse"],
-    advanced: true,
-  },
-  {
-    name: "gap",
-    type: "string",
-    enum: [...REM_VALUES],
     advanced: true,
   },
   {
@@ -110,14 +38,14 @@ export const CSS_EDITABLE_INPUTS = [
     advanced: true,
   },
   {
-    name: "remStyleBreakpoints",
+    name: "responsiveStyles",
     type: "list",
     advanced: true,
     subFields: [
       {
         name: "breakpoint",
         type: "string",
-        enum: ["xs", "sm", "md", "lg", "xl", "2xl"],
+        enum: ["", "xs", "sm", "md", "lg", "xl", "2xl"],
       },
       {
         name: "style",
@@ -134,7 +62,6 @@ export const CSS_EDITABLE_INPUTS = [
           "padding-right",
           "padding-left",
           "gap",
-          "opacity",
         ],
       },
       {
@@ -144,6 +71,4 @@ export const CSS_EDITABLE_INPUTS = [
       },
     ],
   },
-  ...EDITABLE_MARGIN_INPUTS,
-  ...EDITABLE_PADDING_INPUTS,
 ];

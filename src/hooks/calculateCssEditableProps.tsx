@@ -1,7 +1,7 @@
 import { DefaultTheme, css } from "styled-components";
 import tw from "twin.macro";
 import { Breakpoint, CssEditableProps } from "@/types/CssEditableProps";
-import { useResponsiveBreakpoint } from "@aleph-front/core";
+import { getResponsiveCss } from "@aleph-front/core";
 
 const calculateDisplayCssProps = (direction: string) => {
   switch (direction) {
@@ -29,61 +29,21 @@ const calculateAlignItemsCssProps = (alignItems: string) => {
   }
 };
 
-const calculateRemBreakpoints = (theme: any, breakpoints: Breakpoint[]) => {
-  if (!breakpoints) return;
-
-  return breakpoints.map(({ breakpoint, style, value }: Breakpoint) => {
-    if (breakpoint) {
-      return css`
-        @media (min-width: ${theme.breakpoint[breakpoint]}rem) {
-          ${style}: ${value};
-        }
-      `;
-    } else {
-      return css`
-        ${style}: ${value};
-      `;
-    }
+const calculateResponsiveStyles = (theme: any, breakpoints?: Breakpoint[]) => {
+  return breakpoints?.map(({ breakpoint, style, value }: Breakpoint) => {
+    return getResponsiveCss(breakpoint, `${style}: ${value};`);
   });
 };
 
 export const calculateCssEditableProps = (
   theme: DefaultTheme,
-  {
-    margin,
-    marginTop,
-    marginBottom,
-    marginRight,
-    marginLeft,
-    padding,
-    paddingTop,
-    paddingBottom,
-    paddingRight,
-    paddingLeft,
-    gap,
-    opacity,
-    direction,
-    alignItems,
-    wrap,
-    remStyleBreakpoints,
-  }: CssEditableProps
+  { opacity, direction, alignItems, wrap, responsiveStyles }: CssEditableProps
 ) => {
   return css`
-    margin: ${margin};
-    margin-top: ${marginTop};
-    margin-bottom: ${marginBottom};
-    margin-right: ${marginRight};
-    margin-left: ${marginLeft};
-    padding: ${padding};
-    padding-top: ${paddingTop};
-    padding-bottom: ${paddingBottom};
-    padding-right: ${paddingRight};
-    padding-left: ${paddingLeft};
-    gap: ${gap};
     opacity: ${opacity};
     flex-wrap: ${wrap};
     ${calculateDisplayCssProps(direction)}
     ${calculateAlignItemsCssProps(alignItems)};
-    ${calculateRemBreakpoints(theme, remStyleBreakpoints)}
+    ${calculateResponsiveStyles(theme, responsiveStyles)}
   `;
 };

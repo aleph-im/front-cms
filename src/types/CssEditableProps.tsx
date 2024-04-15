@@ -1,11 +1,13 @@
+import { BreakpointId } from "@aleph-front/core";
+
 export type Breakpoint = {
-  breakpoint: string;
+  breakpoint: BreakpointId;
   style: string;
   value: string;
 };
 
 export type CssEditableProps = {
-  remStyleBreakpoints: Breakpoint[];
+  responsiveStyles: Breakpoint[];
   margin: string;
   marginTop: string;
   marginBottom: string;

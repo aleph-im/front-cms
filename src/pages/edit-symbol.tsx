@@ -14,7 +14,7 @@ export const getStaticProps = async (context: { resolvedUrl: string }) => {
 
 // View full integration and docs: https://builder.io/c/docs/developers
 export default function Page(props: { content: BuilderContent | undefined }) {
-  if (!props.content) return;
+  if (!props.content) return null;
 
   return <BuilderComponent content={props.content} model="symbol" />;
 }

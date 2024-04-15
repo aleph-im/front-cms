@@ -3,5 +3,6 @@ export type CardWithSideImageProps = {
   imageSrc: string;
   imageAlt: string;
   imagePosition: string;
+  cardBackgroundColor: string;
   reverseColumnsWhenStacked: boolean;
 };

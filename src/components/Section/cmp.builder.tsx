@@ -1,6 +1,8 @@
 import { Builder, withChildren } from "@builder.io/react";
 import { DEFAULT_PROPS } from "@/constants/builderProps";
 import Section from ".";
+import { CSS_EDITABLE_INPUTS } from "@/constants/builderInputs";
+import { EFFECTS } from "@/constants/builderEnums";
 
 Builder.registerComponent(withChildren(Section), {
   ...DEFAULT_PROPS,
@@ -8,11 +10,11 @@ Builder.registerComponent(withChildren(Section), {
   override: true,
   canHaveChildren: true,
   inputs: [
-    ...DEFAULT_PROPS.inputs,
     {
       name: "effects",
       type: "string",
-      enum: ["", "fx-grain-1", "fx-grain-2"],
+      enum: EFFECTS,
     },
+    ...CSS_EDITABLE_INPUTS,
   ],
 });

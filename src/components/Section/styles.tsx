@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { BoxProps } from "./types";
+import styled, { css } from "styled-components";
+import { SectionProps } from "./types";
 import { calculateCssEditableProps } from "@/hooks/calculateCssEditableProps";
 
-export const StyledBox = styled.div<BoxProps>`
+export const StyledSection = styled.div<SectionProps>`
   ${({ theme, ...cssEditableProps }) => {
     return calculateCssEditableProps(theme, cssEditableProps);
   }}

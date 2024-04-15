@@ -10,7 +10,7 @@ export const DEFAULT_TEXT_PROPS = {
     {
       name: "children",
       friendlyName: "Text content",
-      helperText: "Shift+Enter for line break",
+      helperText: "Press Enter to add a line break",
       type: "longText",
     },
     {
@@ -21,7 +21,7 @@ export const DEFAULT_TEXT_PROPS = {
     {
       name: "tp",
       type: "string",
-      enum: ["", "tp-info", "tp-header", "tp-h2", "tp-h4", "tp-h7"],
+      enum: ["", "tp-info", "tp-header", "tp-h2", "tp-h3", "tp-h4", "tp-h7"],
     },
     {
       name: "fs",

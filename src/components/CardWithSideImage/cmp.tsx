@@ -10,6 +10,7 @@ export const CardWithSideImage = ({
   imageSrc,
   imageAlt,
   imagePosition,
+  cardBackgroundColor,
   reverseColumnsWhenStacked,
 }: CardWithSideImageProps) => {
   const imageCmp = (
@@ -18,7 +19,7 @@ export const CardWithSideImage = ({
 
   const cardCmp = (
     <Col>
-      <div className="bg-base0" tw="p-6">
+      <div className={cardBackgroundColor} tw="p-6">
         {children}
       </div>
     </Col>

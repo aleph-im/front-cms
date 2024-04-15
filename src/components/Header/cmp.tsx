@@ -12,7 +12,6 @@ export const Header = ({ children, routes, breakpoint }: HeaderProps) => {
   const handleCloseMenu = useCallback((open: boolean) => setIsOpen(open), []);
 
   const router = useRouter();
-  console.log(router.asPath);
 
   return (
     <StyledHeader>

@@ -1,7 +1,7 @@
 import { Builder, withChildren } from "@builder.io/react";
 import { DEFAULT_TEXT_PROPS } from "@/constants/builderProps";
 import TextGradient from ".";
-import { COLORS } from "@/constants/enums";
+import { COLORS } from "@/constants/builderEnums";
 
 Builder.registerComponent(TextGradient, {
   ...DEFAULT_TEXT_PROPS,

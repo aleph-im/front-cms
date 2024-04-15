@@ -1,6 +1,7 @@
 import { Builder, withChildren } from "@builder.io/react";
 import { DEFAULT_PROPS } from "@/constants/builderProps";
 import CardWithSideImage from ".";
+import { BACKGROUND_COLORS } from "@/constants/builderEnums";
 
 Builder.registerComponent(withChildren(CardWithSideImage), {
   ...DEFAULT_PROPS,
@@ -27,7 +28,12 @@ Builder.registerComponent(withChildren(CardWithSideImage), {
       type: "string",
       enum: ["left", "right"],
       defaultValue: "left",
-      helperText: "",
+    },
+    {
+      name: "cardBackgroundColor",
+      type: "string",
+      enum: BACKGROUND_COLORS,
+      defaultValue: "bg-base0",
     },
     {
       name: "reverseColumnsWhenStacked",

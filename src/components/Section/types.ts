@@ -1,6 +1,6 @@
-import { HTMLAttributes } from "react";
+import { CssEditableProps } from "@/types/CssEditableProps";
 
-export type SectionProps = HTMLAttributes<HTMLDivElement> & {
+export type SectionProps = CssEditableProps & {
   children: React.ReactNode;
-  effects: string;
+  effects?: string;
 };

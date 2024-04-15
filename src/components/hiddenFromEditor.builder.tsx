@@ -12,6 +12,7 @@ import {
 import { HIDDEN_FROM_EDITOR_PROPS } from "@/constants/builderProps";
 
 const components = [
+  { component: Label, name: "Columns" },
   { component: Form, name: "Form:Form" },
   { component: FormInput, name: "Form:Input" },
   { component: FormSubmitButton, name: "Form:SubmitButton" },

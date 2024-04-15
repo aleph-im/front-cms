@@ -4,6 +4,6 @@ import Text from ".";
 
 Builder.registerComponent(Text, {
   ...DEFAULT_TEXT_PROPS,
-  name: "Custom Text",
+  name: "Text",
   inputs: [...DEFAULT_TEXT_PROPS.inputs],
 });

@@ -101,4 +101,5 @@ export const REM_VALUES = [
   "8.50rem",
   "8.75rem",
   "9.00rem",
+  "20.00rem",
 ];

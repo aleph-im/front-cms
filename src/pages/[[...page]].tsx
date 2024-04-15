@@ -3,12 +3,14 @@ import { builder } from "@builder.io/react";
 import { GetStaticProps } from "next";
 import DynamicPage from "./_dynamicPage";
 
+const PAGE_MODEL = "page";
+
 // Define a function that fetches the Builder
 // content for a given page
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Fetch the builder content for the given page
   const page = await builder
-    .get("page", {
+    .get(PAGE_MODEL, {
       userAttributes: {
         urlPath: "/" + ((params?.page as string[])?.join("/") || ""),
       },
@@ -31,18 +33,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 // static paths for all pages in Builder
 export async function getStaticPaths() {
   // Get a list of all pages in Builder
-  const pages = await builder.getAll("page", {
+  const pages = await builder.getAll(PAGE_MODEL, {
     // We only need the URL field
     fields: "data.url",
     options: { noTargeting: true },
   });
 
-  console.log(pages
-    .map((page) => String(page.data?.url)))
+  console.log(pages.map((page) => String(page.data?.url)));
   // Generate the static paths for all pages in Builder
   return {
-    paths: pages
-      .map((page) => String(page.data?.url)),
+    paths: pages.map((page) => String(page.data?.url)),
     // .filter((url) => url !== "/"),
     // @note: Needed by output: "export"
     // fallback: "blocking",
@@ -52,6 +52,6 @@ export async function getStaticPaths() {
 
 // Define the Page component
 export default function Page(props: any) {
-  console.log('SSG PAGE')
-  return <DynamicPage {...props} />
+  console.log("SSG PAGE");
+  return <DynamicPage pageModel={PAGE_MODEL} {...props} />;
 }

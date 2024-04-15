@@ -9,12 +9,10 @@ export const getStaticProps = async (context: { resolvedUrl: string }) => {
   // Dynamically fetch latest content from Builder.io API
   const content = await builder.get("symbol", { url: context.resolvedUrl });
 
-  return { props: { content } };
+  return { props: { content: content || null } };
 };
 
 // View full integration and docs: https://builder.io/c/docs/developers
 export default function Page(props: { content: BuilderContent | undefined }) {
-  if (!props.content) return null;
-
   return <BuilderComponent content={props.content} model="symbol" />;
 }

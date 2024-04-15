@@ -21,7 +21,16 @@ export const DEFAULT_TEXT_PROPS = {
     {
       name: "tp",
       type: "string",
-      enum: ["", "tp-info", "tp-header", "tp-h2", "tp-h3", "tp-h4", "tp-h7"],
+      enum: [
+        "",
+        "tp-info",
+        "tp-header",
+        "tp-body1",
+        "tp-h2",
+        "tp-h3",
+        "tp-h4",
+        "tp-h7",
+      ],
     },
     {
       name: "fs",

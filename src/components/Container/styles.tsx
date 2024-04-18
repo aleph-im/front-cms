@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import tw from "twin.macro";
 import { ContainerProps } from "./types";
-import { calculateCssEditableProps } from "@/hooks/calculateCssEditableProps";
+import { calculateResponsiveCss } from "@/utils/cssEditableProps";
 
 export const StyledContainer = styled.div<ContainerProps>`
   ${({ theme, ...cssEditableProps }) => {
@@ -11,7 +11,7 @@ export const StyledContainer = styled.div<ContainerProps>`
       width: 100%;
       margin: 0 auto;
       max-width: 100rem;
-      ${calculateCssEditableProps(theme, cssEditableProps)}
+      ${calculateResponsiveCss(theme, cssEditableProps)}
     `;
   }}
 `;

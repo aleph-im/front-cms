@@ -5,3 +5,9 @@ export type ClassBreakpoint = {
   klass: string;
   value?: string;
 };
+
+export type StyleBreakpoint = {
+  breakpoint?: BreakpointId;
+  style: string;
+  value: string;
+};

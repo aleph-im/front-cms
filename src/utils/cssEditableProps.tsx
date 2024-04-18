@@ -1,15 +1,20 @@
 import { DefaultTheme, css } from "styled-components";
-import tw from "twin.macro";
-import { CssEditableProps, Breakpoint } from "@/types/CssEditableProps";
+import { CssEditableProps } from "@/types/CssEditableProps";
 import { getResponsiveCss } from "@aleph-front/core";
+import { StyleBreakpoint } from "@/types/breakpoints";
 
 const calculateFlex = (
-  direction?: Breakpoint[],
-  alignItems?: Breakpoint[],
-  justifyContent?: Breakpoint[],
-  flexBasis?: Breakpoint[]
+  direction: StyleBreakpoint[],
+  alignItems: StyleBreakpoint[],
+  justifyContent: StyleBreakpoint[],
+  flexBasis: StyleBreakpoint[]
 ) => {
-  if (direction || alignItems || justifyContent || flexBasis) {
+  if (
+    direction?.length > 0 ||
+    alignItems?.length > 0 ||
+    justifyContent?.length > 0 ||
+    flexBasis?.length > 0
+  ) {
     return css`
       display: flex;
     `;
@@ -18,13 +23,15 @@ const calculateFlex = (
   return "";
 };
 
-const calculateResponsiveStyles = (breakpoints?: Breakpoint[]) => {
-  return breakpoints?.map(({ breakpoint, style, value }: Breakpoint) => {
-    return getResponsiveCss(breakpoint, `${style}: ${value};`);
-  });
+const calculateResponsiveStyles = (styleBreakpoints?: StyleBreakpoint[]) => {
+  return styleBreakpoints?.map(
+    ({ breakpoint, style, value }: StyleBreakpoint) => {
+      return getResponsiveCss(breakpoint, `${style}: ${value};`);
+    }
+  );
 };
 
-export const calculateCssEditableProps = (
+export const calculateResponsiveCss = (
   _theme: DefaultTheme,
   {
     responsiveOpacity,

@@ -1,7 +1,7 @@
 import { Input } from "@builder.io/sdk";
 import { REM_VALUES, TYPO_KIND } from "./builderEnums";
 
-const responsiveField = ({
+const responsiveStyleField = ({
   name,
   style,
   value_type,
@@ -81,46 +81,45 @@ const responsiveClassField = ({
 };
 
 export const CSS_EDITABLE_INPUTS: Input[] = [
-  ...DEFAULT_PROPS.inputs,
-  responsiveField({
+  responsiveStyleField({
     name: "responsivePosition",
     style: "position",
     value_type: "string",
     values_enum: ["static", "relative", "absolute", "fixed", "sticky"],
     advanced: false,
   }),
-  responsiveField({
+  responsiveStyleField({
     name: "responsiveDirection",
     style: "flex-direction",
     value_type: "string",
     values_enum: ["row", "column", "row-reverse", "column-reverse"],
     advanced: false,
   }),
-  responsiveField({
+  responsiveStyleField({
     name: "responsiveAlignItems",
     style: "align-items",
     value_type: "string",
     values_enum: ["start", "end", "center"],
   }),
-  responsiveField({
+  responsiveStyleField({
     name: "responsiveJustifyContent",
     style: "justify-content",
     value_type: "string",
     values_enum: ["start", "end", "center"],
   }),
-  responsiveField({
+  responsiveStyleField({
     name: "responsiveWrap",
     style: "flex-wrap",
     value_type: "string",
     values_enum: ["nowrap", "wrap", "wrap-reverse"],
   }),
-  responsiveField({
+  responsiveStyleField({
     name: "responsiveFlexBasis",
     style: "flex-basis",
     value_type: "string",
     values_enum: ["auto", "33.333333%", "25%", "50%"],
   }),
-  responsiveField({
+  responsiveStyleField({
     name: "responsiveOpacity",
     style: "opacity",
     value_type: "string",

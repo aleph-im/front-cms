@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { BoxProps } from "./types";
-import { calculateCssEditableProps } from "@/hooks/calculateCssEditableProps";
+import { calculateResponsiveCss } from "@/utils/cssEditableProps";
 
 export const StyledBox = styled.div<BoxProps>`
   ${({ theme, ...cssEditableProps }) => {
-    return calculateCssEditableProps(theme, cssEditableProps);
+    return calculateResponsiveCss(theme, cssEditableProps);
   }}
 `;

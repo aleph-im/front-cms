@@ -5,6 +5,8 @@ import { BuilderContent } from "@builder.io/sdk";
 import { BuilderComponent, builder, useIsPreviewing } from "@builder.io/react";
 import { useRouter } from "next/router";
 import "../builder-registry";
+import styled, { css } from "styled-components";
+import StickyComponent from "@/components/StickyComponent";
 
 type DynamicPageProps = {
   pageModel?: string;
@@ -61,7 +63,12 @@ export default function DynamicPage({
         <title>{content?.data?.title}</title>
       </Head>
       {content?.data?.header && (
-        <BuilderComponent model="symbol" content={content.data.header.value} />
+        <StickyComponent placed_at="top">
+          <BuilderComponent
+            model="symbol"
+            content={content.data.header.value}
+          />
+        </StickyComponent>
       )}
       {/* Render the Builder page */}
       <main>

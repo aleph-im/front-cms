@@ -3,17 +3,20 @@
 import React from "react";
 import { TextGradientProps } from "./types";
 import { TextGradient as CoreTextGradient } from "@aleph-front/core";
+import { calculateResponsiveClassNames } from "@/utils/responsiveClassNames";
 
 export const TextGradient = ({
   children,
-  textType,
-  tp,
-  fs,
+  responsiveTextType,
+  responsiveType,
+  responsiveFontSize,
   ...rest
 }: TextGradientProps) => {
-  const classNames = [`${textType || ""}`, `${tp || ""}`, `${fs || ""}`].join(
-    " "
-  );
+  const classNames = [
+    calculateResponsiveClassNames(responsiveTextType),
+    calculateResponsiveClassNames(responsiveType),
+    calculateResponsiveClassNames(responsiveFontSize),
+  ].join(" ");
 
   return (
     <CoreTextGradient className={classNames} {...rest}>

@@ -1,6 +1,5 @@
 import { Input } from "@builder.io/sdk";
-import { REM_VALUES } from "./builderEnums";
-import { DEFAULT_PROPS } from "./builderProps";
+import { REM_VALUES, TYPO_KIND } from "./builderEnums";
 
 const responsiveField = ({
   name,
@@ -35,6 +34,45 @@ const responsiveField = ({
         name: "value",
         type: value_type,
         required: true,
+        enum: values_enum,
+      },
+    ],
+    advanced: advanced,
+  };
+};
+
+const responsiveClassField = ({
+  name,
+  klass,
+  value_type,
+  values_enum,
+  advanced = false,
+}: {
+  name: string;
+  klass: string;
+  value_type: string;
+  values_enum?: any[];
+  advanced?: boolean;
+}) => {
+  return {
+    name: name,
+    type: "list",
+    subFields: [
+      {
+        name: "breakpoint",
+        type: "string",
+        enum: ["", "xs", "sm", "md", "lg", "xl", "2xl"],
+      },
+      {
+        name: "klass",
+        type: "string",
+        defaultValue: klass,
+        hideFromUI: true,
+        required: true,
+      },
+      {
+        name: "value",
+        type: value_type,
         enum: values_enum,
       },
     ],
@@ -137,4 +175,31 @@ export const CSS_EDITABLE_INPUTS: Input[] = [
       },
     ],
   },
+];
+
+export const TEXT_INPUTS: Input[] = [
+  {
+    name: "children",
+    friendlyName: "Text content",
+    helperText: "Press Enter to add a line break",
+    type: "longText",
+  },
+  responsiveClassField({
+    name: "responsiveTextType",
+    klass: "text",
+    value_type: "string",
+    values_enum: ["main0", "base2"],
+  }),
+  responsiveClassField({
+    name: "responsiveTypo",
+    klass: "tp",
+    value_type: "string",
+    values_enum: TYPO_KIND,
+  }),
+  responsiveClassField({
+    name: "responsiveFontSize",
+    klass: "fs",
+    value_type: "string",
+    values_enum: ["10", "18", "26", "28"],
+  }),
 ];

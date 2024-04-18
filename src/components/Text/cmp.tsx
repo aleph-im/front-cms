@@ -1,12 +1,22 @@
 "use client";
 
-import { TextProps } from "@/types/TextProps";
 import React from "react";
+import { TextProps } from "@/types/TextProps";
+import { calculateResponsiveClassNames } from "@/utils/responsiveClassNames";
 
-export const Text = ({ children, textType, tp, fs }: TextProps) => {
-  const classNames = [`${textType || ""}`, `${tp || ""}`, `${fs || ""}`].join(
-    " "
-  );
+export const Text = ({
+  children,
+  responsiveTextType,
+  responsiveType,
+  responsiveFontSize,
+}: TextProps) => {
+  const classNames = [
+    calculateResponsiveClassNames(responsiveTextType),
+    calculateResponsiveClassNames(responsiveType),
+    calculateResponsiveClassNames(responsiveFontSize),
+  ].join(" ");
+
+  console.log(classNames);
 
   return <p className={classNames}>{children}</p>;
 };

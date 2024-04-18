@@ -1,13 +1,13 @@
 import { Builder, withChildren } from "@builder.io/react";
-import { DEFAULT_TEXT_PROPS } from "@/constants/builderProps";
+import { TEXT_PROPS } from "@/constants/builderProps";
 import TextGradient from ".";
 import { COLORS } from "@/constants/builderEnums";
 
 Builder.registerComponent(TextGradient, {
-  ...DEFAULT_TEXT_PROPS,
+  ...TEXT_PROPS,
   name: "TextGradient",
   inputs: [
-    ...DEFAULT_TEXT_PROPS.inputs,
+    ...TEXT_PROPS.inputs,
     {
       name: "color",
       type: "string",
@@ -15,18 +15,13 @@ Builder.registerComponent(TextGradient, {
       defaultValue: "text",
     },
     {
-      name: "type",
-      type: "string",
-      enum: ["h1", "h2"],
-      defaultValue: "h1",
-    },
-    {
       name: "as",
       type: "string",
-      enum: ["h1"],
+      enum: ["", "h1", "h2", "h3"],
     },
     {
       name: "size",
+      hideFromUI: true,
       type: "number",
     },
   ],

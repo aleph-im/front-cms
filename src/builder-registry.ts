@@ -13,6 +13,7 @@ import "./components/H2/cmp.builder";
 import "./components/BulletList/cmp.builder";
 import "./components/Header/cmp.builder";
 import "./components/Footer/cmp.builder";
+import "./components/ContactForm/cmp.builder";
 import "./components/SignMeUpForm/cmp.builder";
 import "./components/Breadcrumb/cmp.builder";
 import "./components/Image/cmp.builder";

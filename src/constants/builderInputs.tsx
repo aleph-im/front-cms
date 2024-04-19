@@ -163,7 +163,11 @@ export const CSS_EDITABLE_INPUTS: Input[] = [
           "padding-left",
           "gap",
           "width",
+          "max-width",
+          "min-width",
           "height",
+          "max-height",
+          "min-height",
         ],
       },
       {

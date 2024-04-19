@@ -5,13 +5,13 @@ import { H1Props } from "./types";
 export const H1 = ({
   children,
   responsiveTextType,
-  responsiveType,
+  responsiveTypo,
   responsiveFontSize,
   ...rest
 }: H1Props) => {
   const classNames = [
     calculateResponsiveClassNames(responsiveTextType),
-    calculateResponsiveClassNames(responsiveType),
+    calculateResponsiveClassNames(responsiveTypo),
     calculateResponsiveClassNames(responsiveFontSize),
   ].join(" ");
 

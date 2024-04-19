@@ -19,10 +19,5 @@ Builder.registerComponent(TextGradient, {
       type: "string",
       enum: ["", "h1", "h2", "h3"],
     },
-    {
-      name: "size",
-      hideFromUI: true,
-      type: "number",
-    },
   ],
 });

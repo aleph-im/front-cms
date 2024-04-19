@@ -7,16 +7,14 @@ import { calculateResponsiveClassNames } from "@/utils/responsiveClassNames";
 export const Text = ({
   children,
   responsiveTextType,
-  responsiveType,
+  responsiveTypo,
   responsiveFontSize,
 }: TextProps) => {
   const classNames = [
     calculateResponsiveClassNames(responsiveTextType),
-    calculateResponsiveClassNames(responsiveType),
+    calculateResponsiveClassNames(responsiveTypo),
     calculateResponsiveClassNames(responsiveFontSize),
   ].join(" ");
-
-  console.log(classNames);
 
   return <p className={classNames}>{children}</p>;
 };

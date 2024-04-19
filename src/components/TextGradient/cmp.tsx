@@ -8,13 +8,13 @@ import { calculateResponsiveClassNames } from "@/utils/responsiveClassNames";
 export const TextGradient = ({
   children,
   responsiveTextType,
-  responsiveType,
+  responsiveTypo,
   responsiveFontSize,
   ...rest
 }: TextGradientProps) => {
   const classNames = [
     calculateResponsiveClassNames(responsiveTextType),
-    calculateResponsiveClassNames(responsiveType),
+    calculateResponsiveClassNames(responsiveTypo),
     calculateResponsiveClassNames(responsiveFontSize),
   ].join(" ");
 

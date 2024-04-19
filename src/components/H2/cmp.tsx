@@ -5,13 +5,13 @@ import { H2Props } from "./types";
 export const H2 = ({
   children,
   responsiveTextType,
-  responsiveType,
+  responsiveTypo,
   responsiveFontSize,
   ...rest
 }: H2Props) => {
   const classNames = [
     calculateResponsiveClassNames(responsiveTextType),
-    calculateResponsiveClassNames(responsiveType),
+    calculateResponsiveClassNames(responsiveTypo),
     calculateResponsiveClassNames(responsiveFontSize),
   ].join(" ");
 

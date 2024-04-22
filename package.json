@@ -17,7 +17,7 @@
     "react-dom": "^18"
   },
   "devDependencies": {
-    "@aleph-front/core": "^1.15.70",
+    "@aleph-front/core": "^1.15.73",
     "@babel/plugin-syntax-typescript": "^7.24.1",
     "@types/node": "^20",
     "@types/react": "^18",

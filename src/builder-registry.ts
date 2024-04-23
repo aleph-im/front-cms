@@ -20,6 +20,7 @@ import "./components/Image/cmp.builder";
 import "./components/Columns/cmp.builder";
 import "./components/CardWithSideImage/cmp.builder";
 import "./components/ObjectImage/cmp.builder";
+import "./components/ThemeBox/cmp.builder";
 import "./components/hiddenFromEditor.builder";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);

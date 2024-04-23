@@ -6,6 +6,7 @@ export type CssEditableProps = {
   responsiveOpacity: StyleBreakpoint[];
   responsiveDirection: StyleBreakpoint[];
   responsiveAlignItems: StyleBreakpoint[];
+  responsiveTextAlign: StyleBreakpoint[];
   responsiveJustifyContent: StyleBreakpoint[];
   responsiveWrap: StyleBreakpoint[];
   responsiveFlexBasis: StyleBreakpoint[];

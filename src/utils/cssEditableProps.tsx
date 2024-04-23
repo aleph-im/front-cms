@@ -38,6 +38,7 @@ export const calculateResponsiveCss = (
     responsiveDirection,
     responsiveAlignItems,
     responsiveJustifyContent,
+    responsiveTextAlign,
     responsiveWrap,
     responsiveFlexBasis,
     responsivePosition,
@@ -55,6 +56,7 @@ export const calculateResponsiveCss = (
     ${calculateResponsiveStyles(responsiveDirection)}
     ${calculateResponsiveStyles(responsiveAlignItems)}
     ${calculateResponsiveStyles(responsiveJustifyContent)}
+    ${calculateResponsiveStyles(responsiveTextAlign)}
     ${calculateResponsiveStyles(responsiveFlexBasis)}
     ${calculateResponsiveStyles(responsiveWrap)}
     ${calculateResponsiveStyles(responsiveOpacity)}

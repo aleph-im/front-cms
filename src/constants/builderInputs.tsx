@@ -108,6 +108,12 @@ export const CSS_EDITABLE_INPUTS: Input[] = [
     values_enum: ["start", "end", "center"],
   }),
   responsiveStyleField({
+    name: "responsiveTextAlign",
+    style: "text-align",
+    value_type: "string",
+    values_enum: ["start", "end", "left", "right", "center", "justify"],
+  }),
+  responsiveStyleField({
     name: "responsiveWrap",
     style: "flex-wrap",
     value_type: "string",

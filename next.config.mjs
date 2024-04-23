@@ -12,6 +12,7 @@ const nextConfig = BuilderDevTools()(
     images: {
       unoptimized: true,
     },
+    trailingSlash: true,
     webpack: (config, options) => {
       config.module.rules.push({
         test: /\.(tsx|ts)$/,

@@ -1,4 +1,4 @@
-import { Button, LinkComponent, RouterNavbar } from "@aleph-front/core";
+import { Button, LinkComponent, Logo, RouterNavbar } from "@aleph-front/core";
 
 import Link from "next/link";
 
@@ -22,6 +22,11 @@ export const Header = ({ children, routes, breakpoint }: HeaderProps) => {
         onToggle={handleCloseMenu}
         open={isOpen}
         routes={routes}
+        logo={
+          <Link href="/">
+            <Logo text />
+          </Link>
+        }
       >
         {children}
       </RouterNavbar>

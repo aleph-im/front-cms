@@ -105,7 +105,7 @@ export default function DynamicPage({
         >
           <p className="text-base2">Content may not be up-to-date</p>
           <p className="text-base2">
-            You're seeing the version published at{" "}
+            You&apos;re seeing the version published at{" "}
             {new Date((content as any)?.lastUpdated as number).toISOString()}
           </p>
         </div>

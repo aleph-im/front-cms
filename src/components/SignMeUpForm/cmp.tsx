@@ -1,4 +1,4 @@
-import { Button, TextInput, useResponsiveMin } from '@aleph-front/core'
+import { Button, TextInput, useResponsiveMin } from "@aleph-front/core";
 
 const SignMeUpButton = () => (
   <Button
@@ -7,17 +7,16 @@ const SignMeUpButton = () => (
     name="subscribe"
     id="mc-embedded-subscribe"
     color="main0"
-    kind="gradient"
     size="lg"
     variant="primary"
     tw="!block !mx-auto"
   >
     Sign up
   </Button>
-)
+);
 
 export const SignMeUpForm = () => {
-  const isDesktop = useResponsiveMin('md')
+  const isDesktop = useResponsiveMin("md");
 
   return (
     <form
@@ -30,7 +29,7 @@ export const SignMeUpForm = () => {
     >
       <div tw="mb-4 w-full">
         <div
-          style={{ position: 'absolute', left: '-4500px' }}
+          style={{ position: "absolute", left: "-4500px" }}
           aria-hidden="true"
         >
           <input
@@ -65,7 +64,7 @@ export const SignMeUpForm = () => {
       </div>
       {!isDesktop && <SignMeUpButton />}
     </form>
-  )
-}
+  );
+};
 
-export default SignMeUpForm
+export default SignMeUpForm;

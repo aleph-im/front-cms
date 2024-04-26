@@ -1,5 +1,5 @@
 import { Input } from "@builder.io/sdk";
-import { REM_VALUES, TYPO_KIND } from "./builderEnums";
+import { PERCENTAGE_VALUES, REM_VALUES, TYPO_KIND } from "./builderEnums";
 
 const responsiveStyleField = ({
   name,
@@ -82,6 +82,13 @@ const responsiveClassField = ({
 
 export const CSS_EDITABLE_INPUTS: Input[] = [
   responsiveStyleField({
+    name: "responsiveDisplay",
+    style: "display",
+    value_type: "string",
+    values_enum: ["block", "inline", "flex"],
+    advanced: false,
+  }),
+  responsiveStyleField({
     name: "responsivePosition",
     style: "position",
     value_type: "string",
@@ -123,7 +130,7 @@ export const CSS_EDITABLE_INPUTS: Input[] = [
     name: "responsiveFlexBasis",
     style: "flex-basis",
     value_type: "string",
-    values_enum: ["auto", "33.333333%", "25%", "50%"],
+    values_enum: PERCENTAGE_VALUES,
   }),
   responsiveStyleField({
     name: "responsiveOpacity",
@@ -174,13 +181,17 @@ export const CSS_EDITABLE_INPUTS: Input[] = [
           "height",
           "max-height",
           "min-height",
+          "top",
+          "bottom",
+          "left",
+          "right",
         ],
       },
       {
         name: "value",
         type: "string",
         required: true,
-        enum: REM_VALUES,
+        enum: Array.from(new Set([...REM_VALUES, ...PERCENTAGE_VALUES])),
       },
     ],
   },
@@ -197,7 +208,7 @@ export const TEXT_INPUTS: Input[] = [
     name: "responsiveTextType",
     klass: "text",
     value_type: "string",
-    values_enum: ["main0", "base2"],
+    values_enum: ["main0", "base0", "base1", "base2"],
   }),
   responsiveClassField({
     name: "responsiveTypo",
@@ -209,6 +220,6 @@ export const TEXT_INPUTS: Input[] = [
     name: "responsiveFontSize",
     klass: "fs",
     value_type: "string",
-    values_enum: ["10", "18", "26", "28"],
+    values_enum: ["10", "16", "18", "26", "28"],
   }),
 ];

@@ -1,4 +1,4 @@
-import { Builder, withChildren } from "@builder.io/react";
+import { Builder } from "@builder.io/react";
 import { TEXT_PROPS } from "@/constants/builderProps";
 import TextGradient from ".";
 import { COLORS } from "@/constants/builderEnums";

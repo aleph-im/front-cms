@@ -24,12 +24,12 @@ Builder.registerComponent(withChildren(Button), {
     {
       name: "kind",
       type: "string",
-      enum: ["gradient", "yellow", "functional"],
+      enum: ["gradient", "yellow", "functional", "neon"],
     },
     {
       name: "variant",
       type: "string",
-      enum: ["primary", "secondary", "tertiary"],
+      enum: ["primary", "secondary", "tertiary", "textOnly"],
     },
     {
       name: "size",

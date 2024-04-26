@@ -1,4 +1,4 @@
-import { Button, LinkComponent, Logo, RouterNavbar } from "@aleph-front/core";
+import { LinkComponent, Logo, RouterNavbar } from "@aleph-front/core";
 
 import Link from "next/link";
 

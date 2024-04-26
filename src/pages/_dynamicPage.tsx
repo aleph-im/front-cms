@@ -5,7 +5,6 @@ import { BuilderContent } from "@builder.io/sdk";
 import { BuilderComponent, builder, useIsPreviewing } from "@builder.io/react";
 import { useRouter } from "next/router";
 import "../builder-registry";
-import styled, { css } from "styled-components";
 import StickyComponent from "@/components/StickyComponent";
 
 type DynamicPageProps = {

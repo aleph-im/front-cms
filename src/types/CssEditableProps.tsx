@@ -1,7 +1,7 @@
-import { BreakpointId } from "@aleph-front/core";
 import { StyleBreakpoint } from "./breakpoints";
 
 export type CssEditableProps = {
+  responsiveDisplay: StyleBreakpoint[];
   responsiveStyles: StyleBreakpoint[];
   responsiveOpacity: StyleBreakpoint[];
   responsiveDirection: StyleBreakpoint[];

@@ -15,6 +15,10 @@ Builder.registerComponent(withChildren(Section), {
       type: "string",
       enum: EFFECTS,
     },
+    {
+      name: "id",
+      type: "string",
+    },
     ...CSS_EDITABLE_INPUTS,
   ],
 });

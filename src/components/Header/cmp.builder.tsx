@@ -1,6 +1,5 @@
 import { Builder, withChildren } from "@builder.io/react";
 import { DEFAULT_PROPS } from "@/constants/builderProps";
-import TextGradient from ".";
 import Header from ".";
 
 Builder.registerComponent(withChildren(Header), {
@@ -44,7 +43,6 @@ Builder.registerComponent(withChildren(Header), {
           name: "target",
           type: "string",
           enum: ["_self", "_blank"],
-          defaultValue: "_self",
         },
         {
           name: "exact",

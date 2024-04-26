@@ -1,7 +1,7 @@
 import { Builder, withChildren } from "@builder.io/react";
 import { DEFAULT_PROPS } from "@/constants/builderProps";
 import { CSS_EDITABLE_INPUTS } from "@/constants/builderInputs";
-import { BACKGROUND_COLORS, REM_VALUES } from "@/constants/builderEnums";
+import { BACKGROUND_COLORS } from "@/constants/builderEnums";
 import Box from ".";
 
 Builder.registerComponent(withChildren(Box), {

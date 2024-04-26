@@ -4,12 +4,15 @@ import { getResponsiveCss } from "@aleph-front/core";
 import { StyleBreakpoint } from "@/types/breakpoints";
 
 const calculateFlex = (
+  display: StyleBreakpoint[],
   direction: StyleBreakpoint[],
   alignItems: StyleBreakpoint[],
   justifyContent: StyleBreakpoint[],
   flexBasis: StyleBreakpoint[]
 ) => {
-  if (
+  if (display?.length > 0) {
+    calculateResponsiveStyles(display);
+  } else if (
     direction?.length > 0 ||
     alignItems?.length > 0 ||
     justifyContent?.length > 0 ||
@@ -34,6 +37,7 @@ const calculateResponsiveStyles = (styleBreakpoints?: StyleBreakpoint[]) => {
 export const calculateResponsiveCss = (
   _theme: DefaultTheme,
   {
+    responsiveDisplay,
     responsiveOpacity,
     responsiveDirection,
     responsiveAlignItems,
@@ -47,6 +51,7 @@ export const calculateResponsiveCss = (
 ) => {
   return css`
     ${calculateFlex(
+      responsiveDisplay,
       responsiveDirection,
       responsiveAlignItems,
       responsiveJustifyContent,

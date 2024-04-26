@@ -1,14 +1,6 @@
-export type ImageProps = {
+import { CssEditableProps } from "@/types/CssEditableProps";
+
+export type ImageProps = CssEditableProps & {
   src: string;
   alt: string;
-  margin: string;
-  marginTop: string;
-  marginBottom: string;
-  marginRight: string;
-  marginLeft: string;
-  padding: string;
-  paddingTop: string;
-  paddingBottom: string;
-  paddingRight: string;
-  paddingLeft: string;
 };

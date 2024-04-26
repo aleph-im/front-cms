@@ -6,6 +6,7 @@ import { BuilderComponent, builder, useIsPreviewing } from "@builder.io/react";
 import { useRouter } from "next/router";
 import "../builder-registry";
 import StickyComponent from "@/components/StickyComponent";
+import { Loading } from "./_loading";
 
 type DynamicPageProps = {
   pageModel?: string;
@@ -20,15 +21,16 @@ export default function DynamicPage({
   const isPreviewing = useIsPreviewing();
 
   const [content, setContent] = useState<BuilderContent | null>(page);
-  const [notFound, setNotFound] = useState(!page);
+  const [updated, setUpdated] = useState(false);
+  const [notFound, setNotFound] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchContent() {
       const urlPath = router.asPath.split("#")[0] || "/";
-      console.log("PAGE", urlPath);
 
       try {
-        console.log("LOAD", urlPath);
+        setLoading(true);
 
         const fetchedContent = await builder
           .get("page", { userAttributes: { urlPath } })
@@ -36,23 +38,34 @@ export default function DynamicPage({
 
         if (fetchedContent) {
           setContent(fetchedContent);
+          setUpdated(true);
+          setNotFound(false);
+        } else if (page) {
+          setContent(page);
+          setUpdated(false);
+          setNotFound(false);
         } else {
+          setContent(null);
+          setUpdated(false);
           setNotFound(true);
         }
       } catch (e) {
-        console.log("something went wrong while fetching Builder Content: ", e);
-        setNotFound(true);
+        if (page) {
+          setContent(page);
+          setUpdated(false);
+          setNotFound(false);
+        } else {
+          setContent(null);
+          setUpdated(false);
+          setNotFound(true);
+        }
+      } finally {
+        setLoading(false);
       }
     }
 
     fetchContent();
   }, [router.asPath]); // Depend on router.asPath to refetch content on route changes
-
-  // If the page content is not available
-  // and not in preview mode, show a 404 error page
-  if (notFound && !isPreviewing) {
-    return <DefaultErrorPage statusCode={404} />;
-  }
 
   // If the page content is available, render
   // the BuilderComponent with the page content
@@ -70,15 +83,32 @@ export default function DynamicPage({
         </StickyComponent>
       )}
       {/* Render the Builder page */}
-      <main>
-        <BuilderComponent
-          model={pageModel}
-          content={content || undefined}
-          apiKey=""
-        />
+      <main tw="min-h-[100vh]">
+        <Loading show={loading} />
+        {notFound && !isPreviewing ? (
+          <DefaultErrorPage statusCode={404} />
+        ) : (
+          <BuilderComponent
+            model={pageModel}
+            content={content || undefined}
+            apiKey=""
+          />
+        )}
       </main>
       {content?.data?.footer && (
         <BuilderComponent model="symbol" content={content.data.footer.value} />
+      )}
+      {!loading && !updated && (
+        <div
+          tw="flex flex-col justify-center items-center opacity-80"
+          className="bg-main2"
+        >
+          <p className="text-base2">Content may not be up-to-date</p>
+          <p className="text-base2">
+            You're seeing the version published at{" "}
+            {new Date((content as any)?.lastUpdated as number).toISOString()}
+          </p>
+        </div>
       )}
     </>
   );

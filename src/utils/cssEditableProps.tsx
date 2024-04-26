@@ -11,7 +11,7 @@ const calculateFlex = (
   flexBasis: StyleBreakpoint[]
 ) => {
   if (display?.length > 0) {
-    calculateResponsiveStyles(display);
+    return calculateResponsiveStyles(display);
   } else if (
     direction?.length > 0 ||
     alignItems?.length > 0 ||

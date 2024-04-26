@@ -10,4 +10,8 @@ export const GlobalStylesOverride = createGlobalStyle`
   main {
     flex: 1 0 auto;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
 `;

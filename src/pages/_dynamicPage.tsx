@@ -25,7 +25,7 @@ export default function DynamicPage({
 
   useEffect(() => {
     async function fetchContent() {
-      const urlPath = router.asPath || "/";
+      const urlPath = router.asPath.split("#")[0] || "/";
       console.log("PAGE", urlPath);
 
       try {

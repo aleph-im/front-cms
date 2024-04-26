@@ -6,6 +6,7 @@ Builder.registerComponent(withChildren(Col), {
   ...DEFAULT_PROPS,
   name: "Column",
   canHaveChildren: true,
+  noWrap: true,
   inputs: [
     ...DEFAULT_PROPS.inputs,
     {

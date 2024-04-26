@@ -98,7 +98,7 @@ export default function DynamicPage({
       {content?.data?.footer && (
         <BuilderComponent model="symbol" content={content.data.footer.value} />
       )}
-      {!loading && !updated && (
+      {!loading && !updated && content?.lastUpdated && (
         <div
           tw="flex flex-col justify-center items-center opacity-80"
           className="bg-main2"
@@ -106,7 +106,7 @@ export default function DynamicPage({
           <p className="text-base2">Content may not be up-to-date</p>
           <p className="text-base2">
             You&apos;re seeing the version published at{" "}
-            {new Date((content as any)?.lastUpdated as number).toISOString()}
+            {new Date(content.lastUpdated as number).toISOString()}
           </p>
         </div>
       )}

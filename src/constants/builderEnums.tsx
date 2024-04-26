@@ -62,6 +62,7 @@ export const EFFECTS: string[] = [
   "fx-noise-light",
   "fx-noise-dark",
   "fx-noise-base0",
+  "fx-glass-base0",
 ];
 
 export const REM_VALUES = [

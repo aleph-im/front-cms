@@ -10,8 +10,7 @@ import Head from "next/head";
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 export default function App({ Component, pageProps }: AppProps) {
-  const theme = getSelectedTheme(pageProps);
-  const themeName = theme.name;
+  const [themeName, theme] = getSelectedTheme(pageProps);
 
   return (
     <>

@@ -65,7 +65,7 @@ export default function DynamicPage({
     }
 
     fetchContent();
-  }, [router.asPath]); // Depend on router.asPath to refetch content on route changes
+  }, [router.asPath, page]); // Depend on router.asPath to refetch content on route changes
 
   // If the page content is available, render
   // the BuilderComponent with the page content

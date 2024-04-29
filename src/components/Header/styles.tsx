@@ -1,5 +1,4 @@
-import { Button, Navbar } from '@aleph-front/core'
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const StyledHeader = styled.header`
   font-size: inherit;
@@ -11,24 +10,4 @@ export const StyledHeader = styled.header`
   top: 0;
   z-index: 10;
   /* background-color: #141327CC; */
-`
-
-export const StyledNavbar = styled(Navbar)`
-  position: relative;
-`
-
-export const StyledButton = styled(Button).attrs((props) => {
-  return {
-    ...props,
-    color: 'main0',
-    kind: 'yellow',
-    size: 'lg',
-    variant: 'primary',
-  }
-})`
-  display: block;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`
+`;

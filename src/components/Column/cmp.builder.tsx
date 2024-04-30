@@ -1,61 +1,98 @@
-import { Builder, Columns } from "@builder.io/react";
+import { Builder, withChildren } from "@builder.io/react";
 import { DEFAULT_PROPS } from "@/constants/builderProps";
+import { Col } from "@aleph-front/core";
+import { ONE_TO_TWELVE } from "@/constants/builderEnums";
 
-Builder.registerComponent(Columns, {
+Builder.registerComponent(withChildren(Col), {
   ...DEFAULT_PROPS,
-  name: "Columns",
+  name: "Column",
   canHaveChildren: true,
-  override: true,
+  noWrap: true,
   inputs: [
     ...DEFAULT_PROPS.inputs,
     {
-      name: "columns",
-      type: "array",
-      broadcast: true,
-      subFields: [
-        {
-          name: "blocks",
-          type: "array",
-          hideFromUI: true,
-          defaultValue: 2,
-        },
-        {
-          name: "width",
-          type: "number",
-          hideFromUI: true,
-          helperText: "Width %, e.g. set to 50 to fill half of the space",
-        },
-        {
-          name: "link",
-          type: "url",
-          helperText:
-            "Optionally set a url that clicking this column will link to",
-        },
-      ],
-      defaultValue: [{ blocks: 2 }, { blocks: 2 }],
-    },
-    {
-      name: "space",
-      type: "number",
-      defaultValue: 14,
-      helperText: "Size of gap between columns",
-      advanced: true,
-    },
-    {
-      name: "stackColumnsAt",
+      name: "span",
+      friendlyName: "Amount of Columns to occupy",
       type: "string",
-      defaultValue: "tablet",
-      helperText: "Convert horizontal columns to vertical at what device size",
-      enum: ["tablet", "mobile", "never"],
-      advanced: true,
+      enum: [...ONE_TO_TWELVE],
     },
     {
-      name: "reverseColumnsWhenStacked",
-      type: "boolean",
-      defaultValue: false,
-      helperText:
-        "When stacking columns for mobile devices, reverse the ordering",
-      advanced: true,
+      name: "xs",
+      friendlyName: "Amount of Columns to occupy from 'xs' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
+    },
+    {
+      name: "sm",
+      friendlyName: "Amount of Columns to occupy from 'sm' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
+    },
+    {
+      name: "md",
+      friendlyName: "Amount of Columns to occupy from 'md' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
+    },
+    {
+      name: "lg",
+      friendlyName: "Amount of Columns to occupy from 'lg' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
+    },
+    {
+      name: "xl",
+      friendlyName: "Amount of Columns to occupy from 'xl' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
+    },
+    {
+      name: "2xl",
+      friendlyName: "Amount of Columns to occupy from '2xl' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
+    },
+    {
+      name: "offset",
+      friendlyName: "Starting point of the Column",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
+    },
+    {
+      name: "xsOffset",
+      friendlyName: "Starting point of the Column from 'xs' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
+    },
+    {
+      name: "smOffset",
+      friendlyName: "Starting point of the Column from 'sm' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
+    },
+    {
+      name: "mdOffset",
+      friendlyName: "Starting point of the Column from 'md' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
+    },
+    {
+      name: "lgOffset",
+      friendlyName: "Starting point of the Column from 'lg' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
+    },
+    {
+      name: "xlOffset",
+      friendlyName: "Starting point of the Column from 'xl' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
+    },
+    {
+      name: "2xlOffset",
+      friendlyName: "Starting point of the Column from '2xl' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
     },
   ],
 });

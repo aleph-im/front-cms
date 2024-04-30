@@ -156,3 +156,18 @@ export const PERCENTAGE_VALUES = [
   "-90%",
   "-95%",
 ];
+
+export const ONE_TO_TWELVE = [
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "11",
+  "12",
+];

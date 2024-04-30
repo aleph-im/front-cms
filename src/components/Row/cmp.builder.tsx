@@ -1,6 +1,7 @@
 import { Builder, withChildren } from "@builder.io/react";
 import { DEFAULT_PROPS } from "@/constants/builderProps";
 import { Row } from "@aleph-front/core";
+import { ONE_TO_TWELVE, REM_VALUES } from "@/constants/builderEnums";
 
 Builder.registerComponent(withChildren(Row), {
   ...DEFAULT_PROPS,
@@ -10,59 +11,87 @@ Builder.registerComponent(withChildren(Row), {
     ...DEFAULT_PROPS.inputs,
     {
       name: "count",
-      type: "number",
+      friendlyName: "Columns division",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
     },
     {
       name: "xs",
-      type: "number",
+      friendlyName: "Columns division from 'xs' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
     },
     {
       name: "sm",
-      type: "number",
+      friendlyName: "Columns division from 'sm' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
     },
     {
       name: "md",
-      type: "number",
+      friendlyName: "Columns division from 'md' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
     },
     {
       name: "lg",
-      type: "number",
+      friendlyName: "Columns division from 'lg' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
     },
     {
       name: "xl",
-      type: "number",
+      friendlyName: "Columns division from 'xl' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
     },
     {
       name: "2xl",
-      type: "number",
+      friendlyName: "Columns division from '2xl' Breakpoint",
+      type: "string",
+      enum: [...ONE_TO_TWELVE],
     },
     {
       name: "gap",
+      friendlyName: "Gap between Columns divisons",
       type: "string",
+      enum: REM_VALUES,
     },
     {
       name: "xsGap",
-      type: "number",
+      friendlyName: "Gap between Columns divison from 'xs' Breakpoint",
+      type: "string",
+      enum: REM_VALUES,
     },
     {
       name: "smGap",
-      type: "number",
+      friendlyName: "Gap between Columns divison from 'sm' Breakpoint",
+      type: "string",
+      enum: REM_VALUES,
     },
     {
       name: "mdGap",
-      type: "number",
+      friendlyName: "Gap between Columns divison from 'md' Breakpoint",
+      type: "string",
+      enum: REM_VALUES,
     },
     {
       name: "lgGap",
-      type: "number",
+      friendlyName: "Gap between Columns divison from 'lg' Breakpoint",
+      type: "string",
+      enum: REM_VALUES,
     },
     {
       name: "xlGap",
-      type: "number",
+      friendlyName: "Gap between Columns divison from 'xl' Breakpoint",
+      type: "string",
+      enum: REM_VALUES,
     },
     {
       name: "2xlGap",
-      type: "number",
+      friendlyName: "Gap between Columns divison from '2xl' Breakpoint",
+      type: "string",
+      enum: REM_VALUES,
     },
   ],
 });

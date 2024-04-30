@@ -17,7 +17,7 @@ import "./components/ContactForm/cmp.builder";
 import "./components/SignMeUpForm/cmp.builder";
 import "./components/Breadcrumb/cmp.builder";
 import "./components/Image/cmp.builder";
-import "./components/Columns/cmp.builder";
+import "./components/Column/cmp.builder";
 import "./components/CardWithSideImage/cmp.builder";
 import "./components/ObjectImage/cmp.builder";
 import "./components/ThemeBox/cmp.builder";

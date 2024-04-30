@@ -3,8 +3,20 @@ import { TEXT_PROPS } from "@/constants/builderProps";
 import Text from ".";
 import { CSS_EDITABLE_INPUTS_ADVANCED } from "@/constants/builderInputs";
 
+const filteredTextInputs = TEXT_PROPS.inputs.filter((input) => {
+  return input.name !== "children";
+});
+
 Builder.registerComponent(Text, {
   ...TEXT_PROPS,
   name: "Text",
-  inputs: [...TEXT_PROPS.inputs, ...CSS_EDITABLE_INPUTS_ADVANCED],
+  inputs: [
+    {
+      name: "children",
+      friendlyName: "Text content",
+      type: "richText",
+    },
+    ...filteredTextInputs,
+    ...CSS_EDITABLE_INPUTS_ADVANCED,
+  ],
 });

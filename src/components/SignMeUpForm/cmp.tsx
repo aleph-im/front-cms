@@ -1,6 +1,7 @@
 import { Button, TextInput, useResponsiveMin } from "@aleph-front/core";
+import { SignMeUpButtonProps, SignMeUpFormProps } from "./types";
 
-const SignMeUpButton = () => (
+const SignMeUpButton = ({ text }: SignMeUpButtonProps) => (
   <Button
     type="submit"
     value="Subscribe"
@@ -11,11 +12,13 @@ const SignMeUpButton = () => (
     variant="primary"
     tw="!block !mx-auto"
   >
-    Sign up
+    {text}
   </Button>
 );
 
-export const SignMeUpForm = () => {
+export const SignMeUpForm = ({
+  submitButtonText = "Sign up",
+}: SignMeUpFormProps) => {
   const isDesktop = useResponsiveMin("md");
 
   return (
@@ -48,7 +51,7 @@ export const SignMeUpForm = () => {
             placeholder="email address"
             required
             buttonStyle="stuck"
-            button={<SignMeUpButton />}
+            button={<SignMeUpButton text={submitButtonText} />}
             tw="w-[24rem] max-w-full"
           />
         ) : (
@@ -62,7 +65,7 @@ export const SignMeUpForm = () => {
           />
         )}
       </div>
-      {!isDesktop && <SignMeUpButton />}
+      {!isDesktop && <SignMeUpButton text={submitButtonText} />}
     </form>
   );
 };

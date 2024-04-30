@@ -5,4 +5,6 @@ import SignMeUpForm from ".";
 Builder.registerComponent(SignMeUpForm, {
   ...DEFAULT_PROPS,
   name: "Sign Me Up Form",
+  inputs: [{ name: "submitButtonText", type: "string" }],
 });
+3;

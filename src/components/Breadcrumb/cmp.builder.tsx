@@ -1,6 +1,8 @@
 import { Builder } from "@builder.io/react";
 import { DEFAULT_PROPS } from "@/constants/builderProps";
 import Breadcrumb from ".";
+import { CSS_EDITABLE_INPUTS_ADVANCED } from "@/constants/builderInputs";
+import { COLORS, ONE_TO_TWELVE } from "@/constants/builderEnums";
 
 Builder.registerComponent(Breadcrumb, {
   ...DEFAULT_PROPS,
@@ -20,6 +22,7 @@ Builder.registerComponent(Breadcrumb, {
       ],
     },
     { name: "selected", type: "number" },
-    { name: "selectedColor", type: "string" },
+    { name: "selectedColor", type: "string", enum: COLORS },
+    ...CSS_EDITABLE_INPUTS_ADVANCED,
   ],
 });

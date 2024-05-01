@@ -1,9 +1,10 @@
 import { Builder, withChildren } from "@builder.io/react";
 import { DEFAULT_PROPS } from "@/constants/builderProps";
-import { Col } from "@aleph-front/core";
 import { ONE_TO_TWELVE } from "@/constants/builderEnums";
+import { CSS_EDITABLE_INPUTS_ADVANCED } from "@/constants/builderInputs";
+import Column from ".";
 
-Builder.registerComponent(withChildren(Col), {
+Builder.registerComponent(withChildren(Column), {
   ...DEFAULT_PROPS,
   name: "Column",
   canHaveChildren: true,
@@ -94,5 +95,6 @@ Builder.registerComponent(withChildren(Col), {
       type: "string",
       enum: [...ONE_TO_TWELVE],
     },
+    ...CSS_EDITABLE_INPUTS_ADVANCED,
   ],
 });

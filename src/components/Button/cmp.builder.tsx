@@ -1,7 +1,8 @@
 import { Builder, withChildren } from "@builder.io/react";
 import { DEFAULT_PROPS } from "@/constants/builderProps";
-import { Button } from "@aleph-front/core";
 import { COLORS } from "@/constants/builderEnums";
+import { CSS_EDITABLE_INPUTS_ADVANCED } from "@/constants/builderInputs";
+import Button from ".";
 
 Builder.registerComponent(withChildren(Button), {
   ...DEFAULT_PROPS,
@@ -22,6 +23,18 @@ Builder.registerComponent(withChildren(Button), {
       type: "string",
     },
     {
+      name: "forwardedAs",
+      friendlyName: "Tag as",
+      type: "string",
+      enum: ["button", "a"],
+    },
+    {
+      name: "target",
+      type: "string",
+      enum: ["_self", "_blank"],
+      defaultValue: "_self",
+    },
+    {
       name: "kind",
       type: "string",
       enum: ["gradient", "yellow", "functional", "neon"],
@@ -37,36 +50,14 @@ Builder.registerComponent(withChildren(Button), {
       enum: ["sm", "md", "lg"],
     },
     {
-      name: "as",
-      type: "string",
-      enum: ["button", "a"],
-    },
-    {
-      name: "target",
-      type: "string",
-      enum: ["_self", "_blank"],
-      defaultValue: "_self",
-    },
-    {
       name: "color",
       type: "string",
       enum: COLORS,
     },
     {
-      name: "hover",
-      type: "boolean",
-    },
-    {
-      name: "active",
-      type: "boolean",
-    },
-    {
-      name: "focus",
-      type: "boolean",
-    },
-    {
       name: "disabled",
       type: "boolean",
     },
+    ...CSS_EDITABLE_INPUTS_ADVANCED,
   ],
 });

@@ -81,6 +81,51 @@ const responsiveClassField = ({
 };
 
 export const CSS_EDITABLE_INPUTS: Input[] = [
+  {
+    name: "responsiveStyles",
+    type: "list",
+    subFields: [
+      {
+        name: "breakpoint",
+        type: "string",
+        enum: ["", "xs", "sm", "md", "lg", "xl", "2xl"],
+      },
+      {
+        name: "style",
+        type: "string",
+        required: true,
+        enum: [
+          "margin",
+          "margin-top",
+          "margin-bottom",
+          "margin-right",
+          "margin-left",
+          "padding",
+          "padding-top",
+          "padding-bottom",
+          "padding-right",
+          "padding-left",
+          "gap",
+          "width",
+          "max-width",
+          "min-width",
+          "height",
+          "max-height",
+          "min-height",
+          "top",
+          "bottom",
+          "left",
+          "right",
+        ],
+      },
+      {
+        name: "value",
+        type: "string",
+        required: true,
+        enum: Array.from(new Set([...REM_VALUES, ...PERCENTAGE_VALUES])),
+      },
+    ],
+  },
   responsiveStyleField({
     name: "responsiveDisplay",
     style: "display",
@@ -150,52 +195,14 @@ export const CSS_EDITABLE_INPUTS: Input[] = [
       "1",
     ],
   }),
-  {
-    name: "responsiveStyles",
-    type: "list",
-    subFields: [
-      {
-        name: "breakpoint",
-        type: "string",
-        enum: ["", "xs", "sm", "md", "lg", "xl", "2xl"],
-      },
-      {
-        name: "style",
-        type: "string",
-        required: true,
-        enum: [
-          "margin",
-          "margin-top",
-          "margin-bottom",
-          "margin-right",
-          "margin-left",
-          "padding",
-          "padding-top",
-          "padding-bottom",
-          "padding-right",
-          "padding-left",
-          "gap",
-          "width",
-          "max-width",
-          "min-width",
-          "height",
-          "max-height",
-          "min-height",
-          "top",
-          "bottom",
-          "left",
-          "right",
-        ],
-      },
-      {
-        name: "value",
-        type: "string",
-        required: true,
-        enum: Array.from(new Set([...REM_VALUES, ...PERCENTAGE_VALUES])),
-      },
-    ],
-  },
 ];
+
+export const CSS_EDITABLE_INPUTS_ADVANCED = CSS_EDITABLE_INPUTS.map(
+  (input) => ({
+    ...input,
+    advanced: true,
+  })
+);
 
 export const TEXT_INPUTS: Input[] = [
   {

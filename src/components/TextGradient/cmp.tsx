@@ -2,8 +2,8 @@
 
 import React from "react";
 import { TextGradientProps } from "./types";
-import { TextGradient as CoreTextGradient } from "@aleph-front/core";
 import { calculateResponsiveClassNames } from "@/utils/responsiveClassNames";
+import { StyledTextGradient } from "./styles";
 
 export const TextGradient = ({
   children,
@@ -19,9 +19,9 @@ export const TextGradient = ({
   ].join(" ");
 
   return (
-    <CoreTextGradient className={classNames} {...rest}>
+    <StyledTextGradient className={classNames} {...rest}>
       {children}
-    </CoreTextGradient>
+    </StyledTextGradient>
   );
 };
 

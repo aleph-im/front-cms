@@ -1,6 +1,7 @@
 import { Builder, withChildren } from "@builder.io/react";
 import { DEFAULT_PROPS } from "@/constants/builderProps";
-import { Icon } from "@aleph-front/core";
+import Icon from ".";
+import { CSS_EDITABLE_INPUTS_ADVANCED } from "@/constants/builderInputs";
 
 Builder.registerComponent(withChildren(Icon), {
   ...DEFAULT_PROPS,
@@ -44,5 +45,6 @@ Builder.registerComponent(withChildren(Icon), {
       type: "string",
       enum: ["fass", "far", "fab", "custom"],
     },
+    ...CSS_EDITABLE_INPUTS_ADVANCED,
   ],
 });

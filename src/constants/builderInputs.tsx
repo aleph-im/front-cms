@@ -160,6 +160,12 @@ export const CSS_EDITABLE_INPUTS: Input[] = [
     values_enum: ["start", "end", "center"],
   }),
   responsiveStyleField({
+    name: "responsiveAlignSelf",
+    style: "align-self",
+    value_type: "string",
+    values_enum: ["auto", "normal", "center", "start", "end"],
+  }),
+  responsiveStyleField({
     name: "responsiveTextAlign",
     style: "text-align",
     value_type: "string",

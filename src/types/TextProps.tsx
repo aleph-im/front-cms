@@ -1,8 +1,9 @@
+import { CssEditableProps } from "./CssEditableProps";
 import { ClassBreakpoint } from "./breakpoints";
 
-export type TextProps = {
+export type TextProps = CssEditableProps & {
   children: React.ReactNode;
-  responsiveTextType: ClassBreakpoint[];
-  responsiveTypo: ClassBreakpoint[];
-  responsiveFontSize: ClassBreakpoint[];
+  responsiveTextType?: ClassBreakpoint[];
+  responsiveTypo?: ClassBreakpoint[];
+  responsiveFontSize?: ClassBreakpoint[];
 };

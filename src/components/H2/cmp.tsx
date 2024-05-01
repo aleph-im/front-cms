@@ -7,7 +7,7 @@ export const H2 = ({
   responsiveTextType,
   responsiveTypo,
   responsiveFontSize,
-  ...rest
+  ...props
 }: H2Props) => {
   const classNames = [
     calculateResponsiveClassNames(responsiveTextType),
@@ -16,7 +16,7 @@ export const H2 = ({
   ].join(" ");
 
   return (
-    <StyledH2 className={classNames} {...rest}>
+    <StyledH2 className={classNames} {...props}>
       {children}
     </StyledH2>
   );

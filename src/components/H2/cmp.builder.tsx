@@ -2,6 +2,7 @@ import { Builder } from "@builder.io/react";
 import { TEXT_PROPS } from "@/constants/builderProps";
 import { COLORS } from "@/constants/builderEnums";
 import H2 from ".";
+import { CSS_EDITABLE_INPUTS_ADVANCED } from "@/constants/builderInputs";
 
 Builder.registerComponent(H2, {
   ...TEXT_PROPS,
@@ -13,5 +14,6 @@ Builder.registerComponent(H2, {
       type: "string",
       enum: COLORS,
     },
+    ...CSS_EDITABLE_INPUTS_ADVANCED,
   ],
 });

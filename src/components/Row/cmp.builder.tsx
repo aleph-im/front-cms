@@ -1,7 +1,8 @@
 import { Builder, withChildren } from "@builder.io/react";
 import { DEFAULT_PROPS } from "@/constants/builderProps";
-import { Row } from "@aleph-front/core";
 import { ONE_TO_TWELVE, REM_VALUES } from "@/constants/builderEnums";
+import Row from ".";
+import { CSS_EDITABLE_INPUTS_ADVANCED } from "@/constants/builderInputs";
 
 Builder.registerComponent(withChildren(Row), {
   ...DEFAULT_PROPS,
@@ -93,5 +94,6 @@ Builder.registerComponent(withChildren(Row), {
       type: "string",
       enum: REM_VALUES,
     },
+    ...CSS_EDITABLE_INPUTS_ADVANCED,
   ],
 });

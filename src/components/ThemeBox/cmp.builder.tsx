@@ -6,6 +6,7 @@ Builder.registerComponent(withChildren(ThemeBox), {
   ...DEFAULT_PROPS,
   name: "Theme Box",
   canHaveChildren: true,
+  noWrap: true,
   inputs: [
     ...DEFAULT_PROPS.inputs,
     {

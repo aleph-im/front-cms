@@ -1,14 +1,14 @@
-"use client";
-
 import React from "react";
 import { TextProps } from "@/types/TextProps";
 import { calculateResponsiveClassNames } from "@/utils/responsiveClassNames";
+import { StyledText } from "./styles";
 
 export const Text = ({
   children,
   responsiveTextType,
   responsiveTypo,
   responsiveFontSize,
+  ...props
 }: TextProps) => {
   const classNames = [
     calculateResponsiveClassNames(responsiveTextType),
@@ -16,7 +16,11 @@ export const Text = ({
     calculateResponsiveClassNames(responsiveFontSize),
   ].join(" ");
 
-  return <p className={classNames}>{children}</p>;
+  return (
+    <StyledText className={classNames} {...props}>
+      {children}
+    </StyledText>
+  );
 };
 
 export default Text;

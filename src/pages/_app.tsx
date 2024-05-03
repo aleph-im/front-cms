@@ -4,13 +4,15 @@ import type { AppProps } from "next/app";
 import { builder } from "@builder.io/react";
 import { GlobalStyles } from "@aleph-front/core";
 import { GlobalStylesOverride } from "@/styles/global";
-import { getSelectedTheme } from "@/utils/getSelectedTheme";
+import { getSelectedThemeData } from "@/utils/getSelectedThemeData";
 import Head from "next/head";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [themeName, theme] = getSelectedTheme(pageProps);
+  const { selectedThemeName, selectedTheme } = getSelectedThemeData(
+    pageProps.page
+  );
 
   return (
     <>
@@ -19,17 +21,21 @@ export default function App({ Component, pageProps }: AppProps) {
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href={`/${themeName}/favicon.ico-32x32`}
+          href={`/${selectedThemeName}/favicon.ico-32x32`}
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href={`/${themeName}/favicon.ico-16x16`}
+          href={`/${selectedThemeName}/favicon.ico-16x16`}
         />
-        <link rel="icon" type="image/png" href={`/${themeName}/favicon.ico`} />
+        <link
+          rel="icon"
+          type="image/png"
+          href={`/${selectedThemeName}/favicon.ico`}
+        />
       </Head>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={selectedTheme}>
         <GlobalStyles />
         <GlobalStylesOverride />
         <Component {...pageProps} />

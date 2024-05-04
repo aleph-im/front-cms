@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import "../builder-registry";
 import StickyComponent from "@/components/StickyComponent";
 import { Loading } from "./_loading";
+import { themes } from "@aleph-front/core";
 
 type DynamicPageProps = {
   pageModel?: string;
@@ -25,9 +26,37 @@ export default function DynamicPage({
   const [notFound, setNotFound] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  const getHeaderOffset = () => {
+    const header = document.getElementsByTagName("header")[0];
+    return header ? header.offsetHeight : 0;
+  };
+
+  useEffect(() => {
+    async function scrollToElement() {
+      const [_urlPath, hash] = router.asPath.split("#") || "/";
+
+      if (hash) {
+        const element = document.getElementsByClassName(`scrollTo-${hash}`)[0];
+        themes.aleph;
+
+        if (element) {
+          const bounding = element.getBoundingClientRect();
+          const top = bounding.top + window.scrollY;
+
+          window.scrollTo({
+            top: top - getHeaderOffset(),
+            behavior: "smooth",
+          });
+        }
+      }
+    }
+
+    scrollToElement();
+  }, [router.asPath]);
+
   useEffect(() => {
     async function fetchContent() {
-      const urlPath = router.asPath.split("#")[0] || "/";
+      const [urlPath, _hash] = router.asPath.split("#") || "/";
 
       try {
         setLoading(true);
@@ -65,10 +94,8 @@ export default function DynamicPage({
     }
 
     fetchContent();
-  }, [router.asPath, page]); // Depend on router.asPath to refetch content on route changes
+  }, [router.asPath, page]);
 
-  // If the page content is available, render
-  // the BuilderComponent with the page content
   return (
     <>
       <Head>
@@ -82,7 +109,6 @@ export default function DynamicPage({
           />
         </StickyComponent>
       )}
-      {/* Render the Builder page */}
       <main tw="min-h-[100vh]">
         <Loading show={loading} />
         {notFound && !isPreviewing ? (

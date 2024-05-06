@@ -29,6 +29,7 @@ export const SignMeUpForm = ({
       name="mc-embedded-subscribe-form"
       rel="noopener noreferrer"
       noValidate
+      tw="w-full"
     >
       <div tw="mb-4 w-full">
         <div

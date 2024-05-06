@@ -26,8 +26,30 @@ export default function DynamicPage({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    async function scrollToElement() {
+      const [_urlPath, hash] = router.asPath.split("#") || "/";
+      if (!hash) return;
+
+      const element = document.getElementById(`scroll-${hash}`);
+      if (!element) return;
+
+      const bounding = element.getBoundingClientRect();
+      const top = bounding.top + window.scrollY;
+      const headerOffset =
+        document.getElementsByTagName("header")[0]?.offsetHeight || 0;
+
+      window.scrollTo({
+        top: top - headerOffset,
+        behavior: "smooth",
+      });
+    }
+
+    scrollToElement();
+  }, [router.asPath]);
+
+  useEffect(() => {
     async function fetchContent() {
-      const urlPath = router.asPath.split("#")[0] || "/";
+      const [urlPath, _hash] = router.asPath.split("#") || "/";
 
       try {
         setLoading(true);
@@ -65,10 +87,8 @@ export default function DynamicPage({
     }
 
     fetchContent();
-  }, [router.asPath, page]); // Depend on router.asPath to refetch content on route changes
+  }, [router.asPath, page]);
 
-  // If the page content is available, render
-  // the BuilderComponent with the page content
   return (
     <>
       <Head>
@@ -82,7 +102,6 @@ export default function DynamicPage({
           />
         </StickyComponent>
       )}
-      {/* Render the Builder page */}
       <main tw="min-h-[100vh]">
         <Loading show={loading} />
         {notFound && !isPreviewing ? (

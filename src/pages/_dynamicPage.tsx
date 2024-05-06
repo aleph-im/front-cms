@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import "../builder-registry";
 import StickyComponent from "@/components/StickyComponent";
 import { Loading } from "./_loading";
-import { themes } from "@aleph-front/core";
 
 type DynamicPageProps = {
   pageModel?: string;
@@ -26,29 +25,23 @@ export default function DynamicPage({
   const [notFound, setNotFound] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const getHeaderOffset = () => {
-    const header = document.getElementsByTagName("header")[0];
-    return header ? header.offsetHeight : 0;
-  };
-
   useEffect(() => {
     async function scrollToElement() {
       const [_urlPath, hash] = router.asPath.split("#") || "/";
+      if (!hash) return;
 
-      if (hash) {
-        const element = document.getElementsByClassName(`scrollTo-${hash}`)[0];
-        themes.aleph;
+      const element = document.getElementById(`scroll-${hash}`);
+      if (!element) return;
 
-        if (element) {
-          const bounding = element.getBoundingClientRect();
-          const top = bounding.top + window.scrollY;
+      const bounding = element.getBoundingClientRect();
+      const top = bounding.top + window.scrollY;
+      const headerOffset =
+        document.getElementsByTagName("header")[0]?.offsetHeight || 0;
 
-          window.scrollTo({
-            top: top - getHeaderOffset(),
-            behavior: "smooth",
-          });
-        }
-      }
+      window.scrollTo({
+        top: top - headerOffset,
+        behavior: "smooth",
+      });
     }
 
     scrollToElement();

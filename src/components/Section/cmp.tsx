@@ -5,10 +5,14 @@ import { SectionProps } from "./types";
 import { StyledSection } from "./styles";
 
 export const Section = ({ children, effects, id, ...props }: SectionProps) => {
-  const calculatedClassName = [`${effects || ""}`, `scrollTo-${id}`].join(" ");
+  const calculatedClassName = [`${effects || ""}`].join(" ");
 
   return (
-    <StyledSection className={calculatedClassName} {...props}>
+    <StyledSection
+      className={calculatedClassName}
+      id={id ? `scroll-${id}` : undefined}
+      {...props}
+    >
       {children}
     </StyledSection>
   );

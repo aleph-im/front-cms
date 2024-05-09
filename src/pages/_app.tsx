@@ -6,6 +6,7 @@ import { GlobalStyles } from "@aleph-front/core";
 import { GlobalStylesOverride } from "@/styles/global";
 import { getSelectedThemeData } from "@/utils/getSelectedThemeData";
 import Head from "next/head";
+import Viewport from "@/components/Viewport";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -38,7 +39,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={selectedTheme}>
         <GlobalStyles />
         <GlobalStylesOverride />
-        <Component {...pageProps} />
+        <Viewport>
+          <Component {...pageProps} />
+        </Viewport>
       </ThemeProvider>
     </>
   );

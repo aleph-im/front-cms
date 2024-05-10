@@ -24,6 +24,7 @@ import "./components/ThemeBox/cmp.builder";
 import "./components/Tag/cmp.builder";
 import "./components/BlockTag/cmp.builder";
 import "./components/Icon/cmp.builder";
+import "./components/Blog/BlogCategories/cmp.builder";
 import "./components/hiddenFromEditor.builder";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);

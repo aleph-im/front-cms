@@ -56,7 +56,7 @@ export default function DynamicPage({
         setLoading(true);
 
         const fetchedContent = await builder
-          .get("page", { userAttributes: { urlPath } })
+          .get(pageModel, { userAttributes: { urlPath } })
           .toPromise();
 
         if (fetchedContent) {
@@ -88,7 +88,7 @@ export default function DynamicPage({
     }
 
     fetchContent();
-  }, [router.asPath, page]);
+  }, [router.asPath, page, pageModel]);
 
   return (
     <>

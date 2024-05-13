@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import "../builder-registry";
 import StickyComponent from "@/components/StickyComponent";
 import { Loading } from "./_loading";
+import MainContentContainer from "@/components/MainContentContainer";
 
 type DynamicPageProps = {
   pageModel?: string;
@@ -102,7 +103,7 @@ export default function DynamicPage({
           />
         </StickyComponent>
       )}
-      <main tw="min-h-[100vh]">
+      <MainContentContainer>
         <Loading show={loading} />
         {notFound && !isPreviewing ? (
           <DefaultErrorPage statusCode={404} />
@@ -113,9 +114,14 @@ export default function DynamicPage({
             apiKey=""
           />
         )}
-      </main>
+      </MainContentContainer>
       {content?.data?.footer && (
-        <BuilderComponent model="symbol" content={content.data.footer.value} />
+        <div tw="overflow-hidden">
+          <BuilderComponent
+            model="symbol"
+            content={content.data.footer.value}
+          />
+        </div>
       )}
       {!loading && !updated && content?.lastUpdated && (
         <div

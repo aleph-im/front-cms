@@ -6,6 +6,7 @@ export const StyledStickyComponent = styled.div<{ placed_at: string }>`
       position: sticky;
       ${placed_at}: 0;
       z-index: 10;
+      overflow: hidden;
     `;
   }}
 `;

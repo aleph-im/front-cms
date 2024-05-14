@@ -1,6 +1,6 @@
 import { Builder, withChildren } from "@builder.io/react";
 import { DEFAULT_PROPS } from "@/constants/builderProps";
-import { COLORS } from "@/constants/builderEnums";
+import { COLORS, ICONS } from "@/constants/builderEnums";
 import { CSS_EDITABLE_INPUTS_ADVANCED } from "@/constants/builderInputs";
 import Button from ".";
 
@@ -53,6 +53,22 @@ Builder.registerComponent(withChildren(Button), {
       name: "color",
       type: "string",
       enum: COLORS,
+    },
+    {
+      name: "icon",
+      type: "string",
+      enum: ICONS,
+    },
+    {
+      name: "iconSize",
+      type: "string",
+      enum: ["xs", "sm", "md", "lg", "xl", "2xl"],
+    },
+    {
+      name: "iconPosition",
+      type: "string",
+      enum: ["left", "right"],
+      defaultValue: "right",
     },
     {
       name: "disabled",

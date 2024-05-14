@@ -2,6 +2,7 @@ import { Builder, withChildren } from "@builder.io/react";
 import { DEFAULT_PROPS } from "@/constants/builderProps";
 import Icon from ".";
 import { CSS_EDITABLE_INPUTS_ADVANCED } from "@/constants/builderInputs";
+import { ICONS } from "@/constants/builderEnums";
 
 Builder.registerComponent(withChildren(Icon), {
   ...DEFAULT_PROPS,
@@ -12,27 +13,7 @@ Builder.registerComponent(withChildren(Icon), {
     {
       name: "name",
       type: "string",
-      enum: [
-        "avalanche",
-        "arrow-right",
-        "binance",
-        "ccn",
-        "console",
-        "cosmos",
-        "crn",
-        "earn",
-        "ethereum",
-        "explore",
-        "notification",
-        "polkadot",
-        "polygon",
-        "profile",
-        "settings",
-        "solana",
-        "swap",
-        "tezos",
-        "walletConnect",
-      ],
+      enum: ICONS,
       required: true,
     },
     {

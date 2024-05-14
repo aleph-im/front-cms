@@ -65,6 +65,28 @@ export const EFFECTS: string[] = [
   "fx-glass-base0",
 ];
 
+export const ICONS = [
+  "avalanche",
+  "arrow-right",
+  "binance",
+  "ccn",
+  "console",
+  "cosmos",
+  "crn",
+  "earn",
+  "ethereum",
+  "explore",
+  "notification",
+  "polkadot",
+  "polygon",
+  "profile",
+  "settings",
+  "solana",
+  "swap",
+  "tezos",
+  "walletConnect",
+];
+
 export const REM_VALUES = [
   "",
   "auto",

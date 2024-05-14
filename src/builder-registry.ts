@@ -27,6 +27,7 @@ import "./components/Icon/cmp.builder";
 import "./components/Blog/BlogArticlesGrid/cmp.builder";
 import "./components/Blog/LatestBlogArticles/cmp.builder";
 import "./components/Blog/HighlightedBlogArticle/cmp.builder";
+import "./components/Blog/PinnedBlogArticles/cmp.builder";
 import "./components/Blog/BlogCategories/cmp.builder";
 import "./components/Blog/BlogTags/cmp.builder";
 import "./components/hiddenFromEditor.builder";

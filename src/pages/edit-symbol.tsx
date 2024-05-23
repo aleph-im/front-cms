@@ -15,7 +15,6 @@ export default function Page() {
     getSelectedThemeData().selectedTheme
   );
 
-  console.log("HOLA");
   useEffect(() => {
     const fetchSymbolData = async () => {
       const urlPath = router.asPath;

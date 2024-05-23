@@ -1,14 +1,11 @@
 import React from "react";
 import { builder } from "@builder.io/react";
 import { GetStaticProps, GetStaticPaths } from "next";
-import DynamicPage from "./_dynamicPage";
+import DynamicPage, { DynamicPageProps } from "./_dynamicPage";
 
 const PAGE_MODEL = "page";
 
-// Define a function that fetches the Builder
-// content for a given page
 export const getStaticProps: GetStaticProps = (async ({ params }) => {
-  // Fetch the builder content for the given page
   const page = await builder
     .get(PAGE_MODEL, {
       userAttributes: {
@@ -17,33 +14,34 @@ export const getStaticProps: GetStaticProps = (async ({ params }) => {
     })
     .toPromise();
 
-  // Return the page content as props
+  const pageProps: DynamicPageProps = {
+    pageModel: PAGE_MODEL,
+    page: page || null,
+  };
+
   return {
-    props: {
-      page: page || null,
-    },
+    props: pageProps,
   };
 }) satisfies GetStaticProps;
 
-// Define a function that generates the
-// static paths for all pages in Builder
 export const getStaticPaths = (async () => {
-  // Get a list of all pages in Builder
   const pages = await builder.getAll(PAGE_MODEL, {
     fields: "data.url",
     options: { noTargeting: true },
   });
 
-  // Generate the static paths for all pages in Builder
+  const filteredPages = pages.filter(
+    (page) => !page.data?.url.startsWith("/dynamic-templates")
+  );
+
   return {
-    paths: pages.map((page) => ({
+    paths: filteredPages.map((page) => ({
       params: { page: page.data?.url.split("/").filter(Boolean) },
     })),
     fallback: false,
   };
 }) satisfies GetStaticPaths;
 
-// Define the Page component
-export default function Page(props: any) {
-  return <DynamicPage pageModel={PAGE_MODEL} {...props} />;
+export default function Page(props: DynamicPageProps) {
+  return <DynamicPage {...props} />;
 }

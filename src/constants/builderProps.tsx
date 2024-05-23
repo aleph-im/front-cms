@@ -8,6 +8,7 @@ export const DEFAULT_PROPS = {
 export const TEXT_PROPS = {
   ...DEFAULT_PROPS,
   inputs: TEXT_INPUTS,
+  canHaveChildren: true,
   defaultStyles: {
     whiteSpace: "pre-wrap",
   },

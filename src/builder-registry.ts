@@ -30,6 +30,9 @@ import "./components/Blog/HighlightedBlogArticle/cmp.builder";
 import "./components/Blog/PinnedBlogArticles/cmp.builder";
 import "./components/Blog/BlogCategories/cmp.builder";
 import "./components/Blog/BlogTags/cmp.builder";
+import "./components/Blog/BlogTagsFilter/cmp.builder";
+import "./components/Blog/CategorizationDisplayName/cmp.builder";
+import "./components/Blog/BlogBreadcrumb/cmp.builder";
 import "./components/hiddenFromEditor.builder";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);

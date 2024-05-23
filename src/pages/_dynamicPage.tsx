@@ -9,14 +9,16 @@ import StickyComponent from "@/components/StickyComponent";
 import { Loading } from "./_loading";
 import MainContentContainer from "@/components/MainContentContainer";
 
-type DynamicPageProps = {
+export type DynamicPageProps = {
   pageModel?: string;
   page: BuilderContent | null;
+  fetchContentFrom?: string;
 };
 
 export default function DynamicPage({
   pageModel = "page",
   page,
+  fetchContentFrom,
 }: DynamicPageProps) {
   const router = useRouter();
   const isPreviewing = useIsPreviewing();
@@ -50,13 +52,16 @@ export default function DynamicPage({
 
   useEffect(() => {
     async function fetchContent() {
-      const [urlPath, _hash] = router.asPath.split("#") || "/";
+      const [urlPath, _hash] =
+        (fetchContentFrom || router.asPath).split("#") || "/";
 
       try {
         setLoading(true);
 
         const fetchedContent = await builder
-          .get("page", { userAttributes: { urlPath } })
+          .get("page", {
+            userAttributes: { urlPath },
+          })
           .toPromise();
 
         if (fetchedContent) {
@@ -88,7 +93,7 @@ export default function DynamicPage({
     }
 
     fetchContent();
-  }, [router.asPath, page]);
+  }, [fetchContentFrom, router.asPath, page]);
 
   return (
     <>

@@ -29,6 +29,7 @@ import "./components/Blog/LatestBlogArticles/cmp.builder";
 import "./components/Blog/HighlightedBlogArticle/cmp.builder";
 import "./components/Blog/PinnedBlogArticles/cmp.builder";
 import "./components/Blog/BlogCategories/cmp.builder";
+import "./components/Blog/BlogCategoriesFilter/cmp.builder";
 import "./components/Blog/BlogTags/cmp.builder";
 import "./components/Blog/BlogTagsFilter/cmp.builder";
 import "./components/Blog/CategorizationDisplayName/cmp.builder";

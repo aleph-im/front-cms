@@ -1,10 +1,10 @@
-import { Builder } from "@builder.io/react";
+import { Builder, withChildren } from "@builder.io/react";
 import { TEXT_PROPS } from "@/constants/builderProps";
 import TextGradient from ".";
 import { COLORS } from "@/constants/builderEnums";
 import { CSS_EDITABLE_INPUTS_ADVANCED } from "@/constants/builderInputs";
 
-Builder.registerComponent(TextGradient, {
+Builder.registerComponent(withChildren(TextGradient), {
   ...TEXT_PROPS,
   name: "TextGradient",
   inputs: [

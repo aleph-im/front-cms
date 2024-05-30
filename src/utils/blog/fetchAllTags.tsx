@@ -1,5 +1,5 @@
 import { BlogTagProps } from "@/types/blog/BlogTagProps";
-import { fetchBuilderData } from "./fetchBuilderData";
+import { fetchBuilderData } from "../fetchBuilderData";
 
 export const fetchAllTags = async () => {
   const allTags = new Set<BlogTagProps>();

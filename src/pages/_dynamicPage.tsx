@@ -8,6 +8,7 @@ import "../builder-registry";
 import StickyComponent from "@/components/StickyComponent";
 import { Loading } from "./_loading";
 import MainContentContainer from "@/components/MainContentContainer";
+import { useFetchBuilderContent } from "@/hooks/useFetchBuilderContent";
 
 export type DynamicPageProps = {
   pageModel?: string;
@@ -23,10 +24,11 @@ export default function DynamicPage({
   const router = useRouter();
   const isPreviewing = useIsPreviewing();
 
-  const [content, setContent] = useState<BuilderContent | null>(page);
-  const [updated, setUpdated] = useState(false);
-  const [notFound, setNotFound] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const { content, isUpToDate, isNotFound, loading } = useFetchBuilderContent({
+    pageModel,
+    preloadedPage: page,
+    fetchContentFrom,
+  });
 
   useEffect(() => {
     async function scrollToElement() {
@@ -50,55 +52,10 @@ export default function DynamicPage({
     scrollToElement();
   }, [router.asPath]);
 
-  useEffect(() => {
-    async function fetchContent() {
-      const [urlPath, _hash] =
-        (fetchContentFrom || router.asPath).split("#") || "/";
-
-      try {
-        setLoading(true);
-
-        const fetchedContent = await builder
-          .get("page", {
-            userAttributes: { urlPath },
-          })
-          .toPromise();
-
-        if (fetchedContent) {
-          setContent(fetchedContent);
-          setUpdated(true);
-          setNotFound(false);
-        } else if (page) {
-          setContent(page);
-          setUpdated(false);
-          setNotFound(false);
-        } else {
-          setContent(null);
-          setUpdated(false);
-          setNotFound(true);
-        }
-      } catch (e) {
-        if (page) {
-          setContent(page);
-          setUpdated(false);
-          setNotFound(false);
-        } else {
-          setContent(null);
-          setUpdated(false);
-          setNotFound(true);
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchContent();
-  }, [fetchContentFrom, router.asPath, page]);
-
   return (
     <>
       <Head>
-        <title>{content?.data?.title}</title>
+        <title>{content?.data?.metadata?.title}</title>
       </Head>
       {content?.data?.header && (
         <StickyComponent placed_at="top">
@@ -110,7 +67,7 @@ export default function DynamicPage({
       )}
       <MainContentContainer>
         <Loading show={loading} />
-        {notFound && !isPreviewing ? (
+        {isNotFound && !isPreviewing ? (
           <DefaultErrorPage statusCode={404} />
         ) : (
           <BuilderComponent
@@ -128,7 +85,7 @@ export default function DynamicPage({
           />
         </div>
       )}
-      {!loading && !updated && content?.lastUpdated && (
+      {!loading && !isUpToDate && content?.lastUpdated && (
         <div
           tw="flex flex-col justify-center items-center opacity-80"
           className="bg-main2"

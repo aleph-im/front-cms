@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { GetContentOptions } from "@builder.io/sdk";
-import { fetchBuilderData } from "@/utils/blog/fetchBuilderData";
+import { fetchBuilderData } from "@/utils/fetchBuilderData";
 
 interface UseFetchBlogArticlesArgs {
   builderRequestOptions: GetContentOptions;

@@ -1,5 +1,5 @@
 import { BlogCategoryProps } from "@/types/blog/BlogCategoryProps";
-import { fetchBuilderData } from "./fetchBuilderData";
+import { fetchBuilderData } from "../fetchBuilderData";
 
 export const fetchAllCategories = async () => {
   const allCategories = new Set<BlogCategoryProps>();

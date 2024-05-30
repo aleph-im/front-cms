@@ -15,7 +15,6 @@ export const getStaticProps: GetStaticProps = (async ({ params }) => {
     .toPromise();
 
   const pageProps: DynamicPageProps = {
-    pageModel: PAGE_MODEL,
     page: page || null,
   };
 

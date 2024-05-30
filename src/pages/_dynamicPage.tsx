@@ -11,24 +11,22 @@ import MainContentContainer from "@/components/MainContentContainer";
 import { useFetchBuilderContent } from "@/hooks/useFetchBuilderContent";
 
 export type DynamicPageProps = {
-  pageModel?: string;
   page: BuilderContent | null;
   fetchContentFrom?: string;
 };
 
 export default function DynamicPage({
-  pageModel = "page",
   page,
   fetchContentFrom,
 }: DynamicPageProps) {
   const router = useRouter();
   const isPreviewing = useIsPreviewing();
 
-  const { content, isUpToDate, isNotFound, loading } = useFetchBuilderContent({
-    pageModel,
-    preloadedPage: page,
-    fetchContentFrom,
-  });
+  const { pageModel, content, isUpToDate, isNotFound, loading } =
+    useFetchBuilderContent({
+      preloadedPage: page,
+      fetchContentFrom,
+    });
 
   useEffect(() => {
     async function scrollToElement() {

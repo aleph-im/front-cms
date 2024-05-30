@@ -18,7 +18,6 @@ export const getStaticProps: GetStaticProps = (async () => {
     .toPromise();
 
   const pageProps: DynamicPageProps = {
-    pageModel: PAGE_MODEL,
     page: page || null,
     fetchContentFrom: FETCH_CONTENT_FROM,
   };

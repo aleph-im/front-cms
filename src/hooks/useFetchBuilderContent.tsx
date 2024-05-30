@@ -1,15 +1,15 @@
 import { fetchBuilderData } from "@/utils/fetchBuilderData";
 import { BuilderContent } from "@builder.io/sdk";
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 interface FetchBuilderContentArgs {
-  pageModel: string;
   preloadedPage: BuilderContent | null;
   fetchContentFrom?: string;
 }
 
 interface FetchBuilderContentResponse {
+  pageModel: "page" | "blog-article";
   content: BuilderContent | null;
   isUpToDate: boolean;
   isNotFound: boolean;
@@ -17,7 +17,6 @@ interface FetchBuilderContentResponse {
 }
 
 export function useFetchBuilderContent({
-  pageModel,
   preloadedPage,
   fetchContentFrom,
 }: FetchBuilderContentArgs): FetchBuilderContentResponse {
@@ -26,6 +25,15 @@ export function useFetchBuilderContent({
   const [isNotFound, setIsNotFound] = useState(false);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+
+  const pageModel = useMemo(() => {
+    const [urlPath, _hash] =
+      (fetchContentFrom || router.asPath).split("#") || "/";
+
+    if (urlPath.indexOf("/blog/articles/") !== -1) return "blog-article";
+
+    return "page";
+  }, [fetchContentFrom, router.asPath]);
 
   const fetchBuilderContent = useCallback(async () => {
     const [urlPath, _hash] =
@@ -71,5 +79,5 @@ export function useFetchBuilderContent({
     fetchBuilderContent();
   }, [fetchBuilderContent]);
 
-  return { content, isUpToDate, isNotFound, loading };
+  return { pageModel, content, isUpToDate, isNotFound, loading };
 }

@@ -40,7 +40,7 @@ export const BlogArticleBreadcrumb = (props: BlogArticleBreadcrumbProps) => {
       </Link>,
     ];
 
-    if (!currentPage) setLinks(BASE_LINKS);
+    if (!currentPage) return setLinks(BASE_LINKS);
 
     const articleCategory = currentPage.data?.category.value.data;
     const newLinks: ReactNode[] = [

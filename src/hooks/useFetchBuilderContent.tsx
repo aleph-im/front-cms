@@ -30,7 +30,7 @@ export function useFetchBuilderContent({
     const [urlPath, _hash] =
       (fetchContentFrom || router.asPath).split("#") || "/";
 
-    if (urlPath.indexOf("/blog/articles/") !== -1) return "blog-article";
+    if (urlPath.startsWith("/blog/articles/")) return "blog-article";
 
     return "page";
   }, [fetchContentFrom, router.asPath]);

@@ -28,6 +28,7 @@ export const fetchAllCategories = async () => {
         allCategories.add({
           id: blogCategory.data?.id,
           displayName: blogCategory.data?.displayName,
+          metadata: blogCategory.data?.metadata,
         });
       });
 

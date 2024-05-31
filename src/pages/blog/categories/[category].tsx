@@ -1,24 +1,41 @@
 import React from "react";
-import { builder } from "@builder.io/react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import DynamicPage, { DynamicPageProps } from "@/pages/_dynamicPage";
 import { fetchAllCategories } from "@/utils/blog/fetchAllCategories";
+import { calculateCategorization } from "@/utils/blog/calculateCategorization";
+import { fetchBuilderData } from "@/utils/fetchBuilderData";
 
 const PAGE_MODEL = "page";
-const FETCH_CONTENT_FROM = "/dynamic-templates/blog/categories/category";
+const FETCH_CONTENT_FROM = "/templates/blog/categories/category";
 
-export const getStaticProps: GetStaticProps = (async () => {
-  const page = await builder
-    .get(PAGE_MODEL, {
+export const getStaticProps: GetStaticProps = (async ({ params }) => {
+  let pageTitle = null;
+  let pageDescription = null;
+
+  try {
+    const path = `/blog/categories/${params!.category}`;
+    const { id } = calculateCategorization(path)!;
+    const allCategories = await fetchAllCategories();
+    const { metadata } = allCategories.find((tag) => tag.id === id)!;
+
+    pageTitle = metadata.title;
+  } catch (error) {
+    console.error(error);
+  }
+
+  const page = await fetchBuilderData("get", [
+    PAGE_MODEL,
+    {
       userAttributes: {
         urlPath: FETCH_CONTENT_FROM,
       },
-      options: { includeUnpublished: true },
-    })
-    .toPromise();
+    },
+  ]);
 
   const pageProps: DynamicPageProps = {
     page: page || null,
+    pageTitle: pageTitle,
+    pageDescription: pageDescription,
     fetchContentFrom: FETCH_CONTENT_FROM,
   };
 

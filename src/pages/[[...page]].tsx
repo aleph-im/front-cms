@@ -30,7 +30,7 @@ export const getStaticPaths = (async () => {
   });
 
   const filteredPages = pages.filter(
-    (page) => !page.data?.url.startsWith("/dynamic-templates")
+    (page) => !page.data?.url.startsWith("/templates")
   );
 
   return {

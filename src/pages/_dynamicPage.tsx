@@ -12,11 +12,15 @@ import { useFetchBuilderContent } from "@/hooks/useFetchBuilderContent";
 
 export type DynamicPageProps = {
   page: BuilderContent | null;
+  pageTitle?: string | null;
+  pageDescription?: string | null;
   fetchContentFrom?: string;
 };
 
 export default function DynamicPage({
   page,
+  pageTitle,
+  pageDescription,
   fetchContentFrom,
 }: DynamicPageProps) {
   const router = useRouter();
@@ -53,7 +57,11 @@ export default function DynamicPage({
   return (
     <>
       <Head>
-        <title>{content?.data?.metadata?.title}</title>
+        <title>{pageTitle || content?.data?.metadata?.title}</title>
+        <meta
+          name="description"
+          content={pageDescription || content?.data?.metadata?.description}
+        />
       </Head>
       {content?.data?.header && (
         <StickyComponent placed_at="top">

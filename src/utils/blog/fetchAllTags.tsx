@@ -28,6 +28,7 @@ export const fetchAllTags = async () => {
         allTags.add({
           id: dataTag.data?.id,
           displayName: dataTag.data?.displayName,
+          metadata: dataTag.data?.metadata,
         });
       });
 

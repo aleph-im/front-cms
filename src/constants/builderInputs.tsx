@@ -157,7 +157,14 @@ export const CSS_EDITABLE_INPUTS: Input[] = [
     name: "responsiveJustifyContent",
     style: "justify-content",
     value_type: "string",
-    values_enum: ["start", "end", "center"],
+    values_enum: [
+      "start",
+      "end",
+      "center",
+      "space-between",
+      "space-around",
+      "space-evenly",
+    ],
   }),
   responsiveStyleField({
     name: "responsiveAlignSelf",

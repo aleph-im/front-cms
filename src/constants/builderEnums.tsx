@@ -19,6 +19,22 @@ export const TYPO_KIND: string[] = [
   "table",
   "form",
 ];
+export const TYPE_ELEMENTS = [
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "h7",
+  "header",
+  "nav",
+  "body",
+  "code",
+  "form",
+  "span",
+  "strong",
+];
 
 export const COLORS: string[] = [
   "white",

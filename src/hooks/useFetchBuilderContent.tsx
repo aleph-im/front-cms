@@ -9,7 +9,7 @@ interface FetchBuilderContentArgs {
 }
 
 interface FetchBuilderContentResponse {
-  pageModel: "page" | "blog-article";
+  pageModel: "page" | "blog-article" | "symbol";
   content: BuilderContent | null;
   isUpToDate: boolean;
   isNotFound: boolean;
@@ -31,8 +31,8 @@ export function useFetchBuilderContent({
       (fetchContentFrom || router.asPath).split("#") || "/";
 
     if (urlPath.startsWith("/blog/articles/")) return "blog-article";
-
-    return "page";
+    else if (urlPath.startsWith("/edit-symbol")) return "symbol";
+    else return "page";
   }, [fetchContentFrom, router.asPath]);
 
   const fetchBuilderContent = useCallback(async () => {

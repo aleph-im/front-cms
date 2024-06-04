@@ -9,17 +9,15 @@ const PAGE_MODEL = "page";
 const FETCH_CONTENT_FROM = "/templates/blog/tags/tag";
 
 export const getStaticProps: GetStaticProps = (async ({ params }) => {
-  let pageTitle = null;
-  let pageDescription = null;
+  let metadata: any = null;
 
   try {
     const path = `/blog/tags/${params!.tag}`;
     const { id } = calculateCategorization(path)!;
     const allTags = await fetchAllTags();
-    const { metadata } = allTags.find((tag) => tag.id === id)!;
+    const tag = allTags.find((tag) => tag.id === id)!;
 
-    pageTitle = metadata.title;
-    pageDescription = metadata.description;
+    metadata = tag.metadata;
   } catch (error) {
     console.error(error);
   }
@@ -35,9 +33,8 @@ export const getStaticProps: GetStaticProps = (async ({ params }) => {
 
   const pageProps: DynamicPageProps = {
     page: page || null,
-    pageTitle: pageTitle,
-    pageDescription: pageDescription,
     fetchContentFrom: FETCH_CONTENT_FROM,
+    pageMetadata: metadata || null,
   };
 
   return {

@@ -1,7 +1,7 @@
 import { Builder, withChildren } from "@builder.io/react";
 import { TEXT_PROPS } from "@/constants/builderProps";
 import TextGradient from ".";
-import { COLORS } from "@/constants/builderEnums";
+import { COLORS, TYPE_ELEMENTS } from "@/constants/builderEnums";
 import { CSS_EDITABLE_INPUTS_ADVANCED } from "@/constants/builderInputs";
 
 Builder.registerComponent(withChildren(TextGradient), {
@@ -18,7 +18,7 @@ Builder.registerComponent(withChildren(TextGradient), {
     {
       name: "forwardedAs",
       type: "string",
-      enum: ["", "h1", "h2", "h3"],
+      enum: TYPE_ELEMENTS,
     },
     ...CSS_EDITABLE_INPUTS_ADVANCED,
   ],

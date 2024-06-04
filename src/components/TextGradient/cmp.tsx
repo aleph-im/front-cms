@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { TextGradientProps } from "./types";
 import { calculateResponsiveClassNames } from "@/utils/responsiveClassNames";
+import { TextGradientProps } from "./types";
 import { StyledTextGradient } from "./styles";
 
 export const TextGradient = ({

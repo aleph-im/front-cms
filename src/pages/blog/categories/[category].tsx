@@ -1,9 +1,6 @@
 import React from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
-import DynamicPage, {
-  DynamicPageProps,
-  PageMetadataProps,
-} from "@/pages/_dynamicPage";
+import DynamicPage, { DynamicPageProps } from "@/pages/_dynamicPage";
 import { fetchAllCategories } from "@/utils/blog/fetchAllCategories";
 import { calculateCategorization } from "@/utils/blog/calculateCategorization";
 import { fetchBuilderData } from "@/utils/fetchBuilderData";

@@ -30,78 +30,50 @@ export const PageMetadataHead = ({
 }: {
   pageMetadata?: PageMetadataProps | null;
   content: BuilderContent | null;
-}) => (
-  <Head>
-    <title>{pageMetadata?.title || content?.data?.metadata?.title}</title>
-    <meta
-      name="description"
-      content={
-        pageMetadata?.description || content?.data?.metadata?.description
-      }
-    />
-    <link
-      rel="canonical"
-      href={pageMetadata?.canonicalUrl || content?.data?.metadata?.canonicalUrl}
-    />
-    <meta
-      property="og:title"
-      content={
-        pageMetadata?.openGraph?.title ||
-        content?.data?.metadata?.openGraph?.title
-      }
-    />
-    <meta
-      property="og:description"
-      content={
-        pageMetadata?.openGraph?.description ||
-        content?.data?.metadata?.openGraph?.description
-      }
-    />
-    <meta
-      property="og:image"
-      content={
-        pageMetadata?.openGraph?.image ||
-        content?.data?.metadata?.openGraph?.image
-      }
-    />
-    <meta
-      property="og:url"
-      content={
-        pageMetadata?.openGraph?.url || content?.data?.metadata?.openGraph?.url
-      }
-    />
-    <meta
-      name="twitter:card"
-      content={
-        pageMetadata?.twitter?.card || content?.data?.metadata?.twitter?.card
-      }
-    />
-    <meta
-      name="twitter:site"
-      content={
-        pageMetadata?.twitter?.site || content?.data?.metadata?.twitter?.site
-      }
-    />
-    <meta
-      name="twitter:title"
-      content={
-        pageMetadata?.twitter?.title || content?.data?.metadata?.twitter?.title
-      }
-    />
-    <meta
-      name="twitter:description"
-      content={
-        pageMetadata?.twitter?.description ||
-        content?.data?.metadata?.twitter?.description
-      }
-    />
-    <meta
-      name="twitter:image"
-      content={
-        pageMetadata?.twitter?.image || content?.data?.metadata?.twitter?.image
-      }
-    />
-  </Head>
-);
+}) => {
+  const contentPageMetadata = content?.data?.metadata;
+  const pageTitle = pageMetadata?.title || contentPageMetadata?.title;
+  const pageDescription =
+    pageMetadata?.description || contentPageMetadata?.description;
+  const pageCanonicalUrl =
+    pageMetadata?.canonicalUrl || contentPageMetadata?.canonicalUrl;
+  const ogTitle =
+    pageMetadata?.openGraph?.title || contentPageMetadata?.openGraph?.title;
+  const ogDescription =
+    pageMetadata?.openGraph?.description ||
+    contentPageMetadata?.openGraph?.description;
+  const ogImage =
+    pageMetadata?.openGraph?.image || contentPageMetadata?.openGraph?.image;
+  const ogUrl =
+    pageMetadata?.openGraph?.url || contentPageMetadata?.openGraph?.url;
+  const twitterCard =
+    pageMetadata?.twitter?.card || contentPageMetadata?.twitter?.card;
+  const twitterSite =
+    pageMetadata?.twitter?.site || contentPageMetadata?.twitter?.site;
+  const twitterTitle =
+    pageMetadata?.twitter?.title || contentPageMetadata?.twitter?.title;
+  const twitterDescription =
+    pageMetadata?.twitter?.description ||
+    contentPageMetadata?.twitter?.description;
+  const twitterImage =
+    pageMetadata?.twitter?.image || contentPageMetadata?.twitter?.image;
+
+  return (
+    <Head>
+      <title>{pageTitle}</title>
+      <meta name="description" content={pageDescription} />
+      <link rel="canonical" href={pageCanonicalUrl} />
+      <meta property="og:title" content={ogTitle} />
+      <meta property="og:description" content={ogDescription} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:url" content={ogUrl} />
+      <meta name="twitter:card" content={twitterCard} />
+      <meta name="twitter:site" content={twitterSite} />
+      <meta name="twitter:title" content={twitterTitle} />
+      <meta name="twitter:description" content={twitterDescription} />
+      <meta name="twitter:image" content={twitterImage} />
+    </Head>
+  );
+};
 
 export default PageMetadataHead;

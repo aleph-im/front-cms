@@ -34,8 +34,6 @@ jobs:
           NEXT_PUBLIC_BUILDER_API_KEY: ${{ matrix.key }}
           SITE_HOME_URL: ${{ matrix.siteHomeUrl }}
         run: |
-          npm config set "@fortawesome:registry" https://npm.fontawesome.com/
-          npm config set "//npm.fontawesome.com/:_authToken" FONTAWESOME_NPM_AUTH_TOKEN
           npm ci
           npm run build
           touch out/.nojekyll

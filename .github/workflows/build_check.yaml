@@ -23,5 +23,8 @@ jobs:
           FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
           NEXT_PUBLIC_BUILDER_API_KEY: whatever
         run: |
+          npm config set "@fortawesome:registry" https://npm.fontawesome.com/
+          npm config set "//npm.fontawesome.com/:_authToken" FONTAWESOME_NPM_AUTH_TOKEN
+          npm config set "enable-pre-post-scripts" true
           npm ci
           npm run build

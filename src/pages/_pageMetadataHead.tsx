@@ -1,3 +1,4 @@
+import { getFieldFromSources } from "@/utils/getFieldFromSources";
 import { BuilderContent } from "@builder.io/sdk";
 import Head from "next/head";
 
@@ -22,6 +23,7 @@ export type PageMetadataProps = {
   canonicalUrl?: PageMetadataField;
   openGraph?: PageOpenGraphProps | null;
   twitter?: PageTwitterProps | null;
+  schemaMarkup?: object | null;
 };
 
 export const PageMetadataHead = ({
@@ -32,64 +34,53 @@ export const PageMetadataHead = ({
   content: BuilderContent | null;
 }) => {
   const contentPageMetadata = content?.data?.metadata ?? {};
-
-  const getMetaDataField = (keys: string[]) => {
-    const fromPageMetadata = keys.reduce(
-      (obj: any, key) => obj?.[key],
-      pageMetadata
-    );
-    const fromContentPageMetadata = keys.reduce(
-      (obj, key) => obj?.[key],
-      contentPageMetadata
-    );
-    return fromPageMetadata || fromContentPageMetadata;
+  const getMetaField = (keys: string[]) => {
+    return getFieldFromSources({
+      sourcesByPriority: [pageMetadata, contentPageMetadata],
+      keys,
+    });
   };
+
+  const schemaMarkup = getMetaField(["schemaMarkup"]);
 
   return (
     <Head>
-      <title>{getMetaDataField(["title"])}</title>
-      <meta name="description" content={getMetaDataField(["description"])} />
-      <link rel="canonical" href={getMetaDataField(["canonicalUrl"])} />
+      <title>{getMetaField(["title"])}</title>
+      <meta name="description" content={getMetaField(["description"])} />
+      <link rel="canonical" href={getMetaField(["canonicalUrl"])} />
 
       {/* Open Graph */}
       <meta
         property="og:title"
-        content={getMetaDataField(["openGraph", "title"])}
+        content={getMetaField(["openGraph", "title"])}
       />
       <meta
         property="og:description"
-        content={getMetaDataField(["openGraph", "description"])}
+        content={getMetaField(["openGraph", "description"])}
       />
       <meta
         property="og:image"
-        content={getMetaDataField(["openGraph", "image"])}
+        content={getMetaField(["openGraph", "image"])}
       />
-      <meta
-        property="og:url"
-        content={getMetaDataField(["openGraph", "url"])}
-      />
+      <meta property="og:url" content={getMetaField(["openGraph", "url"])} />
 
       {/* Twitter */}
-      <meta
-        name="twitter:title"
-        content={getMetaDataField(["twitter", "title"])}
-      />
+      <meta name="twitter:title" content={getMetaField(["twitter", "title"])} />
       <meta
         name="twitter:description"
-        content={getMetaDataField(["twitter", "description"])}
+        content={getMetaField(["twitter", "description"])}
       />
-      <meta
-        name="twitter:card"
-        content={getMetaDataField(["twitter", "card"])}
-      />
-      <meta
-        name="twitter:site"
-        content={getMetaDataField(["twitter", "site"])}
-      />
-      <meta
-        name="twitter:image"
-        content={getMetaDataField(["twitter", "image"])}
-      />
+      <meta name="twitter:card" content={getMetaField(["twitter", "card"])} />
+      <meta name="twitter:site" content={getMetaField(["twitter", "site"])} />
+      <meta name="twitter:image" content={getMetaField(["twitter", "image"])} />
+
+      {/* Schema.org */}
+      {schemaMarkup && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        />
+      )}
     </Head>
   );
 };

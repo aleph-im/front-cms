@@ -1,21 +1,28 @@
 import React from "react";
-import { builder } from "@builder.io/react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import DynamicPage, { DynamicPageProps } from "@/pages/_dynamicPage";
+import { fetchBuilderData } from "@/utils/fetchBuilderData";
+import { buildArticleSchemaMarkup } from "@/utils/blog/buildArticleSchemaMarkup";
 
 const PAGE_MODEL = "blog-article";
 
 export const getStaticProps: GetStaticProps = (async ({ params }) => {
-  const page = await builder
-    .get(PAGE_MODEL, {
+  const page = await fetchBuilderData("get", [
+    PAGE_MODEL,
+    {
       userAttributes: {
-        urlPath: "/" + ((params?.page as string[])?.join("/") || ""),
+        urlPath: params?.blogArticle
+          ? `/blog/articles/${params.blogArticle}`
+          : "",
       },
-    })
-    .toPromise();
+    },
+  ]);
 
   const pageProps: DynamicPageProps = {
     page: page || null,
+    pageMetadata: {
+      schemaMarkup: buildArticleSchemaMarkup(page),
+    },
   };
 
   return {
@@ -24,13 +31,16 @@ export const getStaticProps: GetStaticProps = (async ({ params }) => {
 }) satisfies GetStaticProps;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const pages = await builder.getAll(PAGE_MODEL, {
-    fields: "data.url",
-    options: { noTargeting: true },
-  });
+  const pages = await fetchBuilderData("getAll", [
+    PAGE_MODEL,
+    {
+      fields: "data.url",
+      options: { noTargeting: true },
+    },
+  ]);
 
   const paths = pages
-    .map((page) => {
+    .map((page: any) => {
       const urlPath = page.data?.url?.split("/").filter(Boolean);
       if (urlPath && urlPath.length > 0) {
         return {
@@ -40,7 +50,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       return null;
     })
     .filter(
-      (path): path is { params: { blogArticle: string } } => path !== null
+      (path: any): path is { params: { blogArticle: string } } => path !== null
     );
 
   return {

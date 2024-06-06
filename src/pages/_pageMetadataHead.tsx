@@ -31,47 +31,65 @@ export const PageMetadataHead = ({
   pageMetadata?: PageMetadataProps | null;
   content: BuilderContent | null;
 }) => {
-  const contentPageMetadata = content?.data?.metadata;
-  const pageTitle = pageMetadata?.title || contentPageMetadata?.title;
-  const pageDescription =
-    pageMetadata?.description || contentPageMetadata?.description;
-  const pageCanonicalUrl =
-    pageMetadata?.canonicalUrl || contentPageMetadata?.canonicalUrl;
-  const ogTitle =
-    pageMetadata?.openGraph?.title || contentPageMetadata?.openGraph?.title;
-  const ogDescription =
-    pageMetadata?.openGraph?.description ||
-    contentPageMetadata?.openGraph?.description;
-  const ogImage =
-    pageMetadata?.openGraph?.image || contentPageMetadata?.openGraph?.image;
-  const ogUrl =
-    pageMetadata?.openGraph?.url || contentPageMetadata?.openGraph?.url;
-  const twitterCard =
-    pageMetadata?.twitter?.card || contentPageMetadata?.twitter?.card;
-  const twitterSite =
-    pageMetadata?.twitter?.site || contentPageMetadata?.twitter?.site;
-  const twitterTitle =
-    pageMetadata?.twitter?.title || contentPageMetadata?.twitter?.title;
-  const twitterDescription =
-    pageMetadata?.twitter?.description ||
-    contentPageMetadata?.twitter?.description;
-  const twitterImage =
-    pageMetadata?.twitter?.image || contentPageMetadata?.twitter?.image;
+  const contentPageMetadata = content?.data?.metadata ?? {};
+
+  const getMetaDataField = (keys: string[]) => {
+    const fromPageMetadata = keys.reduce(
+      (obj: any, key) => obj?.[key],
+      pageMetadata
+    );
+    const fromContentPageMetadata = keys.reduce(
+      (obj, key) => obj?.[key],
+      contentPageMetadata
+    );
+    return fromPageMetadata || fromContentPageMetadata;
+  };
 
   return (
     <Head>
-      <title>{pageTitle}</title>
-      <meta name="description" content={pageDescription} />
-      <link rel="canonical" href={pageCanonicalUrl} />
-      <meta property="og:title" content={ogTitle} />
-      <meta property="og:description" content={ogDescription} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:url" content={ogUrl} />
-      <meta name="twitter:card" content={twitterCard} />
-      <meta name="twitter:site" content={twitterSite} />
-      <meta name="twitter:title" content={twitterTitle} />
-      <meta name="twitter:description" content={twitterDescription} />
-      <meta name="twitter:image" content={twitterImage} />
+      <title>{getMetaDataField(["title"])}</title>
+      <meta name="description" content={getMetaDataField(["description"])} />
+      <link rel="canonical" href={getMetaDataField(["canonicalUrl"])} />
+
+      {/* Open Graph */}
+      <meta
+        property="og:title"
+        content={getMetaDataField(["openGraph", "title"])}
+      />
+      <meta
+        property="og:description"
+        content={getMetaDataField(["openGraph", "description"])}
+      />
+      <meta
+        property="og:image"
+        content={getMetaDataField(["openGraph", "image"])}
+      />
+      <meta
+        property="og:url"
+        content={getMetaDataField(["openGraph", "url"])}
+      />
+
+      {/* Twitter */}
+      <meta
+        name="twitter:title"
+        content={getMetaDataField(["twitter", "title"])}
+      />
+      <meta
+        name="twitter:description"
+        content={getMetaDataField(["twitter", "description"])}
+      />
+      <meta
+        name="twitter:card"
+        content={getMetaDataField(["twitter", "card"])}
+      />
+      <meta
+        name="twitter:site"
+        content={getMetaDataField(["twitter", "site"])}
+      />
+      <meta
+        name="twitter:image"
+        content={getMetaDataField(["twitter", "image"])}
+      />
     </Head>
   );
 };

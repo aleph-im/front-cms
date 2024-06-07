@@ -6,3 +6,7 @@ export const DEFAULT_BUILDER_REQUEST_OPTIONS: GetContentOptions = {
   sort: { firstPublished: -1 },
   options: { noTargeting: true, includeRefs: true },
 };
+
+export const CATEGORY_PAGE_TEMPLATE_PATH =
+  "/templates/blog/categories/category";
+export const TAG_PAGE_TEMPLATE_PATH = "/templates/blog/tags/tag";

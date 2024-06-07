@@ -12,22 +12,16 @@ import PageMetadataHead, { PageMetadataProps } from "./_pageMetadataHead";
 
 export type DynamicPageProps = {
   page: BuilderContent | null;
-  fetchContentFrom?: string;
   pageMetadata?: PageMetadataProps | null;
 };
 
-export default function DynamicPage({
-  page,
-  fetchContentFrom,
-  pageMetadata,
-}: DynamicPageProps) {
+export default function DynamicPage({ page, pageMetadata }: DynamicPageProps) {
   const router = useRouter();
   const isPreviewing = useIsPreviewing();
 
   const { pageModel, content, isUpToDate, isNotFound, loading } =
     useFetchBuilderContent({
       preloadedPage: page,
-      fetchContentFrom,
     });
 
   useEffect(() => {

@@ -4,9 +4,9 @@ import DynamicPage, { DynamicPageProps } from "@/pages/_dynamicPage";
 import { fetchAllTags } from "@/utils/blog/fetchAllTags";
 import { calculateCategorization } from "@/utils/blog/calculateCategorization";
 import { fetchBuilderData } from "@/utils/fetchBuilderData";
+import { TAG_PAGE_TEMPLATE_PATH } from "@/constants/blog";
 
 const PAGE_MODEL = "page";
-const FETCH_CONTENT_FROM = "/templates/blog/tags/tag";
 
 export const getStaticProps: GetStaticProps = (async ({ params }) => {
   let metadata: any = null;
@@ -26,14 +26,13 @@ export const getStaticProps: GetStaticProps = (async ({ params }) => {
     PAGE_MODEL,
     {
       userAttributes: {
-        urlPath: FETCH_CONTENT_FROM,
+        urlPath: TAG_PAGE_TEMPLATE_PATH,
       },
     },
   ]);
 
   const pageProps: DynamicPageProps = {
     page: page || null,
-    fetchContentFrom: FETCH_CONTENT_FROM,
     pageMetadata: metadata || null,
   };
 

@@ -1,3 +1,7 @@
+import {
+  CATEGORY_PAGE_TEMPLATE_PATH,
+  TAG_PAGE_TEMPLATE_PATH,
+} from "@/constants/blog";
 import { fetchBuilderData } from "@/utils/fetchBuilderData";
 import { BuilderContent } from "@builder.io/sdk";
 import { useRouter } from "next/router";
@@ -5,7 +9,6 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 interface FetchBuilderContentArgs {
   preloadedPage: BuilderContent | null;
-  fetchContentFrom?: string;
 }
 
 interface FetchBuilderContentResponse {
@@ -18,7 +21,6 @@ interface FetchBuilderContentResponse {
 
 export function useFetchBuilderContent({
   preloadedPage,
-  fetchContentFrom,
 }: FetchBuilderContentArgs): FetchBuilderContentResponse {
   const [content, setContent] = useState<BuilderContent | null>(preloadedPage);
   const [isUpToDate, setIsUpToDate] = useState(false);
@@ -26,25 +28,30 @@ export function useFetchBuilderContent({
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  const pageModel = useMemo(() => {
-    const [urlPath, _hash] =
-      (fetchContentFrom || router.asPath).split("#") || "/";
+  const fetchContentFrom = useMemo(() => {
+    const [urlPath, _hash] = router.asPath.split("#") || "/";
 
-    if (urlPath.startsWith("/blog/articles/")) return "blog-article";
-    else if (urlPath.startsWith("/edit-symbol")) return "symbol";
+    const categoryRegex = /^\/blog\/categories\/[^\/]+\/$/;
+    const tagRegex = /^\/blog\/tags\/[^\/]+\/$/;
+
+    if (categoryRegex.test(urlPath)) return CATEGORY_PAGE_TEMPLATE_PATH;
+    else if (tagRegex.test(urlPath)) return TAG_PAGE_TEMPLATE_PATH;
+    else return urlPath;
+  }, [router.asPath]);
+
+  const pageModel = useMemo(() => {
+    if (fetchContentFrom.startsWith("/blog/articles/")) return "blog-article";
+    else if (fetchContentFrom.startsWith("/edit-symbol")) return "symbol";
     else return "page";
-  }, [fetchContentFrom, router.asPath]);
+  }, [fetchContentFrom]);
 
   const fetchBuilderContent = useCallback(async () => {
-    const [urlPath, _hash] =
-      (fetchContentFrom || router.asPath).split("#") || "/";
-
     try {
       setLoading(true);
 
       const fetchedContent = await fetchBuilderData("get", [
         pageModel,
-        { userAttributes: { urlPath } },
+        { userAttributes: { urlPath: fetchContentFrom } },
       ]);
 
       if (fetchedContent) {
@@ -73,7 +80,7 @@ export function useFetchBuilderContent({
     } finally {
       setLoading(false);
     }
-  }, [fetchContentFrom, router.asPath, pageModel, preloadedPage]);
+  }, [fetchContentFrom, pageModel, preloadedPage]);
 
   useEffect(() => {
     fetchBuilderContent();

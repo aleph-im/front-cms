@@ -173,19 +173,36 @@ export const BlogArticleCard = ({
         </div>
       );
     case "highlighted":
+      const imageCmp = (
+        <div tw="relative w-full h-full flex justify-center">
+          <Image
+            src={"/blog/feature-image.svg"}
+            alt="Article Image"
+            fill
+            // width={500}
+            // height={800}
+          />
+        </div>
+      );
+
       return (
         <div tw="w-full h-fit py-10">
-          <Row xs={1} md={3} gap="1.5rem">
-            <Col md={2}>
-              <div tw="mb-12">
+          <Row xs={1} lg={3} gap="1.5rem">
+            <Col lg={2}>
+              <div tw="mb-2">
                 <p className="tp-info text-base3">{category}</p>
-                <TextGradient type="h2" tw="line-clamp-1 w-fit mb-0">
-                  <header>{title}</header>
+                <TextGradient
+                  type="h2"
+                  className="tp-h1 lg:tp-header"
+                  tw="line-clamp-3 w-fit mb-0"
+                >
+                  {title}
                 </TextGradient>
                 <p className="tp-h7 text-base2" tw="text-ellipsis line-clamp-2">
                   {headline}
                 </p>
               </div>
+              <div tw="lg:hidden w-full h-96 mb-12">{imageCmp}</div>
               <div tw="flex flex-col justify-between gap-6">
                 <div>
                   <p
@@ -219,16 +236,7 @@ export const BlogArticleCard = ({
                 </div>
               </div>
             </Col>
-            <Col tw="order-first md:order-last">
-              <div tw="relative w-full h-full flex justify-center">
-                <Image
-                  src={"/blog/feature-image.svg"}
-                  alt="Article Image"
-                  width={500}
-                  height={800}
-                />
-              </div>
-            </Col>
+            <Col tw="hidden lg:inline">{imageCmp}</Col>
           </Row>
         </div>
       );

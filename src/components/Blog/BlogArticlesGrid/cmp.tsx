@@ -36,18 +36,16 @@ export const AllBlogArticles = ({
     (fetchedBlogArticle: any) => {
       if (!filters) return true;
 
-      const blogCategoryId: string =
-        fetchedBlogArticle.data?.category?.value?.data.id;
-      const blogTagsIds: string[] = fetchedBlogArticle.data?.tags?.map(
-        (tagRef: any) => tagRef.tag.value?.data.id
-      );
-
       const { tags: tagsFilters, category: categoryFilters } = filters;
       let isValid = true;
 
       if (!tagsFilters && !categoryFilters) return isValid;
       if (tagsFilters) {
         const { includeIds } = tagsFilters;
+        const blogTagsIds: string[] = fetchedBlogArticle.data?.tags?.map(
+          (tagRef: any) => tagRef.tag.value?.data.id
+        );
+
         if (includeIds.length !== 0) {
           isValid =
             isValid && blogTagsIds.some((tagId) => includeIds.includes(tagId));
@@ -56,6 +54,9 @@ export const AllBlogArticles = ({
 
       if (categoryFilters) {
         const { includeIds } = categoryFilters;
+        const blogCategoryId: string =
+          fetchedBlogArticle.data?.category?.value?.data.id;
+
         if (includeIds.length !== 0) {
           isValid = isValid && includeIds.includes(blogCategoryId);
         }

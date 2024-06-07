@@ -1,10 +1,12 @@
 import useCachedData from "@/hooks/common/useCachedData";
 import { BlogCategoryProps } from "@/types/blog/BlogCategoryProps";
 import { fetchAllCategories } from "@/utils/blog/fetchAllCategories";
+import { getRandomUniqueElements } from "@/utils/getRandomUniqueElements";
 import { Button, Icon } from "@aleph-front/core";
 import React, { useCallback } from "react";
+import { BlogCategoriesProps } from "./types";
 
-export const BlogCategories = () => {
+export const BlogCategories = ({ amount = 10 }: BlogCategoriesProps) => {
   const { data: categories, loading } = useCachedData(
     "blogCategories",
     useCallback(fetchAllCategories, [])
@@ -49,22 +51,24 @@ export const BlogCategories = () => {
         </Button>
       </div>
       <div tw="flex flex-wrap gap-x-2 gap-y-4">
-        {categories.map((category: BlogCategoryProps) => {
-          return (
-            // TODO: Add this to front-core Button styles
-            <a
-              key={`${category.id}-${crypto.randomUUID()}`}
-              href={`/blog/categories/${category.id}`}
-            >
-              <p
-                className="tp-nav text-main0"
-                tw="px-5 py-2 rounded-full text-center w-fit bg-[#F5EDFF]"
+        {getRandomUniqueElements<BlogCategoryProps>(categories, amount).map(
+          (category: BlogCategoryProps) => {
+            return (
+              // TODO: Add this to front-core Button styles
+              <a
+                key={`${category.id}-${crypto.randomUUID()}`}
+                href={`/blog/categories/${category.id}`}
               >
-                {category.displayName}
-              </p>
-            </a>
-          );
-        })}
+                <p
+                  className="tp-nav text-main0"
+                  tw="px-5 py-2 rounded-full text-center w-fit bg-[#F5EDFF]"
+                >
+                  {category.displayName}
+                </p>
+              </a>
+            );
+          }
+        )}
       </div>
     </>
   );

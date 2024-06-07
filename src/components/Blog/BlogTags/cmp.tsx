@@ -3,8 +3,10 @@ import { Button, Icon } from "@aleph-front/core";
 import React, { useCallback } from "react";
 import { fetchAllTags } from "@/utils/blog/fetchAllTags";
 import { BlogTagProps } from "@/types/blog/BlogTagProps";
+import { BlogTagsProps } from "./types";
+import { getRandomUniqueElements } from "@/utils/getRandomUniqueElements";
 
-export const BlogTags = () => {
+export const BlogTags = ({ amount = 10 }: BlogTagsProps) => {
   const { data: tags, loading } = useCachedData(
     "blogTags",
     useCallback(fetchAllTags, [])
@@ -49,22 +51,24 @@ export const BlogTags = () => {
         </Button>
       </div>
       <div tw="flex flex-wrap gap-x-2 gap-y-4">
-        {tags.map((tag: BlogTagProps) => {
-          return (
-            // TODO: Add this to front-core Button styles
-            <a
-              key={`${tag.id}-${crypto.randomUUID()}`}
-              href={`/blog/tags/${tag.id}`}
-            >
-              <p
-                className="tp-nav text-main0"
-                tw="px-5 py-2 rounded-full text-center w-fit bg-[#F5EDFF]"
+        {getRandomUniqueElements<BlogTagProps>(tags, amount).map(
+          (tag: BlogTagProps) => {
+            return (
+              // TODO: Add this to front-core Button styles
+              <a
+                key={`${tag.id}-${crypto.randomUUID()}`}
+                href={`/blog/tags/${tag.id}`}
               >
-                {tag.displayName}
-              </p>
-            </a>
-          );
-        })}
+                <p
+                  className="tp-nav text-main0"
+                  tw="px-5 py-2 rounded-full text-center w-fit bg-[#F5EDFF]"
+                >
+                  {tag.displayName}
+                </p>
+              </a>
+            );
+          }
+        )}
       </div>
     </>
   );

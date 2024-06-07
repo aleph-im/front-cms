@@ -21,13 +21,13 @@ export default function App({ Component, pageProps }: AppProps) {
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href={`/${selectedThemeName}/favicon.ico-32x32`}
+          href={`/${selectedThemeName}/favicon-32x32.png`}
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href={`/${selectedThemeName}/favicon.ico-16x16`}
+          href={`/${selectedThemeName}/favicon-16x16.png`}
         />
         <link
           rel="icon"

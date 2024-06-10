@@ -5,6 +5,7 @@ import { fetchAllTags } from "@/utils/blog/fetchAllTags";
 import { BlogTagProps } from "@/types/blog/BlogTagProps";
 import { BlogTagsProps } from "./types";
 import { getRandomUniqueElements } from "@/utils/getRandomUniqueElements";
+import LoadingBlinkBox from "@/components/LoadingBlinkBox";
 
 export const BlogTags = ({ amount = 10 }: BlogTagsProps) => {
   const { data: tags, loading } = useCachedData(
@@ -12,44 +13,44 @@ export const BlogTags = ({ amount = 10 }: BlogTagsProps) => {
     useCallback(fetchAllTags, [])
   );
 
-  if (loading) {
+  const titleCmp = (
+    <div tw="flex gap-3 mb-4">
+      <p className="tp-h6 text-base2">Tags</p>
+      <Button
+        as="a"
+        href="/blog/tags"
+        target="_self"
+        size="sm"
+        variant="textOnly"
+        color="main0"
+      >
+        All
+        <Icon name="arrow-right" size="sm" />
+      </Button>
+    </div>
+  );
+
+  if (loading)
     return (
       <>
-        <div tw="flex gap-3 mb-4">
-          <p className="tp-h6 text-base2">Tags</p>
-          <Button
-            as="a"
-            href="/blog/tags"
-            target="_self"
-            size="sm"
-            variant="textOnly"
-            color="main0"
-          >
-            All
-            <Icon name="arrow-right" size="sm" />
-          </Button>
+        {titleCmp}
+        <div tw="flex flex-wrap gap-x-2 gap-y-4">
+          {Array.from({ length: amount }).map((_, index) => (
+            <LoadingBlinkBox
+              key={`loading-tag-${index}`}
+              loading={true}
+              loadingHeight="2.25rem"
+              loadingWidth={`${Math.random() * (11 - 6) + 6}rem`}
+              tw="rounded-full"
+            />
+          ))}
         </div>
-        <p>Loading...</p>
       </>
     );
-  }
 
   return (
     <>
-      <div tw="flex gap-3 mb-4">
-        <p className="tp-h6 text-base2">Tags</p>
-        <Button
-          as="a"
-          href="/blog/tags"
-          target="_self"
-          size="sm"
-          variant="textOnly"
-          color="main0"
-        >
-          All
-          <Icon name="arrow-right" size="sm" />
-        </Button>
-      </div>
+      {titleCmp}
       <div tw="flex flex-wrap gap-x-2 gap-y-4">
         {getRandomUniqueElements<BlogTagProps>(tags, amount).map(
           (tag: BlogTagProps) => {

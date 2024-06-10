@@ -7,5 +7,5 @@ export type BlogArticleCardProps = {
   category: string;
   blogArticleUrl: string;
   size?: "md" | "lg" | "xl" | "full" | "highlighted";
-  loading: boolean;
+  loading?: boolean;
 };

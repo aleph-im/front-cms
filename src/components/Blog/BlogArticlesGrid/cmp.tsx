@@ -134,7 +134,25 @@ export const AllBlogArticles = ({
     continueFetchingBlogArticles();
   };
 
-  if (loading && blogArticles.size === 0) return <p>Loading...</p>;
+  if (loading && blogArticles.size === 0)
+    return (
+      <StyledBlogArticlesGrid>
+        {Array.from({ length: articlesPerPage }).map((_, index) => (
+          <BlogArticleCard
+            key={`loading-article-${index}`}
+            title={""}
+            headline={""}
+            description={""}
+            thumbnailImage={""}
+            featureImage={""}
+            blogArticleUrl={""}
+            category={""}
+            size={articleSize}
+            loading
+          />
+        ))}
+      </StyledBlogArticlesGrid>
+    );
   if (blogArticles.size === 0) return;
 
   return (
@@ -154,6 +172,7 @@ export const AllBlogArticles = ({
                 blogArticleUrl={blogArticle.url}
                 size={articleSize}
                 category={blogArticle.category.value.data.name}
+                loading={loading}
               />
             );
           })}

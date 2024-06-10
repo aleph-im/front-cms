@@ -9,6 +9,35 @@ import { GetContentOptions } from "@builder.io/sdk";
 import { useSearchParams } from "next/navigation";
 import { DEFAULT_BUILDER_REQUEST_OPTIONS } from "@/constants/blog";
 
+function buildFilters(searchParams: any, pageCategorization: any): any {
+  const queryParams = new URLSearchParams(searchParams);
+  let newFilters: Filters = {
+    tags: {
+      includeIds: queryParams.get("includeTags")?.split(",") || [],
+    },
+    category: {
+      includeIds: queryParams.get("includeCategories")?.split(",") || [],
+    },
+  };
+
+  switch (pageCategorization?.type) {
+    case "categories":
+      newFilters.category = {
+        ...newFilters.category,
+        includeIds: [pageCategorization.id],
+      };
+      break;
+    case "tags":
+      newFilters.tags = {
+        ...newFilters.tags,
+        includeIds: [pageCategorization.id],
+      };
+      break;
+  }
+
+  return newFilters;
+}
+
 export const AllBlogArticles = ({
   articleSize = "md",
   allowLoadMore = true,
@@ -19,7 +48,9 @@ export const AllBlogArticles = ({
   const searchParams = useSearchParams();
   const pageCategorization = useGetPageCategorization();
   const [blogArticles, setBlogArticles] = useState<Set<any>>(new Set());
-  const [filters, setFilters] = useState<Filters>();
+  const [filters, setFilters] = useState<Filters>(
+    buildFilters(searchParams, pageCategorization)
+  );
 
   const defaultBuilderRequestOptions: GetContentOptions = useMemo(
     () => DEFAULT_BUILDER_REQUEST_OPTIONS,
@@ -89,32 +120,7 @@ export const AllBlogArticles = ({
   }, [fetchedBlogArticles]);
 
   useEffect(() => {
-    const queryParams = new URLSearchParams(searchParams);
-    let newFilters: Filters = {
-      tags: {
-        includeIds: queryParams.get("includeTags")?.split(",") || [],
-      },
-      category: {
-        includeIds: queryParams.get("includeCategories")?.split(",") || [],
-      },
-    };
-
-    switch (pageCategorization?.type) {
-      case "categories":
-        newFilters.category = {
-          ...newFilters.category,
-          includeIds: [pageCategorization.id],
-        };
-        break;
-      case "tags":
-        newFilters.tags = {
-          ...newFilters.tags,
-          includeIds: [pageCategorization.id],
-        };
-        break;
-    }
-
-    setFilters(newFilters);
+    setFilters(buildFilters(searchParams, pageCategorization));
   }, [searchParams, pageCategorization]);
 
   useEffect(() => {

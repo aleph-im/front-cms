@@ -179,7 +179,11 @@ export const BlogArticleCard = ({
               loadingHeight="4rem"
               loadingWidth="100%"
             >
-              <TextGradient type="h2" tw="mb-0 line-clamp-1 w-fit">
+              <TextGradient
+                type="h2"
+                className="xs:tp-h4 xl:tp-h2"
+                tw="mb-0 line-clamp-3 w-fit"
+              >
                 {title}
               </TextGradient>
               <p
@@ -252,7 +256,7 @@ export const BlogArticleCard = ({
               </TextGradient>
             </LoadingBlinkBox>
           </div>
-          <Row xs={1} md={2} gap="1.5rem">
+          <Row xs={1} lg={2} gap="1.5rem">
             <Col>
               <div tw="flex flex-col justify-between h-full">
                 <div>

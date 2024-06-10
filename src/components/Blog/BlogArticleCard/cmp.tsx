@@ -15,7 +15,7 @@ export const BlogArticleCard = ({
   category,
   blogArticleUrl,
   size = "md",
-  loading = true,
+  loading = false,
 }: BlogArticleCardProps) => {
   switch (size) {
     case "md":

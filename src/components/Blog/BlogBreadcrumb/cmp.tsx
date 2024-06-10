@@ -3,12 +3,10 @@ import { ReactNode, useEffect, useState } from "react";
 import { StyledBlogBreadcrumb } from "./styles";
 import { BlogBreadcrumbProps } from "./types";
 import { useGetPageCategorization } from "@/hooks/blog/useGetPageCategorization";
-import { fetchAllCategories } from "@/utils/blog/fetchAllCategories";
-import { fetchAllTags } from "@/utils/blog/fetchAllTags";
+import CategorizationDisplayName from "../CategorizationDisplayName";
 
 export const BlogBreadcrumb = (props: BlogBreadcrumbProps) => {
   const DEFAULT_CATEGORIZATION_TYPE = "Classification Type";
-  const DEFAULT_CATEGORIZATION_DISPLAY_NAME = "Classification Display Name";
   const DEFAULT_CATEGORIZATION_ID = "category";
 
   const [links, setLinks] = useState<ReactNode[]>([]);
@@ -24,32 +22,7 @@ export const BlogBreadcrumb = (props: BlogBreadcrumbProps) => {
       </Link>,
     ];
 
-    async function fetchCategorizationDisplayName() {
-      let allCategorizations = undefined;
-
-      switch (pageCategorization?.type) {
-        case "categories":
-          allCategorizations = await fetchAllCategories();
-          break;
-        case "tags":
-          allCategorizations = await fetchAllTags();
-          break;
-      }
-
-      const currentClassification = allCategorizations?.find(
-        (categorization) => {
-          return categorization.id == pageCategorization?.id;
-        }
-      );
-
-      return (
-        currentClassification?.displayName ||
-        DEFAULT_CATEGORIZATION_DISPLAY_NAME
-      );
-    }
-
     async function calculateCategorizationLinks() {
-      const categorizationDisplayName = await fetchCategorizationDisplayName();
       const categorizationType =
         pageCategorization?.type || DEFAULT_CATEGORIZATION_TYPE;
       const categorizationId =
@@ -64,7 +37,7 @@ export const BlogBreadcrumb = (props: BlogBreadcrumbProps) => {
           href={`/blog/${categorizationType}/${categorizationId}`}
           key={categorizationId}
         >
-          {categorizationDisplayName}
+          <CategorizationDisplayName />
         </Link>,
       ];
 

@@ -1,3 +1,4 @@
+import LoadingBlinkBox from "@/components/LoadingBlinkBox";
 import useCachedData from "@/hooks/common/useCachedData";
 import { BlogCategoryProps } from "@/types/blog/BlogCategoryProps";
 import { fetchAllTags } from "@/utils/blog/fetchAllTags";
@@ -56,7 +57,35 @@ export const BlogTags = () => {
     );
   }, [searchParams]);
 
-  if (loading) return <p>Loading...</p>;
+  const clearAllFiltersCmp = (
+    <Button
+      variant="textOnly"
+      as="button"
+      size="sm"
+      onClick={() => handleRemoveFilters()}
+    >
+      Clear all filters
+      <Icon tw="ml-1" size="lg" name="trash-can-xmark" />
+    </Button>
+  );
+
+  if (loading)
+    return (
+      <>
+        <div tw="flex flex-wrap items-start gap-x-2 gap-y-4 mb-4">
+          {Array.from({ length: 12 }).map((_, index) => (
+            <LoadingBlinkBox
+              key={`loading-tag-filter-${index}`}
+              loading={true}
+              loadingHeight="3rem"
+              loadingWidth={`${Math.random() * (11 - 6) + 6}rem`}
+              tw="rounded-xl"
+            />
+          ))}
+        </div>
+        {clearAllFiltersCmp}
+      </>
+    );
 
   return (
     <>
@@ -86,15 +115,7 @@ export const BlogTags = () => {
           );
         })}
       </div>
-      <Button
-        variant="textOnly"
-        as="button"
-        size="sm"
-        onClick={() => handleRemoveFilters()}
-      >
-        Clear all filters
-        <Icon tw="ml-1" size="lg" name="trash-can-xmark" />
-      </Button>
+      {clearAllFiltersCmp}
     </>
   );
 };

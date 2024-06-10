@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import BlogArticleCard from "../BlogArticleCard";
-import { Button } from "@aleph-front/core";
+import { Button, Spinner } from "@aleph-front/core";
 import { AllBlogArticlesProps, Filters } from "./types";
 import { StyledBlogArticlesGrid } from "./styles";
 import { useGetPageCategorization } from "@/hooks/blog/useGetPageCategorization";
@@ -8,6 +8,7 @@ import useFetchBlogArticles from "@/hooks/blog/useFetchBlogArticles";
 import { GetContentOptions } from "@builder.io/sdk";
 import { useSearchParams } from "next/navigation";
 import { DEFAULT_BUILDER_REQUEST_OPTIONS } from "@/constants/blog";
+import { useTheme } from "styled-components";
 
 function buildFilters(searchParams: any, pageCategorization: any): any {
   const queryParams = new URLSearchParams(searchParams);
@@ -45,6 +46,7 @@ export const AllBlogArticles = ({
   articlesLimit,
   customBuilderRequestOptions,
 }: AllBlogArticlesProps) => {
+  const theme: any = useTheme();
   const searchParams = useSearchParams();
   const pageCategorization = useGetPageCategorization();
   const [blogArticles, setBlogArticles] = useState<Set<any>>(new Set());
@@ -172,7 +174,6 @@ export const AllBlogArticles = ({
                 blogArticleUrl={blogArticle.url}
                 size={articleSize}
                 category={blogArticle.category.value.data.name}
-                loading={loading}
               />
             );
           })}
@@ -187,7 +188,11 @@ export const AllBlogArticles = ({
             onClick={handleLoadMore}
             disabled={loading}
           >
-            {loading ? "Loading..." : "Load more"}
+            {loading ? (
+              <Spinner tw="pb-6" color={theme.color.dark1} />
+            ) : (
+              "Load more"
+            )}
           </Button>
         </div>
       )}

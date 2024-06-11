@@ -9,6 +9,7 @@ import { GetContentOptions } from "@builder.io/sdk";
 import { useSearchParams } from "next/navigation";
 import { DEFAULT_BUILDER_REQUEST_OPTIONS } from "@/constants/blog";
 import { useTheme } from "styled-components";
+import { BlogCategoryProps } from "@/types/blog/BlogCategoryProps";
 
 function buildFilters(searchParams: any, pageCategorization: any): any {
   const queryParams = new URLSearchParams(searchParams);
@@ -142,13 +143,6 @@ export const AllBlogArticles = ({
         {Array.from({ length: articlesPerPage }).map((_, index) => (
           <BlogArticleCard
             key={`loading-article-${index}`}
-            title={""}
-            headline={""}
-            description={""}
-            thumbnailImage={""}
-            featureImage={""}
-            blogArticleUrl={""}
-            category={""}
             size={articleSize}
             loading
           />
@@ -173,7 +167,7 @@ export const AllBlogArticles = ({
                 featureImage={blogArticle.featureImage}
                 blogArticleUrl={blogArticle.url}
                 size={articleSize}
-                category={blogArticle.category.value.data.displayName}
+                category={blogArticle.category.value.data as BlogCategoryProps}
               />
             );
           })}

@@ -1,8 +1,15 @@
 import React from "react";
 import { TextProps } from "@/types/TextProps";
 import { calculateResponsiveClassNames } from "@/utils/responsiveClassNames";
-import { StyledText } from "./styles";
+import { StyledLink, StyledText } from "./styles";
 import DOMPurify from "isomorphic-dompurify";
+import { Icon } from "@aleph-front/core";
+import parse, {
+  DOMNode,
+  Element,
+  HTMLReactParserOptions,
+  domToReact,
+} from "html-react-parser";
 
 export const Text = ({
   children,
@@ -18,17 +25,35 @@ export const Text = ({
   ].join(" ");
 
   const sanitizedChildren = DOMPurify.sanitize(children);
-  const modifiedChildren = sanitizedChildren.replaceAll(
-    "<p>",
-    `<p class="${classNames}">`
-  );
+
+  const options: HTMLReactParserOptions = {
+    replace: (domNode) => {
+      const domElement: Element = domNode as Element;
+
+      if (domElement.attribs && domElement.name === "p") {
+        return (
+          <p className={classNames}>
+            {domToReact(domElement.children as DOMNode[], options)}
+          </p>
+        );
+      }
+      if (domElement.attribs && domElement.name === "a") {
+        return (
+          <StyledLink href={domElement.attribs.href}>
+            {domToReact(domElement.children as DOMNode[], options)}
+            <Icon tw="ml-1" name="square-up-right" size="0.75em" />
+          </StyledLink>
+        );
+      }
+    },
+  };
+
+  const parsedChildren = parse(sanitizedChildren, options);
 
   return (
-    <StyledText
-      className={classNames}
-      dangerouslySetInnerHTML={{ __html: modifiedChildren }}
-      {...props}
-    />
+    <StyledText className={classNames} {...props}>
+      {parsedChildren}
+    </StyledText>
   );
 };
 

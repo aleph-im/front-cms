@@ -7,3 +7,8 @@ export const StyledText = styled.p<StyledTextProps>`
     return calculateResponsiveCss(theme, cssEditableProps);
   }}
 `;
+
+export const StyledLink = styled.a`
+  color: ${({ theme }) => theme.color.main0};
+  text-decoration: underline;
+`;

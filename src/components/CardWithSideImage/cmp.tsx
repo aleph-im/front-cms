@@ -18,7 +18,7 @@ export const CardWithSideImage = ({
   );
 
   const cardCmp = (
-    <Col>
+    <Col tw="flex items-center">
       <div className={cardBackgroundColor} tw="p-6">
         {children}
       </div>

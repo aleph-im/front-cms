@@ -173,7 +173,7 @@ export const AllBlogArticles = ({
                 featureImage={blogArticle.featureImage}
                 blogArticleUrl={blogArticle.url}
                 size={articleSize}
-                category={blogArticle.category.value.data.name}
+                category={blogArticle.category.value.data.displayName}
               />
             );
           })}

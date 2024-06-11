@@ -52,7 +52,7 @@ export const BlogArticleCard = ({
             >
               <p
                 className="tp-h6 text-base2"
-                tw="line-clamp-2 whitespace-pre-wrap"
+                tw="line-clamp-3 whitespace-pre-wrap"
               >
                 {title}
               </p>
@@ -117,7 +117,7 @@ export const BlogArticleCard = ({
             >
               <p
                 className="tp-h6 text-base2"
-                tw="line-clamp-2 whitespace-pre-wrap"
+                tw="line-clamp-3 whitespace-pre-wrap"
               >
                 {title}
               </p>
@@ -251,7 +251,7 @@ export const BlogArticleCard = ({
               loadingHeight="6rem"
               loadingWidth="100%"
             >
-              <TextGradient type="h2" tw="line-clamp-2 w-fit">
+              <TextGradient type="h2" tw="line-clamp-3 w-fit">
                 {title}
               </TextGradient>
             </LoadingBlinkBox>

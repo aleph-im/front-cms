@@ -240,6 +240,6 @@ export const TEXT_INPUTS: Input[] = [
     name: "responsiveFontSize",
     klass: "fs",
     value_type: "string",
-    values_enum: ["10", "16", "18", "26", "28"],
+    values_enum: ["10", "12", "14", "16", "18", "24", "28"],
   }),
 ];

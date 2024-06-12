@@ -8,12 +8,5 @@ Builder.registerComponent(withChildren(Box), {
   ...DEFAULT_PROPS,
   name: "Custom Box",
   canHaveChildren: true,
-  inputs: [
-    {
-      name: "backgroundColor",
-      type: "string",
-      enum: BACKGROUND_COLORS,
-    },
-    ...CSS_EDITABLE_INPUTS,
-  ],
+  inputs: [...CSS_EDITABLE_INPUTS],
 });

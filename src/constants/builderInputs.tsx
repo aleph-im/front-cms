@@ -1,5 +1,11 @@
 import { Input } from "@builder.io/sdk";
-import { PERCENTAGE_VALUES, REM_VALUES, TYPO_KIND } from "./builderEnums";
+import {
+  BACKGROUND_COLORS,
+  COLORS,
+  PERCENTAGE_VALUES,
+  REM_VALUES,
+  TYPO_KIND,
+} from "./builderEnums";
 
 const responsiveStyleField = ({
   name,
@@ -125,6 +131,11 @@ export const CSS_EDITABLE_INPUTS: Input[] = [
         enum: Array.from(new Set([...REM_VALUES, ...PERCENTAGE_VALUES])),
       },
     ],
+  },
+  {
+    name: "backgroundColor",
+    type: "string",
+    enum: BACKGROUND_COLORS,
   },
   responsiveStyleField({
     name: "responsiveDisplay",

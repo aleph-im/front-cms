@@ -77,7 +77,7 @@ export const AllBlogArticles = ({
       if (tagsFilters) {
         const { includeIds } = tagsFilters;
         const blogTagsIds: string[] = fetchedBlogArticle.data?.tags?.map(
-          (tagRef: any) => tagRef.tag.value?.data.id
+          (tagRef: any) => tagRef.tag?.value?.data.id
         );
 
         if (includeIds.length !== 0) {
@@ -167,7 +167,9 @@ export const AllBlogArticles = ({
                 featureImage={blogArticle.featureImage}
                 blogArticleUrl={blogArticle.url}
                 size={articleSize}
-                category={blogArticle.category.value.data as BlogCategoryProps}
+                category={
+                  blogArticle.category?.value?.data as BlogCategoryProps
+                }
               />
             );
           })}

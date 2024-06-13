@@ -57,7 +57,7 @@ export const BlogTags = () => {
     );
   }, [searchParams]);
 
-  const clearAllFiltersCmp = (
+  const clearAllFiltersCmp = selectedTags.length > 0 && (
     <Button
       variant="textOnly"
       as="button"

@@ -62,7 +62,7 @@ export const BlogCategories = () => {
     );
   }, [searchParams]);
 
-  const clearAllFiltersCmp = (
+  const clearAllFiltersCmp = selectedCategories.length > 0 && (
     <Button
       variant="textOnly"
       as="button"

@@ -1,7 +1,6 @@
 import { Input } from "@builder.io/sdk";
 import {
   BACKGROUND_COLORS,
-  COLORS,
   PERCENTAGE_VALUES,
   REM_VALUES,
   TYPO_KIND,
@@ -53,15 +52,18 @@ const responsiveClassField = ({
   value_type,
   values_enum,
   advanced = false,
+  friendlyName,
 }: {
   name: string;
   klass: string;
   value_type: string;
   values_enum?: any[];
   advanced?: boolean;
+  friendlyName?: string;
 }) => {
   return {
     name: name,
+    friendlyName: friendlyName,
     type: "list",
     subFields: [
       {
@@ -237,6 +239,7 @@ export const TEXT_INPUTS: Input[] = [
   },
   responsiveClassField({
     name: "responsiveTextType",
+    friendlyName: "Text color",
     klass: "text",
     value_type: "string",
     values_enum: ["main0", "base0", "base1", "base2"],

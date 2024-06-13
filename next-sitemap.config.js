@@ -4,6 +4,7 @@ const config = {
   generateRobotsTxt: true,
   sitemapSize: 1000,
   changefreq: "daily",
+  outDir: "./out",
 };
 
 module.exports = config;

@@ -1,7 +1,49 @@
 import { Builder, withChildren } from "@builder.io/react";
 import { DEFAULT_PROPS } from "@/constants/builderProps";
-import CardWithSideImage from ".";
-import { BACKGROUND_COLORS } from "@/constants/builderEnums";
+import {
+  ALIGN_ITEMS_VALUES,
+  BACKGROUND_COLORS,
+  JUSTIFY_CONTENT_VALUES,
+} from "@/constants/builderEnums";
+import { CardWithSideImage } from "@aleph-front/core";
+type AlignProps =
+  | "normal"
+  | "stretch"
+  | "center"
+  | "start"
+  | "end"
+  | "flex-start"
+  | "flex-end"
+  | "baseline"
+  | "first baseline"
+  | "last baseline"
+  | "safe center"
+  | "unsafe center"
+  | "inherit"
+  | "initial"
+  | "revert"
+  | "revert-layer"
+  | "unset";
+type JustifyProps =
+  | "normal"
+  | "center"
+  | "start"
+  | "end"
+  | "flex-start"
+  | "flex-end"
+  | "left"
+  | "right"
+  | "space-between"
+  | "space-around"
+  | "space-evenly"
+  | "stretch"
+  | "safe center"
+  | "unsafe center"
+  | "inherit"
+  | "initial"
+  | "revert"
+  | "revert-layer"
+  | "unset";
 
 Builder.registerComponent(withChildren(CardWithSideImage), {
   ...DEFAULT_PROPS,
@@ -28,6 +70,30 @@ Builder.registerComponent(withChildren(CardWithSideImage), {
       type: "string",
       enum: ["left", "right"],
       defaultValue: "left",
+    },
+    {
+      name: "alignCard",
+      type: "string",
+      enum: ALIGN_ITEMS_VALUES,
+      defaultValue: "center",
+    },
+    {
+      name: "justifyCard",
+      type: "string",
+      enum: JUSTIFY_CONTENT_VALUES,
+      defaultValue: "center",
+    },
+    {
+      name: "alignImage",
+      type: "string",
+      enum: ALIGN_ITEMS_VALUES,
+      defaultValue: "center",
+    },
+    {
+      name: "justifyImage",
+      type: "string",
+      enum: JUSTIFY_CONTENT_VALUES,
+      defaultValue: "center",
     },
     {
       name: "cardBackgroundColor",

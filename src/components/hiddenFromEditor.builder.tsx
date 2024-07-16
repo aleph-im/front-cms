@@ -1,7 +1,6 @@
 import {
   Builder,
   CustomCode,
-  Embed,
   Form,
   FormInput,
   FormSelect,
@@ -22,7 +21,6 @@ const components = [
   { component: CustomCode, name: "Custom Code" },
   { component: CustomCode, name: "Slot" },
   { component: CustomCode, name: "Video" },
-  { component: Embed, name: "Embed" },
 ];
 
 components.forEach(({ component, name }) => {

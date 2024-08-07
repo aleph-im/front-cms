@@ -29,7 +29,8 @@ export function useFetchBuilderContent({
   const router = useRouter();
 
   const fetchContentFrom = useMemo(() => {
-    const [urlPath, _hash] = router.asPath.split("#") || "/";
+    const [queriedUrlPath, _hash] = router.asPath.split("#") || "/";
+    const [urlPath, _queryParams] = queriedUrlPath.split("?");
 
     const categoryRegex = /^\/blog\/categories\/[^\/]+\/$/;
     const tagRegex = /^\/blog\/tags\/[^\/]+\/$/;

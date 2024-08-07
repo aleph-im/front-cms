@@ -8,7 +8,6 @@ export const StyledHeadline = styled(
 )`
   ${tw`line-clamp-2 whitespace-pre-wrap`}
   ${({ size }) => {
-    console.log(size);
     if (size === "full") return tw`mb-4`;
   }}
 `;

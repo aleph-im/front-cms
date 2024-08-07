@@ -32,8 +32,8 @@ export function useFetchBuilderContent({
     const [queriedUrlPath, _hash] = router.asPath.split("#") || "/";
     const [urlPath, _queryParams] = queriedUrlPath.split("?");
 
-    const categoryRegex = /^\/blog\/categories\/[^\/]+\/$/;
-    const tagRegex = /^\/blog\/tags\/[^\/]+\/$/;
+    const categoryRegex = /^\/blog\/categories\/[^\/]+\/?$/;
+    const tagRegex = /^\/blog\/tags\/[^\/]+\/?$/;
 
     if (categoryRegex.test(urlPath)) return CATEGORY_PAGE_TEMPLATE_PATH;
     else if (tagRegex.test(urlPath)) return TAG_PAGE_TEMPLATE_PATH;

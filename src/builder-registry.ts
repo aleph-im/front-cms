@@ -34,6 +34,7 @@ import "./components/Tag/cmp.builder";
 import "./components/Text/cmp.builder";
 import "./components/TextGradient/cmp.builder";
 import "./components/ThemeBox/cmp.builder";
+import "./components/ToggleContainer/cmp.builder";
 
 import "./components/hiddenFromEditor.builder";
 

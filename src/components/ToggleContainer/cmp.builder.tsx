@@ -9,5 +9,6 @@ Builder.registerComponent(withChildren(ToggleContainer), {
   inputs: [
     ...DEFAULT_PROPS.inputs,
     { name: "title", type: "string", defaultValue: "Toggle Container" },
+    { name: "noisyContainer", type: "boolean", defaultValue: true },
   ],
 });

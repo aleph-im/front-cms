@@ -1,10 +1,32 @@
-import { Icon } from "@aleph-front/core";
+import { Icon, NoisyContainerProps } from "@aleph-front/core";
 import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
-export const StyledToggleContainer = styled.div<{ $height?: string }>`
-  ${tw`transition-all duration-700 overflow-hidden`}
-  height: ${({ $height }) => $height};
+export type StyledContainerProps = {
+  $type?: NoisyContainerProps["type"];
+  $animation?: NoisyContainerProps["animation"];
+};
+
+export const StyledPlainContainer = styled.div<StyledContainerProps>`
+  ${({ theme, $animation = 50000 }) => {
+    const { borderRadius } = theme.component.noisyContainer;
+
+    return css`
+      ${tw`p-6`}
+      border-radius: ${borderRadius}rem;
+
+      &&::after {
+        ${$animation
+          ? css`
+              animation-duration: ${$animation}ms;
+            `
+          : css`
+              animation: none;
+            `}
+      }
+    `;
+  }}
+  ${tw`p-6`}
 `;
 
 export const StyledTitle = styled.p`
@@ -29,4 +51,9 @@ export const StyledIcon = styled(Icon).attrs((props) => {
     transition-duration: ${theme.transition.duration.normal}ms;
     transition-timing-function: ${theme.transition.timing};
   `}
+`;
+
+export const StyledToggleContainer = styled.div<{ $height?: string }>`
+  ${tw`transition-all duration-700 overflow-hidden`}
+  height: ${({ $height }) => $height};
 `;

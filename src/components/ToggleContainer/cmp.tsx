@@ -5,9 +5,12 @@ import {
 import { ToggleContainerProps } from "./types";
 import { memo, useCallback, useState } from "react";
 import { StyledIcon, StyledPlainContainer, StyledTitle } from "./styles";
+import Text from "../Text";
 
 export const ToggleContainer = ({
-  title,
+  titleText,
+  titleClosedStyles,
+  titleOpenedStyles = titleClosedStyles,
   noisyContainer,
   children,
 }: ToggleContainerProps) => {
@@ -19,16 +22,13 @@ export const ToggleContainer = ({
   );
 
   const Container = noisyContainer ? NoisyContainer : StyledPlainContainer;
-
+  const textProps = open ? titleOpenedStyles : titleClosedStyles;
   return (
     <Container>
       <div tw="flex justify-between items-center gap-x-6">
-        <StyledTitle
-          className={"tp-body3 " + (open ? " text-main0" : "text-base2")}
-          onClick={handleClickOpen}
-        >
-          {title}
-        </StyledTitle>
+        <div onClick={handleClickOpen}>
+          <Text {...textProps}>titleText</Text>
+        </div>
         <StyledIcon
           {...{
             $isOpen: open,

@@ -1,6 +1,8 @@
 import { Builder, withChildren } from "@builder.io/react";
-import { DEFAULT_PROPS } from "@/constants/builderProps";
+import { DEFAULT_PROPS, TEXT_PROPS } from "@/constants/builderProps";
 import ToggleContainer from ".";
+import { CSS_EDITABLE_INPUTS_ADVANCED } from "@/constants/builderInputs";
+import { filteredTextInputs } from "../Text/cmp.builder";
 
 Builder.registerComponent(withChildren(ToggleContainer), {
   ...DEFAULT_PROPS,
@@ -8,7 +10,23 @@ Builder.registerComponent(withChildren(ToggleContainer), {
   canHaveChildren: true,
   inputs: [
     ...DEFAULT_PROPS.inputs,
-    { name: "title", type: "string", defaultValue: "Toggle Container" },
     { name: "noisyContainer", type: "boolean", defaultValue: true },
+    {
+      name: "titleText",
+      type: "richText",
+      defaultValue: "Toggle container title",
+    },
+    {
+      name: "titleClosedStyles",
+      friendlyName: "Title styles when closed",
+      type: "object",
+      subFields: [...filteredTextInputs, ...CSS_EDITABLE_INPUTS_ADVANCED],
+    },
+    {
+      name: "titleOpenedStyles",
+      friendlyName: "Title styles when opened",
+      type: "object",
+      subFields: [...filteredTextInputs, ...CSS_EDITABLE_INPUTS_ADVANCED],
+    },
   ],
 });

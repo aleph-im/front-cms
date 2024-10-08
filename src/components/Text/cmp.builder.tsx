@@ -3,7 +3,7 @@ import { TEXT_PROPS } from "@/constants/builderProps";
 import Text from ".";
 import { CSS_EDITABLE_INPUTS_ADVANCED } from "@/constants/builderInputs";
 
-const filteredTextInputs = TEXT_PROPS.inputs.filter((input) => {
+export const filteredTextInputs = TEXT_PROPS.inputs.filter((input) => {
   return input.name !== "children";
 });
 

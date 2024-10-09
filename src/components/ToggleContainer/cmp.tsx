@@ -27,7 +27,7 @@ export const ToggleContainer = ({
     <Container>
       <div tw="flex justify-between items-center gap-x-6">
         <div onClick={handleClickOpen}>
-          <Text {...textProps}>titleText</Text>
+          <Text {...textProps}>{titleText}</Text>
         </div>
         <StyledIcon
           {...{

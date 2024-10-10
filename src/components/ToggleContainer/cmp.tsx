@@ -1,10 +1,7 @@
-import {
-  ToggleContainer as CoreToggleContainer,
-  NoisyContainer,
-} from "@aleph-front/core";
+import { ToggleContainer as CoreToggleContainer } from "@aleph-front/core";
 import { ToggleContainerProps } from "./types";
 import { memo, useCallback, useState } from "react";
-import { StyledIcon, StyledPlainContainer, StyledTitle } from "./styles";
+import { StyledIcon, StyledToggleBar, StyledToggleContainer } from "./styles";
 import Text from "../Text";
 
 export const ToggleContainer = ({
@@ -21,25 +18,17 @@ export const ToggleContainer = ({
     [setOpen]
   );
 
-  const Container = noisyContainer ? NoisyContainer : StyledPlainContainer;
   const textProps = open ? titleOpenedStyles : titleClosedStyles;
   return (
-    <Container>
-      <div tw="flex justify-between items-center gap-x-6">
-        <div onClick={handleClickOpen}>
-          <Text {...textProps}>{titleText}</Text>
-        </div>
-        <StyledIcon
-          {...{
-            $isOpen: open,
-            onClick: handleClickOpen,
-          }}
-        />
-      </div>
+    <StyledToggleContainer noisy={noisyContainer}>
+      <StyledToggleBar onClick={handleClickOpen}>
+        <Text {...textProps}>{titleText}</Text>
+        <StyledIcon $isOpen={open} />
+      </StyledToggleBar>
       <CoreToggleContainer open={open} shouldUnmount={!open}>
-        <div tw="pt-10 pb-6">{children}</div>
+        <div tw="pt-10 p-6">{children}</div>
       </CoreToggleContainer>
-    </Container>
+    </StyledToggleContainer>
   );
 };
 ToggleContainer.displayName = "ToggleContainer";

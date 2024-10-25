@@ -10,6 +10,16 @@ Builder.registerComponent(withChildren(Header), {
   inputs: [
     ...DEFAULT_PROPS.inputs,
     {
+      name: "logoWithText",
+      type: "boolean",
+      defaultValue: true,
+    },
+    {
+      name: "logoImage",
+      type: "string",
+      enum: ["aleph", "twentysix", "accelerator"],
+    },
+    {
       name: "routes",
       type: "list",
       defaultValue: [

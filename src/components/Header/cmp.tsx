@@ -7,7 +7,13 @@ import { useCallback, useState } from "react";
 import { useRouter } from "next/router";
 import { HeaderProps } from "./types";
 
-export const Header = ({ children, routes, breakpoint }: HeaderProps) => {
+export const Header = ({
+  children,
+  routes,
+  breakpoint,
+  logoWithText,
+  logoImage,
+}: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleCloseMenu = useCallback((open: boolean) => setIsOpen(open), []);
 
@@ -24,7 +30,7 @@ export const Header = ({ children, routes, breakpoint }: HeaderProps) => {
         routes={routes}
         logo={
           <Link href="/">
-            <Logo text />
+            <Logo img={logoImage} text={logoWithText} />
           </Link>
         }
       >

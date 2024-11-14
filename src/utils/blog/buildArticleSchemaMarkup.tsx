@@ -22,6 +22,7 @@ export const buildArticleSchemaMarkup = (page: any) => {
 
   const dateModified = formatDate(getField(["lastUpdated"]));
   const datePublished = formatDate(getField(["firstPublished"]));
+  const timeRequired = `PT${getField(["data", "metadata", "timeRequired"])}M`;
 
   return {
     "@context": "https://schema.org",
@@ -34,8 +35,9 @@ export const buildArticleSchemaMarkup = (page: any) => {
     image: getField(["data", "featureImage"]),
     thumbnailUrl: getField(["data", "thumbnailImage"]),
     dateCreated: datePublished,
-    datePublished: datePublished,
-    dateModified: dateModified,
+    datePublished,
+    dateModified,
+    timeRequired,
     author: {
       "@type": typeFromModel(page.data?.metadata?.author?.model),
       ...getField(["data", "metadata", "author", "value", "data"]),

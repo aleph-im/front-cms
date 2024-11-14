@@ -4,46 +4,9 @@ import {
   ALIGN_ITEMS_VALUES,
   BACKGROUND_COLORS,
   JUSTIFY_CONTENT_VALUES,
+  REM_VALUES,
 } from "@/constants/builderEnums";
 import { CardWithSideImage } from "@aleph-front/core";
-type AlignProps =
-  | "normal"
-  | "stretch"
-  | "center"
-  | "start"
-  | "end"
-  | "flex-start"
-  | "flex-end"
-  | "baseline"
-  | "first baseline"
-  | "last baseline"
-  | "safe center"
-  | "unsafe center"
-  | "inherit"
-  | "initial"
-  | "revert"
-  | "revert-layer"
-  | "unset";
-type JustifyProps =
-  | "normal"
-  | "center"
-  | "start"
-  | "end"
-  | "flex-start"
-  | "flex-end"
-  | "left"
-  | "right"
-  | "space-between"
-  | "space-around"
-  | "space-evenly"
-  | "stretch"
-  | "safe center"
-  | "unsafe center"
-  | "inherit"
-  | "initial"
-  | "revert"
-  | "revert-layer"
-  | "unset";
 
 Builder.registerComponent(withChildren(CardWithSideImage), {
   ...DEFAULT_PROPS,
@@ -107,6 +70,19 @@ Builder.registerComponent(withChildren(CardWithSideImage), {
       defaultValue: false,
       helperText:
         "When stacking columns for mobile devices, reverse the ordering",
+    },
+    {
+      name: "cardOccupation",
+      type: "number",
+      defaultValue: 5,
+      helperText:
+        "Set a number from 1 to 9 to define the width of the card in a 10 column grid",
+    },
+    {
+      name: "spaceBetween",
+      friendlyName: "Space between Card and Image",
+      type: "string",
+      enum: REM_VALUES,
     },
   ],
 });

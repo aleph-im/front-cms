@@ -3,7 +3,7 @@ import tw from "twin.macro";
 import { getResponsiveCss } from "@aleph-front/core";
 
 export const StyledDescription = styled.p<{ size: string }>`
-  ${tw`line-clamp-3 whitespace-pre-wrap`}
+  ${tw`line-clamp-5 whitespace-pre-wrap`}
   ${({ size }) => {
     if (size === "lg")
       return css`

@@ -8,23 +8,26 @@ export const StyledTitle = styled(
       case "xl":
         return (
           <TextGradient
-            type="h2"
-            className={`xs:tp-h4 xl:tp-h2 ${styledClassName}`}
+            type="h6"
+            className={`tp-h6 xl:tp-h5 ${styledClassName}`}
           >
             {children}
           </TextGradient>
         );
       case "full":
         return (
-          <TextGradient type="h2" className={styledClassName}>
+          <TextGradient
+            type="h6"
+            className={`tp-h6 xl:tp-h4 ${styledClassName}`}
+          >
             {children}
           </TextGradient>
         );
       case "highlighted":
         return (
           <TextGradient
-            type="h2"
-            className={`tp-h1 lg:tp-header ${styledClassName}`}
+            type="h5"
+            className={`tp-h5 md:tp-h3 ${styledClassName}`}
           >
             {children}
           </TextGradient>
@@ -36,8 +39,8 @@ export const StyledTitle = styled(
     }
   }
 )`
-  ${tw`line-clamp-3 whitespace-pre-wrap w-fit`}
+  ${tw`line-clamp-4 whitespace-pre-wrap w-fit`}
   ${({ size }) => {
-    if (size === "xl" || size == "highlighted") return tw`mb-0`;
+    if (["xl", "full", "highlighted"].includes(size)) return tw`mb-0`;
   }}
 `;

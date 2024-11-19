@@ -6,8 +6,8 @@ export const StyledHeadline = styled(
     return <p className={`tp-h7 text-base2 ${styledClassName}`}>{children}</p>;
   }
 )`
-  ${tw`line-clamp-2 whitespace-pre-wrap`}
+  ${tw`line-clamp-4 whitespace-pre-wrap`}
   ${({ size }) => {
-    if (size === "full") return tw`mb-4`;
+    if (size === "full") return tw`md:mb-4`;
   }}
 `;

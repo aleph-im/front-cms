@@ -41,6 +41,13 @@ export const BlogArticlePublishingInformation = ({
 
   // timeRequired is in ISO 8601 duration format (but only minutes)
   const readableTimeRequired = timeRequired.match(/PT(\d+)M/)?.[1];
+  const readableDatePublished =
+    datePublished &&
+    new Date(datePublished).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
 
   let title;
   let subtitle;
@@ -50,8 +57,8 @@ export const BlogArticlePublishingInformation = ({
       title = author.name;
       subtitle = (
         <>
-          {timeRequired ? `${readableTimeRequired} min. read` : ""}{" "}
-          {datePublished ? `- ${datePublished}` : ""}
+          {readableTimeRequired ? `${readableTimeRequired} min. read` : ""}{" "}
+          {readableDatePublished ? `- ${readableDatePublished}` : ""}
         </>
       );
       break;

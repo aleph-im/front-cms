@@ -39,7 +39,7 @@ export const Text = ({
       }
       if (domElement.attribs && domElement.name === "a") {
         return (
-          <StyledLink href={domElement.attribs.href}>
+          <StyledLink href={domElement.attribs.href} target="_blank">
             {domToReact(domElement.children as DOMNode[], options)}
             <Icon tw="ml-1" name="square-up-right" size="0.75em" />
           </StyledLink>

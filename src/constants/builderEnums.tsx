@@ -1,3 +1,5 @@
+import { IconName } from "@aleph-front/core";
+
 export const TYPO_KIND: string[] = [
   "h1",
   "h2",
@@ -19,6 +21,7 @@ export const TYPO_KIND: string[] = [
   "table",
   "form",
 ];
+
 export const TYPE_ELEMENTS = [
   "h1",
   "h2",
@@ -57,6 +60,45 @@ export const COLORS: string[] = [
   "text",
 ];
 
+export const EFFECTS: string[] = [
+  "",
+  "fx-grain-0",
+  "fx-grain-1",
+  "fx-grain-2",
+  "fx-grain-3",
+  "fx-grain-4",
+  "fx-grain-5",
+  "fx-noise-base",
+  "fx-noise-light",
+  "fx-noise-dark",
+  "fx-noise-base0",
+  "fx-glass-main0",
+  "fx-glass-main1",
+  "fx-glass-main2",
+  "fx-glass-base0",
+  "fx-glass-base1",
+  "fx-glass-base2",
+  "fx-glass-border-main0",
+  "fx-glass-border-main1",
+  "fx-glass-border-main2",
+  "fx-glass-border-base0",
+  "fx-glass-border-base1",
+  "fx-glass-border-base2",
+  "fx-glass-colored0",
+  "fx-glow-hover-main0",
+  "fx-glow-hover-main1",
+  "fx-glow-hover-main2",
+  "fx-glow-min-main0",
+  "fx-glow-min-main1",
+  "fx-glow-min-main2",
+  "fx-glow-max-main0",
+  "fx-glow-max-main1",
+  "fx-glow-max-main2",
+  "fx-glow-max-extra0",
+  "fx-glow-max-extra1",
+  "fx-dark-main0",
+];
+
 export const BACKGROUND_COLORS: string[] = [
   "bg-none",
   "bg-white",
@@ -66,19 +108,7 @@ export const BACKGROUND_COLORS: string[] = [
   "bg-base2",
   "bg-main0",
   "bg-main1",
-];
-
-export const EFFECTS: string[] = [
-  "",
-  "fx-grain-1",
-  "fx-grain-2",
-  "fx-grain-3",
-  "fx-grain-4",
-  "fx-grain-5",
-  "fx-noise-light",
-  "fx-noise-dark",
-  "fx-noise-base0",
-  "fx-glass-base0",
+  ...EFFECTS,
 ];
 
 export const ICONS = [

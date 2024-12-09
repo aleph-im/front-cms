@@ -18,9 +18,11 @@ jobs:
           - site: "twentysix-website"
             key: "fd4e1a4bdbc240f0b17c0e77aee16d01"
             siteHomeUrl: "https://twentysix.cloud/"
+            theme: "twentysix"
           - site: "aleph-website"
             key: "5729da240c404db0a5adeed7b8d8ae9f"
             siteHomeUrl: "https://aleph.im/"
+            theme: "aleph"
     steps:
       - uses: actions/checkout@v3
 
@@ -32,7 +34,8 @@ jobs:
         env:
           FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
           NEXT_PUBLIC_BUILDER_API_KEY: ${{ matrix.key }}
-          SITE_HOME_URL: ${{ matrix.siteHomeUrl }}
+          NEXT_PUBLIC_THEME: ${{ matrix.theme }}
+          NEXT_PUBLIC_SITE_HOME_URL: ${{ matrix.siteHomeUrl }}
         run: |
           npm config set "@fortawesome:registry" https://npm.fontawesome.com/
           npm config set "//npm.fontawesome.com/:_authToken" FONTAWESOME_NPM_AUTH_TOKEN

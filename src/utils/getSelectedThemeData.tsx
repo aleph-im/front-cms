@@ -1,10 +1,10 @@
 import { themes } from "@aleph-front/core";
 
-const DEFAULT_THEME = "twentysix";
-
 export const getSelectedThemeData = (page?: any) => {
-  const selectedThemeName: keyof typeof themes =
-    page?.data?.theme || DEFAULT_THEME;
+  const themeName = process.env.NEXT_PUBLIC_THEME as keyof typeof themes;
 
-  return { selectedThemeName, selectedTheme: themes[selectedThemeName] };
+  return {
+    selectedThemeName: themeName,
+    selectedTheme: themes[themeName],
+  };
 };

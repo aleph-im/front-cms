@@ -10,8 +10,14 @@ export const FeatureImage = ({
 }) => {
   return (
     <LoadingBlinkBox loading={loading} loadingHeight="100%" loadingWidth="100%">
-      <div tw="relative w-full h-full flex justify-center">
-        <Image src={src} alt="Feature Image" fill />
+      <div tw="relative w-auto h-full flex items-center justify-center">
+        <Image
+          src={src}
+          alt="Feature Image"
+          height={0}
+          width={0}
+          tw="relative! w-auto h-auto max-w-full max-h-full"
+        />
       </div>
     </LoadingBlinkBox>
   );

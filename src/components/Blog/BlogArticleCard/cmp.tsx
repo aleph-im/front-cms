@@ -39,7 +39,7 @@ export const BlogArticleCard = ({
                   <Headline size={size} loading={loading}>
                     {headline}
                   </Headline>
-                  <div tw="lg:hidden w-full h-96 mb-12">
+                  <div tw="lg:hidden w-full mb-8 mt-4">
                     <FeatureImage src={featureImage} loading={loading} />
                   </div>
                   <Description size={size} loading={loading}>
@@ -76,7 +76,7 @@ export const BlogArticleCard = ({
                   {headline}
                 </Headline>
               </div>
-              <div tw="lg:hidden w-full h-96 mb-12">
+              <div tw="lg:hidden w-full mb-8 mt-4">
                 <FeatureImage src={featureImage} loading={loading} />
               </div>
               <div tw="flex flex-col justify-between gap-6">

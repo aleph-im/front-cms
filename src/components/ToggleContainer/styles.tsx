@@ -4,12 +4,16 @@ import tw from "twin.macro";
 
 export type StyledToggleContainerProps = {
   $animation?: NoisyContainerProps["animation"];
-  noisy?: boolean;
+  $backgroundColor?: string;
 };
 
 export const StyledToggleContainer = styled.div.attrs<StyledToggleContainerProps>(
-  ({ noisy, ...props }) => {
-    return noisy ? addClasses("fx-grain-3")(props) : props;
+  ({ theme, $backgroundColor, ...props }) => {
+    return $backgroundColor
+      ? addClasses($backgroundColor)(props)
+      : theme.name === "twentysix"
+      ? addClasses("fx-grain-3")(props)
+      : addClasses("fx-glass-main0")(props);
   }
 )<StyledToggleContainerProps>`
   ${({ theme, $animation = 50000 }) => {
@@ -46,7 +50,7 @@ export const StyledIcon = styled(Icon).attrs((props) => {
     ${tw`p-1 cursor-pointer`}
     width: 1em;
     background-color: ${theme.color.text};
-    color: ${theme.color.purple2};
+    color: ${theme.color.base1};
     transform: rotate(${$isOpen ? 180 : 0}deg);
 
     transition-property: opacity, visibility, transform;

@@ -3,6 +3,7 @@ import { DEFAULT_PROPS, TEXT_PROPS } from "@/constants/builderProps";
 import ToggleContainer from ".";
 import { CSS_EDITABLE_INPUTS_ADVANCED } from "@/constants/builderInputs";
 import { filteredTextInputs } from "../Text/cmp.builder";
+import { BACKGROUND_COLORS } from "@/constants/builderEnums";
 
 Builder.registerComponent(withChildren(ToggleContainer), {
   ...DEFAULT_PROPS,
@@ -10,7 +11,11 @@ Builder.registerComponent(withChildren(ToggleContainer), {
   canHaveChildren: true,
   inputs: [
     ...DEFAULT_PROPS.inputs,
-    { name: "noisyContainer", type: "boolean", defaultValue: true },
+    {
+      name: "backgroundColor",
+      type: "string",
+      enum: BACKGROUND_COLORS,
+    },
     {
       name: "titleText",
       type: "richText",

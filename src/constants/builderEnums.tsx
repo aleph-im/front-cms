@@ -61,7 +61,6 @@ export const COLORS: string[] = [
 ];
 
 export const EFFECTS: string[] = [
-  "",
   "fx-grain-0",
   "fx-grain-1",
   "fx-grain-2",
@@ -134,7 +133,6 @@ export const ICONS = [
 ];
 
 export const REM_VALUES = [
-  "",
   "auto",
   "0",
   "0.25rem",
@@ -178,7 +176,6 @@ export const REM_VALUES = [
 ];
 
 export const PERCENTAGE_VALUES = [
-  "",
   "auto",
   "0",
   "5%",

@@ -5,6 +5,6 @@ export type ToggleContainerProps = {
   titleText: string;
   titleClosedStyles: TextProps;
   titleOpenedStyles?: TextProps;
-  noisyContainer?: boolean;
+  backgroundColor?: string;
   children: ReactNode;
 };

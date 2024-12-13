@@ -8,7 +8,7 @@ export const ToggleContainer = ({
   titleText,
   titleClosedStyles,
   titleOpenedStyles = titleClosedStyles,
-  noisyContainer,
+  backgroundColor,
   children,
 }: ToggleContainerProps) => {
   const [open, setOpen] = useState(false);
@@ -20,7 +20,7 @@ export const ToggleContainer = ({
 
   const textProps = open ? titleOpenedStyles : titleClosedStyles;
   return (
-    <StyledToggleContainer noisy={noisyContainer}>
+    <StyledToggleContainer $backgroundColor={backgroundColor}>
       <StyledToggleBar onClick={handleClickOpen}>
         <Text {...textProps}>{titleText}</Text>
         <StyledIcon $isOpen={open} />

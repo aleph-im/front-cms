@@ -8,5 +8,13 @@ Builder.registerComponent(withChildren(Box), {
   ...DEFAULT_PROPS,
   name: "Custom Box",
   canHaveChildren: true,
-  inputs: [...CSS_EDITABLE_INPUTS],
+  inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Custom Box",
+      enum: ["Custom Box"],
+    },
+    ...CSS_EDITABLE_INPUTS,
+  ],
 });

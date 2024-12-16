@@ -7,5 +7,14 @@ Builder.registerComponent(withChildren(Tag), {
   ...DEFAULT_PROPS,
   name: "Tag",
   canHaveChildren: true,
-  inputs: [...DEFAULT_PROPS.inputs, ...CSS_EDITABLE_INPUTS_ADVANCED],
+  inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Tag",
+      enum: ["Tag"],
+    },
+    ...DEFAULT_PROPS.inputs,
+    ...CSS_EDITABLE_INPUTS_ADVANCED,
+  ],
 });

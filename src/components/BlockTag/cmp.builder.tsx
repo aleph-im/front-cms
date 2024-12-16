@@ -7,6 +7,12 @@ Builder.registerComponent(BlockTag, {
   name: "Block Tag",
   noWrap: true,
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Block Tag",
+      enum: ["Block Tag"],
+    },
     ...DEFAULT_PROPS.inputs,
     {
       name: "title",

@@ -8,6 +8,12 @@ Builder.registerComponent(Breadcrumb, {
   ...DEFAULT_PROPS,
   name: "Breadcrumb",
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Breadcrumb",
+      enum: ["Breadcrumb"],
+    },
     ...DEFAULT_PROPS.inputs,
     {
       name: "navLinks",

@@ -10,6 +10,12 @@ Builder.registerComponent(Image, {
   noWrap: true,
   inputs: [
     {
+      name: "component",
+      type: "string",
+      defaultValue: "Image",
+      enum: ["Image"],
+    },
+    {
       name: "src",
       type: "file",
       bubble: true,

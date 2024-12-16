@@ -8,6 +8,12 @@ Builder.registerComponent(withChildren(Header), {
   canHaveChildren: true,
   noWrap: true,
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Header",
+      enum: ["Header"],
+    },
     ...DEFAULT_PROPS.inputs,
     {
       name: "logoWithText",

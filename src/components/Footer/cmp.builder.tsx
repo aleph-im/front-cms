@@ -6,6 +6,12 @@ Builder.registerComponent(Footer, {
   ...DEFAULT_PROPS,
   name: "Footer",
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Footer",
+      enum: ["Footer"],
+    },
     ...DEFAULT_PROPS.inputs,
     {
       name: "buttons",

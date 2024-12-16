@@ -6,6 +6,12 @@ Builder.registerComponent(BulletList, {
   ...DEFAULT_PROPS,
   name: "Bullet list",
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Bullet list",
+      enum: ["Bullet list"],
+    },
     ...DEFAULT_PROPS.inputs,
     {
       name: "size",

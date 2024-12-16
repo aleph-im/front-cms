@@ -8,6 +8,12 @@ Builder.registerComponent(withChildren(ThemeBox), {
   canHaveChildren: true,
   noWrap: true,
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Theme Box",
+      enum: ["Theme Box"],
+    },
     ...DEFAULT_PROPS.inputs,
     {
       name: "theme",

@@ -10,6 +10,12 @@ Builder.registerComponent(withChildren(ToggleContainer), {
   name: "Toggle Container",
   canHaveChildren: true,
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Toggle Container",
+      enum: ["Toggle Container"],
+    },
     ...DEFAULT_PROPS.inputs,
     {
       name: "backgroundColor",

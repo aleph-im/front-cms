@@ -11,6 +11,12 @@ Builder.registerComponent(withChildren(Section), {
   canHaveChildren: true,
   inputs: [
     {
+      name: "component",
+      type: "string",
+      defaultValue: "Section",
+      enum: ["Section"],
+    },
+    {
       name: "effects",
       type: "string",
       enum: EFFECTS,

@@ -10,6 +10,12 @@ Builder.registerComponent(withChildren(Button), {
   canHaveChildren: true,
   noWrap: true,
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Button",
+      enum: ["Button"],
+    },
     ...DEFAULT_PROPS.inputs,
     {
       name: "children",

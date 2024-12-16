@@ -12,6 +12,12 @@ Builder.registerComponent(withChildren(Text), {
   name: "Text",
   inputs: [
     {
+      name: "component",
+      type: "string",
+      defaultValue: "Text",
+      enum: ["Text"],
+    },
+    {
       name: "children",
       friendlyName: "Text content",
       type: "richText",

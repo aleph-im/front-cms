@@ -8,6 +8,12 @@ Builder.registerComponent(withChildren(H1), {
   ...TEXT_PROPS,
   name: "H1",
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "H1",
+      enum: ["H1"],
+    },
     ...TEXT_PROPS.inputs,
     {
       name: "color",

@@ -9,6 +9,12 @@ Builder.registerComponent(withChildren(Icon), {
   name: "Icon",
   canHaveChildren: true,
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Icon",
+      enum: ["Icon"],
+    },
     ...DEFAULT_PROPS.inputs,
     {
       name: "name",

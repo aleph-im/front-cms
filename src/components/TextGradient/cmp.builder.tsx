@@ -8,6 +8,12 @@ Builder.registerComponent(withChildren(TextGradient), {
   ...TEXT_PROPS,
   name: "TextGradient",
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Text Gradient",
+      enum: ["Text Gradient"],
+    },
     ...TEXT_PROPS.inputs,
     {
       name: "color",

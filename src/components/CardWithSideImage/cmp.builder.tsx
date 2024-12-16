@@ -13,6 +13,12 @@ Builder.registerComponent(withChildren(CardWithSideImage), {
   name: "CardWithSideImage",
   canHaveChildren: true,
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Card With Side Image",
+      enum: ["Card With Side Image"],
+    },
     ...DEFAULT_PROPS.inputs,
     {
       name: "imageSrc",

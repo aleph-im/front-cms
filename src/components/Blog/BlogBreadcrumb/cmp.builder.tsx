@@ -8,5 +8,14 @@ Builder.registerComponent(BlogBreadcrumb, {
   name: "Blog - Breadcrumb",
   image:
     "https://cdn.builder.io/api/v1/image/assets%2Fd72545ec06f647d993e1349bf57ebd7f%2Ffd9c99abfd534bbf9ebc839eed5acfd1",
-  inputs: [...DEFAULT_PROPS.inputs, ...CSS_EDITABLE_INPUTS_ADVANCED],
+  inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Blog - Breadcrumb",
+      enum: ["Blog - Breadcrumb"],
+    },
+    ...DEFAULT_PROPS.inputs,
+    ...CSS_EDITABLE_INPUTS_ADVANCED,
+  ],
 });

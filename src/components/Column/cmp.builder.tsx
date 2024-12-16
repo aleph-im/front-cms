@@ -10,6 +10,12 @@ Builder.registerComponent(withChildren(Column), {
   canHaveChildren: true,
   noWrap: true,
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Column",
+      enum: ["Column"],
+    },
     ...DEFAULT_PROPS.inputs,
     {
       name: "span",

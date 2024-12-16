@@ -6,6 +6,12 @@ Builder.registerComponent(ObjectImg, {
   ...DEFAULT_PROPS,
   name: "Object Image",
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Object Image",
+      enum: ["Object Image"],
+    },
     ...DEFAULT_PROPS.inputs,
     {
       name: "id",

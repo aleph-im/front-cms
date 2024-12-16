@@ -7,5 +7,13 @@ Builder.registerComponent(withChildren(Container), {
   ...DEFAULT_PROPS,
   name: "Container",
   canHaveChildren: true,
-  inputs: [...CSS_EDITABLE_INPUTS],
+  inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Container",
+      enum: ["Container"],
+    },
+    ...CSS_EDITABLE_INPUTS,
+  ],
 });

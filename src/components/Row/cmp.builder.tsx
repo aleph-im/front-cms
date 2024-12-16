@@ -9,6 +9,12 @@ Builder.registerComponent(withChildren(Row), {
   name: "Row",
   canHaveChildren: true,
   inputs: [
+    {
+      name: "component",
+      type: "string",
+      defaultValue: "Row",
+      enum: ["Row"],
+    },
     ...DEFAULT_PROPS.inputs,
     {
       name: "count",

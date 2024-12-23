@@ -1,6 +1,7 @@
 import { Input } from "@builder.io/sdk";
 import {
   BACKGROUND_COLORS,
+  COLORS,
   PERCENTAGE_VALUES,
   REM_VALUES,
   TYPO_KIND,
@@ -8,19 +9,24 @@ import {
 
 const responsiveStyleField = ({
   name,
+  friendlyName,
   style,
   value_type,
   values_enum,
   advanced = true,
+  useThemeColor = false,
 }: {
   name: string;
+  friendlyName?: string;
   style: string;
   value_type: string;
   values_enum?: any[];
   advanced?: boolean;
+  useThemeColor?: boolean;
 }) => {
   return {
     name: name,
+    friendlyName: friendlyName,
     type: "list",
     subFields: [
       {
@@ -40,6 +46,12 @@ const responsiveStyleField = ({
         type: value_type,
         required: true,
         enum: values_enum,
+      },
+      {
+        name: "useThemeColor",
+        type: "boolean",
+        defaultValue: useThemeColor,
+        hideFromUI: true,
       },
     ],
     advanced: advanced,
@@ -221,6 +233,54 @@ export const CSS_EDITABLE_INPUTS: Input[] = [
       "1",
     ],
   }),
+  {
+    name: "responsiveBorder",
+    type: "object",
+    subFields: [
+      responsiveStyleField({
+        name: "responsiveBorderStyle",
+        friendlyName: "Border style",
+        style: "border-style",
+        value_type: "string",
+        values_enum: [
+          "solid",
+          "dashed",
+          "dotted",
+          "double",
+          "groove",
+          "ridge",
+          "inset",
+          "outset",
+        ],
+        advanced: false,
+      }),
+      responsiveStyleField({
+        name: "responsiveBorderWidth",
+        friendlyName: "Border width",
+        style: "border-width",
+        value_type: "string",
+        values_enum: REM_VALUES,
+        advanced: false,
+      }),
+      responsiveStyleField({
+        name: "responsiveBorderColor",
+        friendlyName: "Border color",
+        style: "border-color",
+        value_type: "string",
+        values_enum: COLORS,
+        useThemeColor: true,
+        advanced: false,
+      }),
+      responsiveStyleField({
+        name: "responsiveBorderRadius",
+        friendlyName: "Border radius",
+        style: "border-radius",
+        value_type: "string",
+        values_enum: REM_VALUES,
+        advanced: false,
+      }),
+    ],
+  },
 ];
 
 export const CSS_EDITABLE_INPUTS_ADVANCED = CSS_EDITABLE_INPUTS.map(

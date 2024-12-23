@@ -1,9 +1,10 @@
-import { DefaultTheme, css } from "styled-components";
+import { css } from "styled-components";
 import { CssEditableProps } from "@/types/CssEditableProps";
-import { getResponsiveCss } from "@aleph-front/core";
+import { CoreTheme, getResponsiveCss } from "@aleph-front/core";
 import { StyleBreakpoint } from "@/types/breakpoints";
 
 const calculateFlex = (
+  theme: CoreTheme,
   display: StyleBreakpoint[],
   direction: StyleBreakpoint[],
   alignItems: StyleBreakpoint[],
@@ -11,7 +12,7 @@ const calculateFlex = (
   flexBasis: StyleBreakpoint[]
 ) => {
   if (display?.length > 0) {
-    return calculateResponsiveStyles(display);
+    return calculateResponsiveStyles(theme, display);
   } else if (
     direction?.length > 0 ||
     alignItems?.length > 0 ||
@@ -26,16 +27,46 @@ const calculateFlex = (
   return "";
 };
 
-const calculateResponsiveStyles = (styleBreakpoints?: StyleBreakpoint[]) => {
+const calculateBorder = (
+  theme: CoreTheme,
+  responsiveBorder?: {
+    responsiveBorderStyle: StyleBreakpoint[];
+    responsiveBorderWidth: StyleBreakpoint[];
+    responsiveBorderColor: StyleBreakpoint[];
+    responsiveBorderRadius: StyleBreakpoint[];
+  }
+) => {
+  if (!responsiveBorder) return "";
+  const {
+    responsiveBorderStyle,
+    responsiveBorderWidth,
+    responsiveBorderColor,
+    responsiveBorderRadius,
+  } = responsiveBorder;
+
+  return css`
+    ${calculateResponsiveStyles(theme, responsiveBorderStyle)}
+    ${calculateResponsiveStyles(theme, responsiveBorderWidth)}
+    ${calculateResponsiveStyles(theme, responsiveBorderColor)}
+    ${calculateResponsiveStyles(theme, responsiveBorderRadius)}
+  `;
+};
+
+const calculateResponsiveStyles = (
+  theme: CoreTheme,
+  styleBreakpoints?: StyleBreakpoint[]
+) => {
   return styleBreakpoints?.map(
-    ({ breakpoint, style, value }: StyleBreakpoint) => {
-      return getResponsiveCss(breakpoint, `${style}: ${value};`);
+    ({ breakpoint, style, value, useThemeColor }: StyleBreakpoint) => {
+      const styleValue = useThemeColor ? theme.color[value] : value;
+
+      return getResponsiveCss(breakpoint, `${style}: ${styleValue};`);
     }
   );
 };
 
 export const calculateResponsiveCss = (
-  _theme: DefaultTheme,
+  theme: CoreTheme,
   {
     responsiveDisplay,
     responsiveOpacity,
@@ -48,25 +79,28 @@ export const calculateResponsiveCss = (
     responsiveFlexBasis,
     responsivePosition,
     responsiveStyles,
+    responsiveBorder,
   }: CssEditableProps
 ) => {
   return css`
     ${calculateFlex(
+      theme,
       responsiveDisplay,
       responsiveDirection,
       responsiveAlignItems,
       responsiveJustifyContent,
       responsiveFlexBasis
     )}
-    ${calculateResponsiveStyles(responsivePosition)}
-    ${calculateResponsiveStyles(responsiveDirection)}
-    ${calculateResponsiveStyles(responsiveAlignItems)}
-    ${calculateResponsiveStyles(responsiveJustifyContent)}
-    ${calculateResponsiveStyles(responsiveAlignSelf)}
-    ${calculateResponsiveStyles(responsiveTextAlign)}
-    ${calculateResponsiveStyles(responsiveFlexBasis)}
-    ${calculateResponsiveStyles(responsiveWrap)}
-    ${calculateResponsiveStyles(responsiveOpacity)}
-    ${calculateResponsiveStyles(responsiveStyles)}
+    ${calculateBorder(theme, responsiveBorder)}
+    ${calculateResponsiveStyles(theme, responsivePosition)}
+    ${calculateResponsiveStyles(theme, responsiveDirection)}
+    ${calculateResponsiveStyles(theme, responsiveAlignItems)}
+    ${calculateResponsiveStyles(theme, responsiveJustifyContent)}
+    ${calculateResponsiveStyles(theme, responsiveAlignSelf)}
+    ${calculateResponsiveStyles(theme, responsiveTextAlign)}
+    ${calculateResponsiveStyles(theme, responsiveFlexBasis)}
+    ${calculateResponsiveStyles(theme, responsiveWrap)}
+    ${calculateResponsiveStyles(theme, responsiveOpacity)}
+    ${calculateResponsiveStyles(theme, responsiveStyles)}
   `;
 };

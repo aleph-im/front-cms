@@ -10,4 +10,5 @@ export type StyleBreakpoint = {
   breakpoint?: BreakpointId;
   style: string;
   value: string;
+  useThemeColor?: boolean;
 };

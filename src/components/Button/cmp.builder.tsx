@@ -32,7 +32,8 @@ Builder.registerComponent(withChildren(Button), {
       name: "forwardedAs",
       friendlyName: "Tag as",
       type: "string",
-      enum: ["button", "a"],
+      enum: ["a"],
+      defaultValue: "a",
     },
     {
       name: "target",
@@ -75,6 +76,15 @@ Builder.registerComponent(withChildren(Button), {
       type: "string",
       enum: ["left", "right"],
       defaultValue: "right",
+    },
+    {
+      name: "animation",
+      type: "string",
+      enum: [
+        "icon-to-right-on-hover",
+        "icon-to-top-right-on-hover",
+        "icon-to-top-on-hover",
+      ],
     },
     {
       name: "disabled",

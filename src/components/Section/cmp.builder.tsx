@@ -25,6 +25,6 @@ Builder.registerComponent(withChildren(Section), {
       name: "id",
       type: "string",
     },
-    ...CSS_EDITABLE_INPUTS,
+    ...CSS_EDITABLE_INPUTS.filter((input) => input.name !== "backgroundColor"),
   ],
 });

@@ -3,9 +3,7 @@
 import React from "react";
 import { BoxProps } from "./types";
 import { StyledBox } from "./styles";
-
-const generateClassNames = ({ backgroundColor }: any) =>
-  [backgroundColor].filter(Boolean).join(" ");
+import { generateClassNames } from "@/utils/generateClassNames";
 
 export const Box = ({ children, ...props }: BoxProps) => {
   const classNames = generateClassNames(props);

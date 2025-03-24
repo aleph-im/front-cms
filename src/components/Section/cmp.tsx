@@ -3,13 +3,14 @@
 import React from "react";
 import { SectionProps } from "./types";
 import { StyledSection } from "./styles";
+import { generateClassNames } from "@/utils/generateClassNames";
 
 export const Section = ({ children, effects, id, ...props }: SectionProps) => {
-  const calculatedClassName = [`${effects || ""}`].join(" ");
+  const classNames = generateClassNames(props);
 
   return (
     <StyledSection
-      className={calculatedClassName}
+      className={classNames}
       id={id ? `scroll-${id}` : undefined}
       {...props}
     >

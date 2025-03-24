@@ -1,5 +1,3 @@
-import { IconName } from "@aleph-front/core";
-
 export const TYPO_KIND: string[] = [
   "h1",
   "h2",

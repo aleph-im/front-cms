@@ -11,13 +11,17 @@ export const Header = ({
   children,
   routes,
   breakpoint,
-  logoWithText,
+  logoWithText = true,
   logoImage,
+  logoText,
+  logoByAleph = false,
 }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleCloseMenu = useCallback((open: boolean) => setIsOpen(open), []);
 
   const router = useRouter();
+
+  const text = logoWithText ? logoText ?? logoWithText : undefined
 
   return (
     <StyledHeader>
@@ -30,7 +34,7 @@ export const Header = ({
         routes={routes}
         logo={
           <Link href="/">
-            <Logo img={logoImage} text={logoWithText} />
+            <Logo img={logoImage} text={text} byAleph={logoByAleph}/>
           </Link>
         }
       >

@@ -7,6 +7,8 @@ export type HeaderProps = HTMLAttributes<HTMLHeadingElement> & {
   breakpoint: BreakpointId;
   logoImage: LogoProps["img"];
   logoWithText: boolean;
+  logoText?: string;
+  logoByAleph?: boolean;
 };
 
 type HeaderRoutes = {

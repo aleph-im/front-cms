@@ -21,6 +21,15 @@ Builder.registerComponent(withChildren(Header), {
       defaultValue: true,
     },
     {
+      name: "logoText",
+      type: "string",
+    },
+    {
+      name: "logoByAleph",
+      type: "boolean",
+      defaultValue: false,
+    },
+    {
       name: "logoImage",
       type: "string",
       enum: ["aleph", "twentysix", "accelerator"],

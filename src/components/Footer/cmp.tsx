@@ -10,6 +10,8 @@ export const Footer = ({
   links,
   logo,
 }: FooterProps) => {
+  const { byAleph = false, href, img, text } = logo || {};
+
   return (
     <BaseFooter
       Link={Link as LinkComponent}
@@ -18,11 +20,10 @@ export const Footer = ({
       media={media}
       mainLinks={mainLinks}
       links={links}
-
-      logoByAleph={logo?.byAleph}
-      logoHref={logo?.href}
-      logoImg={logo?.img}
-      logoText={logo?.text}
+      logoByAleph={byAleph}
+      logoHref={href}
+      logoImg={img}
+      logoText={text}
     />
   );
 };

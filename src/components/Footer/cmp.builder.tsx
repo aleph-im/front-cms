@@ -14,6 +14,34 @@ Builder.registerComponent(Footer, {
     },
     ...DEFAULT_PROPS.inputs,
     {
+      name: "logo",
+      type: "object",
+      subFields: [
+        {
+          name: "byAleph",
+          type: "boolean",
+        },
+        {
+          name: "href",
+          type: "string",
+        },
+        {
+          name: "img",
+          type: "string",
+          enum: ["aleph", "twentysix", "accelerator"],
+        },
+        {
+          name: "text",
+          type: "string",
+        },
+      ],
+    },
+    {
+      name: "small",
+      type: "boolean",
+      defaultValue: false,
+    },
+    {
       name: "buttons",
       type: "list",
       required: true,

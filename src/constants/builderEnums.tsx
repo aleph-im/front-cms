@@ -46,6 +46,11 @@ export const COLORS: string[] = [
   "base2",
   "main0",
   "main1",
+  "purple0",
+  "purple1",
+  "purple2",
+  "purple3",
+  "purple4",
   "info",
   "success",
   "warning",
@@ -98,13 +103,7 @@ export const EFFECTS: string[] = [
 
 export const BACKGROUND_COLORS: string[] = [
   "bg-none",
-  "bg-white",
-  "bg-black",
-  "bg-base0",
-  "bg-base1",
-  "bg-base2",
-  "bg-main0",
-  "bg-main1",
+  ...COLORS.map((color) => `bg-${color}`),
   ...EFFECTS,
 ];
 

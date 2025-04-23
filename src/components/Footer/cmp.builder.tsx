@@ -110,7 +110,7 @@ Builder.registerComponent(Footer, {
         {
           name: "icon",
           type: "string",
-          enum: ["x", "telegram", "medium", "linkedin", "github"],
+          enum: ["x", "telegram", "medium", "linkedin", "github", "discord", "youtube", "discord"],
         },
         {
           name: "label",

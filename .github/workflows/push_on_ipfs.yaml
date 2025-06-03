@@ -17,12 +17,8 @@ jobs:
         include:
           - site: "twentysix-website"
             key: "fd4e1a4bdbc240f0b17c0e77aee16d01"
-            siteHomeUrl: "https://twentysix.cloud/"
+            siteHomeUrl: "https://aleph.cloud/"
             theme: "twentysix"
-          - site: "aleph-website"
-            key: "5729da240c404db0a5adeed7b8d8ae9f"
-            siteHomeUrl: "https://aleph.im/"
-            theme: "aleph"
     steps:
       - uses: actions/checkout@v3
 

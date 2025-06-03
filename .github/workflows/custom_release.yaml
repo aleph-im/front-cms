@@ -1,0 +1,28 @@
+name: Custom Release
+description: Build and push to IPFS without a version bump
+
+on:
+  push:
+    branches:
+      - release/**
+  workflow_dispatch: {}
+
+jobs:
+  push-to-ipfs:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build and Export
+        uses: aleph-im/aleph-github-actions/build-nextjs-app@v1
+        env:
+          FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
+          NEXT_PUBLIC_BUILDER_API_KEY: ${{ secrets.BUILDER_API_KEY }}
+          NEXT_PUBLIC_THEME: "twentysix"
+          NEXT_PUBLIC_SITE_HOME_URL: "https://aleph.cloud/"
+
+      - name: Push to IPFS
+        uses: aleph-im/aleph-github-actions/push-to-ipfs@v1
+        with:
+          upload-dir: out

@@ -170,7 +170,7 @@ Builder.registerComponent(Footer, {
           links: [
             {
               label: "Computing",
-              href: "https://console.twentysix.cloud/computing/function/new/",
+              href: "https://app.aleph.cloud/console/computing/function/new/",
               target: "_blank",
             },
           ],

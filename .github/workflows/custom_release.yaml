@@ -24,6 +24,6 @@ jobs:
           NEXT_PUBLIC_SITE_HOME_URL: "https://aleph.cloud/"
 
       - name: Push to IPFS
-        uses: aleph-im/aleph-github-actions/push-to-ipfs@v1.1.1
+        uses: aleph-im/aleph-github-actions/push-to-ipfs@v1.2.0
         with:
           upload-dir: out

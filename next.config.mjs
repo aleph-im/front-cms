@@ -4,11 +4,14 @@ import macros from "babel-plugin-macros";
 import styledComponents from "babel-plugin-styled-components";
 import syntaxTypescript from "@babel/plugin-syntax-typescript";
 
+// default to true when unset
+const shouldExport = process.env.NEXTJS_EXPORT !== "false";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = BuilderDevTools()(
   BuilderDevTools()({
     reactStrictMode: true,
-    output: "export",
+    output: shouldExport ? "export" : undefined,
     images: {
       unoptimized: true,
     },

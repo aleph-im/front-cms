@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       release-type:
-        description: 'Type of version bump'
+        description: "Type of version bump"
         required: true
         default: patch
         type: choice
@@ -60,8 +60,9 @@ jobs:
 
       - name: Build and Export
         uses: aleph-im/aleph-github-actions/build-nextjs-app@v1
+        with:
+          fa-token: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
         env:
-          FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
           NEXT_PUBLIC_BUILDER_API_KEY: ${{ secrets.BUILDER_API_KEY }}
           NEXT_PUBLIC_THEME: "twentysix"
           NEXT_PUBLIC_SITE_HOME_URL: "https://aleph.cloud/"

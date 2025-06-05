@@ -302,7 +302,7 @@ export const TEXT_INPUTS: Input[] = [
     friendlyName: "Text color",
     klass: "text",
     value_type: "string",
-    values_enum: ["main0", "base0", "base1", "base2"],
+    values_enum: COLORS,
   }),
   responsiveClassField({
     name: "responsiveTypo",

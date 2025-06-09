@@ -80,6 +80,7 @@ export const calculateResponsiveCss = (
     responsivePosition,
     responsiveStyles,
     responsiveBorder,
+    responsiveOverflow,
   }: CssEditableProps
 ) => {
   return css`
@@ -101,6 +102,7 @@ export const calculateResponsiveCss = (
     ${calculateResponsiveStyles(theme, responsiveFlexBasis)}
     ${calculateResponsiveStyles(theme, responsiveWrap)}
     ${calculateResponsiveStyles(theme, responsiveOpacity)}
+    ${calculateResponsiveStyles(theme, responsiveOverflow)}
     ${calculateResponsiveStyles(theme, responsiveStyles)}
   `;
 };

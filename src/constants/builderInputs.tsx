@@ -233,6 +233,18 @@ export const CSS_EDITABLE_INPUTS: Input[] = [
       "1",
     ],
   }),
+  responsiveStyleField({
+    name: "responsiveOverflow",
+    advanced: true,
+    style: "overflow",
+    value_type: "string",
+    values_enum: [
+      "auto",
+      "hidden",
+      "visible",
+      "scroll",
+    ],
+  }),
   {
     name: "responsiveBorder",
     type: "object",

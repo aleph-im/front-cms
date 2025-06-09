@@ -12,6 +12,7 @@ export type CssEditableProps = {
   responsiveWrap: StyleBreakpoint[];
   responsiveFlexBasis: StyleBreakpoint[];
   responsivePosition: StyleBreakpoint[];
+  responsiveOverflow: StyleBreakpoint[];
   responsiveBorder?: {
     responsiveBorderStyle: StyleBreakpoint[];
     responsiveBorderWidth: StyleBreakpoint[];

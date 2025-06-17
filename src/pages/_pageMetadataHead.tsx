@@ -81,6 +81,8 @@ export const PageMetadataHead = ({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         />
       )}
+
+      <meta name="msvalidate.01" content="A1E14ACD23C3CE1216D9D8A3C6757527" />
     </Head>
   );
 };

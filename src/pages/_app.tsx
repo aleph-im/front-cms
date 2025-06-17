@@ -6,6 +6,7 @@ import { GlobalStyles } from "@aleph-front/core";
 import { GlobalStylesOverride } from "@/styles/global";
 import { getSelectedThemeData } from "@/utils/getSelectedThemeData";
 import Head from "next/head";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -39,6 +40,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <GlobalStyles />
         <GlobalStylesOverride />
         <Component {...pageProps} />
+
+        {/* https://developers.google.com/analytics/devguides/collection/ga4?hl=es-419 */}
+        <GoogleAnalytics gaId="G-19PPBYP5SS" />
       </ThemeProvider>
     </>
   );

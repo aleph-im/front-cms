@@ -118,7 +118,6 @@ jobs:
     name: Deploy to production
     needs: [push-to-ipfs, bump-version]
     runs-on: ubuntu-latest
-    environment: production
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3

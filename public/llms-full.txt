@@ -1,0 +1,197 @@
+# Aleph Cloud
+
+> Aleph Cloud is a decentralized cloud computing platform providing censorship-resistant AI supercloud services with enterprise-grade security, confidential computing, and up to 80% cost savings compared to traditional providers like AWS and Google Cloud.
+
+Aleph Cloud leverages advanced cryptography and hardware-based attestation to provide verifiable security through Trusted Execution Environments (TEEs). The platform supports crosschain interoperability and enables true cloud sovereignty with data localization compliance, zero vendor lock-in, and transparent on-chain billing.
+
+## Core Services
+
+**Virtual Private Servers (VPS)**
+- Up to 12 vCPU cores
+- 2 GB to 24 GB RAM configurations
+- 20 GB+ NVMe SSD storage
+- Unlimited bandwidth
+- Starting at $2.21/month pay-as-you-go
+- One-command deployment with Docker and Kubernetes support
+
+**GPU Cloud Computing**
+- Up to 12 vCPU
+- 18 GB to 72 GB RAM
+- 20 GB to 48 GB vRAM
+- Decentralized GPU marketplace with up to 80% cost savings vs centralized providers
+- Starting at $0.055/hour pay-as-you-go
+- Ideal for AI/ML training and inference workloads
+
+**Block Storage**
+- High-availability SSD storage
+- Scalable from 1 MB to 20 TB
+- Support for dependency files and SquashFS volumes
+- Volume storage from $0.0033
+- Attach to any compute instance
+
+**Serverless Functions**
+- Stateless, API-first architecture
+- Limitless scalability
+- Instant provisioning
+- Perfect for backend logic and microservices
+
+## Key Features
+
+**Confidential Computing**
+Aleph Cloud uses Trusted Execution Environments (TEEs) to ensure data remains encrypted and private even during computation. This hardware-based attestation provides verifiable security for sensitive workloads including financial data, healthcare records, and proprietary AI models.
+
+**Decentralized Architecture**
+Unlike legacy cloud providers, Aleph Cloud operates on a decentralized network, eliminating single points of failure and censorship risks. Data sovereignty is built into the platform, allowing enterprises to choose exactly where their data lives for compliance with regional laws like GDPR, CCPA, and data localization requirements.
+
+**Enterprise-Grade Security**
+- Robust zero-trust architecture
+- Granular data governance controls
+- Hardware-encrypted infrastructure
+- Compliance tools for regulatory requirements
+- Transparent audit logs on-chain
+- No vendor lock-in
+
+**Web2-Web3 Bridge**
+Composable and modular infrastructure simplifies multi-chain deployment and bridges traditional cloud infrastructure with blockchain-native applications. Native support for multiple blockchain networks enables seamless crosschain interoperability.
+
+**Developer-First Experience**
+- One-command deployments via CLI
+- Comprehensive SDKs and APIs
+- Native Docker and Kubernetes support
+- Intuitive dashboard interface
+- Extensive developer documentation
+- Active developer Discord community
+- Free cloud credits through Builder Program
+
+## Use Cases
+
+**AI & Machine Learning**
+Train and deploy models with encrypted datasets in confidential computing environments. Build privacy-preserving AI/ML pipelines that maintain data confidentiality throughout the entire workflow. Reduce infrastructure costs by up to 80% compared to traditional cloud GPU providers.
+
+**Gaming Studios**
+Build uncensorable games with tamper-proof logic on decentralized infrastructure. Deploy game servers with guaranteed uptime and no single point of failure. Leverage blockchain integration for in-game assets and economies.
+
+**DeFi Protocols**
+Run backend services and transparent data feeds for decentralized finance applications. Ensure data integrity and computation verification through hardware attestation. Deploy nodes and validators with high availability guarantees.
+
+**Enterprise Cloud Migration**
+Retain full control over data location and access for regulatory compliance. Avoid vendor lock-in with open standards and portable workloads. Reduce cloud costs while maintaining or improving security posture and performance.
+
+**Data Localization Compliance**
+Meet data sovereignty requirements for jurisdictions requiring data to remain within specific geographic boundaries. Transparent audit logs and on-chain billing provide proof of compliance for regulators.
+
+## Getting Started
+
+**Quick Start Process:**
+1. Connect your preferred crypto wallet to the Aleph Cloud dashboard
+2. Select your blockchain network for payment and identity
+3. Choose your compute configuration (VPS, GPU, or serverless)
+4. Deploy using the dashboard, CLI, or API
+5. Go live in seconds with your decentralized workload
+
+**Sandbox Environment**
+Try Aleph Cloud risk-free with the sandbox environment to test deployments and familiarize yourself with the platform before committing resources.
+
+**Builder Program**
+Developers can claim free cloud credits through the Aleph Cloud Builder Program to accelerate development and reduce initial costs.
+
+## Pricing Advantages
+
+Aleph Cloud delivers significant cost savings compared to traditional cloud providers:
+- VPS instances from $2.21/month (vs. higher costs at AWS, Google Cloud, Azure)
+- GPU compute from $0.055/hour (up to 80% cheaper than centralized alternatives)
+- Block storage from $0.0033 per unit
+- Pay-as-you-go pricing with no long-term commitments
+- Transparent on-chain billing with no hidden fees
+
+## Technical Architecture
+
+**Crosschain Interoperability**
+Aleph Cloud supports multiple blockchain networks, enabling users to pay with their preferred cryptocurrency and deploy applications that interact across different blockchain ecosystems.
+
+**Trusted Execution Environments**
+Hardware-based security using TEEs ensures that code and data are protected during execution. Even the cloud provider cannot access encrypted data being processed, providing confidentiality guarantees for regulated industries.
+
+**Decentralized Marketplace**
+GPU and compute resources are sourced from a distributed network of providers, creating a competitive marketplace that drives down costs while maintaining high availability and performance.
+
+**Legacy Infrastructure Integration**
+Aleph Cloud is interoperable with existing infrastructure, allowing enterprises to gradually migrate workloads or operate hybrid environments combining traditional and decentralized cloud resources.
+
+## Platform Benefits
+
+**For Developers:**
+- Familiar tools (Docker, Kubernetes, standard APIs)
+- Comprehensive documentation and support
+- Active community on Discord
+- Free credits and builder incentives
+- No learning curve for cloud-native developers
+
+**For Enterprises:**
+- Regulatory compliance without vendor lock-in
+- Data sovereignty and localization control
+- Transparent billing and audit trails
+- Cost savings of up to 80%
+- Enterprise-grade security and reliability
+
+**For Blockchain Projects:**
+- Native multi-chain support
+- Censorship-resistant infrastructure
+- Verifiable computation
+- Bridge Web2 and Web3 capabilities
+- Decentralized and trustless architecture
+
+## Support and Resources
+
+**Developer Documentation**
+Comprehensive guides covering deployment, API integration, SDK usage, and best practices available through the Aleph Cloud documentation portal.
+
+**Developer Discord**
+Active community of builders, core team members, and technical support available through the official Aleph Cloud Discord server.
+
+**API and SDK Access**
+Full-featured APIs and SDKs for programmatic infrastructure management and deployment automation.
+
+**Technical Support**
+Enterprise customers receive dedicated technical support for onboarding, optimization, and troubleshooting.
+
+## Competitive Advantages
+
+Compared to AWS, Google Cloud, and Azure:
+- 80% lower costs for GPU compute
+- True data sovereignty and no vendor lock-in
+- Censorship-resistant infrastructure
+- Hardware-encrypted confidential computing
+- Transparent on-chain billing
+- Crosschain blockchain integration
+- Decentralized architecture eliminating single points of failure
+
+Compared to other decentralized cloud providers:
+- Enterprise-grade security and compliance tools
+- Production-ready with active customer deployments
+- Comprehensive developer tooling and documentation
+- Native Docker/Kubernetes support
+- Confidential computing with TEE hardware attestation
+- Professional support and onboarding
+
+## Company Information
+
+**Website:** https://aleph.cloud/
+
+**Mission:** Provide censorship-resistant, enterprise-grade decentralized cloud computing that empowers builders and enterprises with true cloud sovereignty, data privacy, and significant cost savings.
+
+**Target Industries:**
+- Finance and banking (confidential data processing)
+- Gaming and entertainment (uncensorable content)
+- Artificial intelligence and machine learning (encrypted model training)
+- Decentralized finance (backend infrastructure)
+- Healthcare and regulated industries (compliance and data localization)
+- Enterprise IT (hybrid cloud and migration)
+
+**Core Values:**
+- Censorship resistance
+- Data sovereignty
+- Open standards and no vendor lock-in
+- Developer empowerment
+- Cost efficiency
+- Enterprise-grade security and compliance

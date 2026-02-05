@@ -15,6 +15,7 @@ export const Header = ({
   logoImage,
   logoText,
   logoByAleph = false,
+  onlyTextLogo,
 }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleCloseMenu = useCallback((open: boolean) => setIsOpen(open), []);
@@ -32,6 +33,7 @@ export const Header = ({
         onToggle={handleCloseMenu}
         open={isOpen}
         routes={routes}
+        onlyTextLogo={onlyTextLogo}
         logo={
           <Link href="/">
             <Logo img={logoImage} text={text} byAleph={logoByAleph}/>

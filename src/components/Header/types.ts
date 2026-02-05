@@ -9,6 +9,7 @@ export type HeaderProps = HTMLAttributes<HTMLHeadingElement> & {
   logoWithText: boolean;
   logoText?: string;
   logoByAleph?: boolean;
+  onlyTextLogo?: string;
 };
 
 type HeaderRoutes = {

@@ -30,6 +30,10 @@ Builder.registerComponent(withChildren(Header), {
       defaultValue: false,
     },
     {
+      name: "onlyTextLogo",
+      type: "string",
+    },
+    {
       name: "logoImage",
       type: "string",
       enum: ["aleph", "twentysix", "accelerator"],

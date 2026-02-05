@@ -12,18 +12,25 @@ export const Footer = ({
 }: FooterProps) => {
   const { byAleph = false, href, img, text } = logo || {};
 
+  const commonProps = {
+    Link: Link as LinkComponent,
+    media,
+    mainLinks,
+    logoByAleph: byAleph,
+    logoHref: href,
+    logoImg: img,
+    logoText: text,
+  };
+
+  if (small) {
+    return <BaseFooter {...commonProps} small />;
+  }
+
   return (
     <BaseFooter
-      Link={Link as LinkComponent}
-      small={small}
-      buttons={buttons}
-      media={media}
-      mainLinks={mainLinks}
-      links={links}
-      logoByAleph={byAleph}
-      logoHref={href}
-      logoImg={img}
-      logoText={text}
+      {...commonProps}
+      buttons={buttons ?? []}
+      links={links ?? []}
     />
   );
 };

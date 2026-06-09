@@ -67,10 +67,10 @@ export const ContactForm = () => {
               Host a Core Channel Node
             </DropdownOption>
             <DropdownOption
-              key="Become a Twentysix Cloud partner"
-              value="Become a Twentysix Cloud partner"
+              key="Become an Aleph Cloud partner"
+              value="Become an Aleph Cloud partner"
             >
-              Become a Twentysix Cloud partner
+              Become an Aleph Cloud partner
             </DropdownOption>
             <DropdownOption
               key="Building an application"

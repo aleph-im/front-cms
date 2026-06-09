@@ -44,7 +44,7 @@ Builder.registerComponent(withChildren(Header), {
       defaultValue: [
         {
           name: "Developers",
-          href: "https://docs.aleph.im/",
+          href: "https://docs.aleph.cloud/",
           target: "_blank",
           external: true,
         },

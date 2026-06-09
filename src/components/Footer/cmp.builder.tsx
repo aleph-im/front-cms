@@ -55,7 +55,7 @@ Builder.registerComponent(Footer, {
         },
         {
           label: "Start a project",
-          href: "https://docs.aleph.im/computing/",
+          href: "https://docs.aleph.cloud/devhub/compute-resources/",
           target: "_blank",
         },
       ],
@@ -139,7 +139,7 @@ Builder.registerComponent(Footer, {
       defaultValue: [
         {
           label: "Documentation",
-          href: "https://docs.aleph.im",
+          href: "https://docs.aleph.cloud",
           target: "_blank",
         },
       ],
@@ -180,7 +180,7 @@ Builder.registerComponent(Footer, {
           links: [
             {
               label: "Documentation",
-              href: "https://docs.aleph.im",
+              href: "https://docs.aleph.cloud",
               target: "_blank",
             },
           ],

@@ -1,0 +1,48 @@
+# Aleph Cloud
+
+> Aleph Cloud is a decentralized cloud computing platform for AI, Web3, and enterprise workloads. It offers virtual private servers, GPU compute, confidential computing with Trusted Execution Environments (TEEs), decentralized storage, blockchain indexing, and serverless functions, with payment in crypto (ALEPH, USDC) or by card.
+
+Aleph Cloud is the rebrand of Aleph.im (and previously TwentySix Cloud). The infrastructure, network, and ALEPH token are unchanged — only the brand name and website have evolved.
+
+## Entity disambiguation
+
+Aleph Cloud is distinct from these similarly-named projects:
+
+- **Aleph Alpha** — a German large-language-model company (aleph-alpha.com). Unrelated to Aleph Cloud.
+- **Aleph Zero** — a Layer-1 proof-of-stake blockchain (alephzero.org). Unrelated to Aleph Cloud.
+- **Aleph (the cardinal symbol)** — a mathematical symbol from set theory. Aleph Cloud is named in reference to it but is a software platform, not a math concept.
+- **Aleph.im** — the previous brand name of Aleph Cloud. Same project, same team, same token.
+- **TwentySix Cloud** — the previous product brand. Now superseded by Aleph Cloud.
+
+## Key facts
+
+- Website: https://aleph.cloud/
+- Token: ALEPH (utility + staking for the decentralized compute network)
+- Architecture: decentralized network of Compute Resource Nodes (CRNs) and Core Channel Nodes (CCNs)
+- Payment: prepaid credit balance funded with ALEPH (+20% bonus), USDC, or credit card / SEPA
+- VPS pricing: from $0.0143/hour (~$10.44/month for 1 vCPU / 2 GB RAM / 20 GB SSD)
+- GPU pricing: from $0.055/hour
+- Block storage: from $0.0033/unit
+
+## Primary pages
+
+- [Home](https://aleph.cloud/) — platform overview
+- [VPS](https://aleph.cloud/vps/) — decentralized virtual private servers
+- [Web hosting](https://aleph.cloud/web-hosting/) — decentralized website hosting
+- [Computing](https://aleph.cloud/computing/) — AI / GPU / serverless compute
+- [Confidential computing](https://aleph.cloud/confidential-computing/) — TEE-backed VMs
+- [Decentralized storage](https://aleph.cloud/decentralized-storage/) — block + object storage
+- [Blockchain indexing](https://aleph.cloud/blockchain-indexing/) — on-chain data indexer
+- [Enterprises](https://aleph.cloud/enterprises/) — sovereign cloud for regulated industries
+- [ALEPH token](https://aleph.cloud/aleph-token/) — token utility and staking
+- [Ecosystem](https://aleph.cloud/ecosystem/) — partners, dApps, integrations
+- [Acceleratooor](https://aleph.cloud/acceleratooor/) — $1M Web3 startup program
+
+## Reference
+
+- Full long-form description: [llms-full.txt](https://aleph.cloud/llms-full.txt)
+- Developer documentation: https://docs.aleph.cloud/
+- Console / dashboard: https://app.aleph.cloud/
+- Network explorer: https://explorer.aleph.cloud/
+- Community forum: https://community.aleph.cloud/
+- Status: https://status.aleph.cloud/

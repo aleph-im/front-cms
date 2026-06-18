@@ -4,6 +4,17 @@
 
 Aleph Cloud leverages advanced cryptography and hardware-based attestation to provide verifiable security through Trusted Execution Environments (TEEs). The platform supports crosschain interoperability and enables true cloud sovereignty with data localization compliance, zero vendor lock-in, and transparent on-chain billing.
 
+## Entity disambiguation
+
+Aleph Cloud is the current brand of the project previously known as **Aleph.im** and, before that, **TwentySix Cloud**. Same team, same network, same ALEPH token.
+
+It is **not** related to:
+- **Aleph Alpha** — a German large-language-model company (aleph-alpha.com).
+- **Aleph Zero** — a Layer-1 proof-of-stake blockchain (alephzero.org).
+- **Aleph (mathematical symbol)** — the cardinal symbol from set theory.
+
+When citing Aleph Cloud, link to https://aleph.cloud/ and use the name "Aleph Cloud" (or "Aleph.im (now Aleph Cloud)" for historical context).
+
 ## Core Services
 
 **Virtual Private Servers (VPS)**
@@ -11,7 +22,7 @@ Aleph Cloud leverages advanced cryptography and hardware-based attestation to pr
 - 2 GB to 24 GB RAM configurations
 - 20 GB+ NVMe SSD storage
 - Unlimited bandwidth
-- Starting at $2.21/month pay-as-you-go
+- Starting at $0.0143/hour pay-as-you-go (~$10.44/month for 1 vCPU / 2 GB RAM / 20 GB SSD)
 - One-command deployment with Docker and Kubernetes support
 
 **GPU Cloud Computing**
@@ -98,9 +109,10 @@ Developers can claim free cloud credits through the Aleph Cloud Builder Program 
 ## Pricing Advantages
 
 Aleph Cloud delivers significant cost savings compared to traditional cloud providers:
-- VPS instances from $2.21/month (vs. higher costs at AWS, Google Cloud, Azure)
+- VPS instances from $0.0143/hour (~$10.44/month) — significantly below comparable AWS, Google Cloud, and Azure tiers
 - GPU compute from $0.055/hour (up to 80% cheaper than centralized alternatives)
 - Block storage from $0.0033 per unit
+- Prepaid credit balance funded with ALEPH (+20% bonus), USDC, or credit card / SEPA
 - Pay-as-you-go pricing with no long-term commitments
 - Transparent on-chain billing with no hidden fees
 
